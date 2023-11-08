@@ -3,7 +3,7 @@ package com.example.ood;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class EventController {
+public class AttendanceEventController {
     @FXML
     private Label welcomeText;
 
