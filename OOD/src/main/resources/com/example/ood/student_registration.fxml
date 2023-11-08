@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="750.0" maxWidth="1200.0" prefHeight="750.0" prefWidth="1200.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ood.RegistrationController">
+    <children>
+        <Pane layoutX="26.0" layoutY="56.0" prefHeight="404.0" prefWidth="1138.0" style="-fx-border-color: #071e7e;">
+            <children>
+                <Label layoutX="14.0" layoutY="-13.0" style="-fx-background-color: white;" text="Personal Details" textFill="#071e7e">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+                <Label layoutX="28.0" layoutY="44.0" prefHeight="18.0" prefWidth="57.0" text="Image :">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="studentIdField" layoutX="645.0" layoutY="64.0" onAction="#onStudentIdFill" prefHeight="26.0" prefWidth="307.0" promptText="Enter Student ID" />
+                <TextField fx:id="studentFNameField" layoutX="645.0" layoutY="122.0" prefHeight="26.0" prefWidth="307.0" promptText="Enter First Name" />
+                <TextField fx:id="studentLNameField" layoutX="645.0" layoutY="176.0" prefHeight="26.0" prefWidth="307.0" promptText="Enter Last Name" />
+                <TextField fx:id="studentDOBField" layoutX="645.0" layoutY="240.0" prefHeight="26.0" prefWidth="307.0" promptText="Enter Date of Birth" />
+                <TextField fx:id="studentGenderField" layoutX="645.0" layoutY="293.0" prefHeight="26.0" prefWidth="307.0" promptText="Enter your gender" />
+                <TextField fx:id="studentAddressField" layoutX="111.0" layoutY="293.0" prefHeight="26.0" prefWidth="307.0" promptText="Enter Home Address" />
+                <TextField fx:id="studentGradeField" layoutX="111.0" layoutY="339.0" prefHeight="26.0" prefWidth="307.0" promptText="Enter your grade" />
+                <TextField fx:id="studentClassField" layoutX="645.0" layoutY="339.0" prefHeight="26.0" prefWidth="307.0" promptText="Enter your class" />
+                <ImageView fx:id="studentImageField" fitHeight="204.0" fitWidth="231.0" layoutX="117.0" layoutY="55.0" pickOnBounds="true" style="-fx-bordor-color: black;">
+                    <image>
+                        <Image url="@../../../images/uploadimageicon.png" />
+                    </image></ImageView>
+                <Button fx:id="selectimagebutton" layoutX="418.0" layoutY="228.0" mnemonicParsing="false" onAction="#onSelectImageButtonClick" text="Select Image" />
+            </children>
+        </Pane>
+        <Pane layoutX="26.0" layoutY="486.0" prefHeight="186.0" prefWidth="1138.0" style="-fx-border-color: #071e7e;">
+            <children>
+                <TextField fx:id="studentGuardianNameField" layoutX="403.0" layoutY="28.0" prefHeight="26.0" prefWidth="307.0" promptText="Enter guardian name" />
+                <TextField fx:id="studentGuardianPhoneField" layoutX="403.0" layoutY="75.0" prefHeight="26.0" prefWidth="307.0" promptText="Enter guardian phone number" />
+                <Label layoutX="14.0" layoutY="-13.0" style="-fx-background-color: white;" text="Guardian Details" textFill="#071e7e">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="studentGuardianEmailField" layoutX="403.0" layoutY="125.0" prefHeight="25.0" prefWidth="307.0" promptText="Enter guardian email" />
+            </children>
+        </Pane>
+        <Label alignment="TOP_CENTER" layoutX="457.0" layoutY="14.0" prefHeight="18.0" prefWidth="363.0" text="Student Registration Form" textAlignment="CENTER" textFill="#071e7e">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </Label>
+        <Button fx:id="submitButton" layoutX="505.0" layoutY="683.0" mnemonicParsing="false" onAction="#onSubmitButtonClick" style="-fx-background-color: #071e7e;" text="Submit" textFill="#e3e5e7">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </Button>
+    </children>
+</AnchorPane>
