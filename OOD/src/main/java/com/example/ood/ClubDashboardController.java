@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class DashboardController implements Initializable {
+public class ClubDashboardController implements Initializable {
     @FXML
     private Label menu;
 
