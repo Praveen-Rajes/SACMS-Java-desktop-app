@@ -37,7 +37,7 @@ public class ClubDashboardController implements Initializable {
 
     @FXML
     private void showClubPart() {
-        loadFXML("Home.fxml");
+        loadFXML("ClubHome.fxml");
     }
 
 
