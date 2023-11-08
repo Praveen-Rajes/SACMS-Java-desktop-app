@@ -38,9 +38,9 @@ public class ClubdetailsController {
     @FXML
     private Button closeButton;
     private Image selectedImage;
-    private HomeController homeController;
+    private ClubHomeController homeController;
 
-    public void setHomeController(HomeController homeController) {
+    public void setHomeController(ClubHomeController homeController) {
         this.homeController = homeController;
     }
 

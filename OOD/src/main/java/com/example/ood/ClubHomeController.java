@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 import java.io.*;
 
 
-public class HomeController {
+public class ClubHomeController {
     @FXML
     AnchorPane homePane;
 
