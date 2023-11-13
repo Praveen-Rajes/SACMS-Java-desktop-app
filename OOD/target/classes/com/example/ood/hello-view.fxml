@@ -1,24 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.gluonhq.charm.glisten.control.TextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Text layoutX="134.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome" textAlignment="CENTER" wrappingWidth="370.279296875">
+      <Text layoutX="127.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome" textAlignment="CENTER" underline="true" wrappingWidth="945.279296875">
          <font>
             <Font name="System Bold" size="84.0" />
          </font>
       </Text>
-      <Text layoutX="129.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="We are glad to see you back with us" textAlignment="CENTER" wrappingWidth="380.279296875">
+      <Text layoutX="409.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="We are glad to see you back with us" textAlignment="CENTER" wrappingWidth="380.279296875">
          <font>
             <Font size="19.0" />
          </font>
       </Text>
-      <TextField layoutX="183.0" layoutY="246.0" prefHeight="48.0" prefWidth="272.0" promptText="USER NAME" />
-      <TextField layoutX="183.0" layoutY="313.0" prefHeight="48.0" prefWidth="272.0" promptText="PASSWORD" />
+      <Pane layoutX="551.0" layoutY="59.0" style="-fx-border-radius: 7; -fx-background-radius: 7;" />
+      <HBox layoutY="459.0" prefHeight="48.0" prefWidth="1200.0">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="48.0" prefWidth="300.0" style="-fx-background-radius: 7;" text="CLUB ADVISOR" textFill="#030303">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="150.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="68.0" prefWidth="300.0" style="-fx-background-radius: 7;" text="STUDENT">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="300.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </HBox>
+      <Text layoutX="335.0" layoutY="371.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please select your role to continue: Are you a Club advisor or a Student?" textAlignment="CENTER" wrappingWidth="527.9830722808838">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <TextField floatText="hey" layoutX="112.0" layoutY="172.0" />
    </children>
 </AnchorPane>
