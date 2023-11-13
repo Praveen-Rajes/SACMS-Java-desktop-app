@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.clubmanagementsystem.ClubdetailsController">
+   <right>
+      <AnchorPane prefHeight="700.0" prefWidth="662.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="clubNameTextField" layoutX="405.0" layoutY="205.0" prefHeight="28.0" prefWidth="300.0" promptText="Club Name" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+            <Button fx:id="continueButton" layoutX="517.0" layoutY="613.0" mnemonicParsing="false" onAction="#onOkButtonClick" prefHeight="37.0" prefWidth="74.0" style="-fx-background-color: #0598ff;" text="Continue" textFill="WHITE" />
+            <Text fill="#0598ff" layoutX="475.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Club Details">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Text>
+            <FontIcon iconColor="#0598ff" iconLiteral="fas-house-user" iconSize="60" layoutX="520.0" layoutY="112.0" />
+            <Button fx:id="closeButton" layoutX="858.0" layoutY="14.0" mnemonicParsing="false" onAction="#onCloseButtonClick" style="-fx-background-color: transparent;">
+               <graphic>
+                  <FontIcon iconColor="#0598ff" iconLiteral="fas-times" iconSize="16" />
+               </graphic></Button>
+            <ChoiceBox fx:id="categoryChoiceBox" layoutX="405.0" layoutY="258.0" prefHeight="28.0" prefWidth="300.0" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" value="Select a Category" />
+            <TextArea fx:id="descriptionTextArea" layoutX="405.0" layoutY="329.0" prefHeight="100.0" prefWidth="300.0" promptText="Club Depscription" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+            <TextField fx:id="clubIDField" editable="false" layoutX="405.0" layoutY="533.0" prefHeight="28.0" prefWidth="300.0" promptText="Club ID" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+            <ColorPicker layoutX="405.0" layoutY="473.0" prefHeight="26.0" prefWidth="300.0" promptText="Select Club Theme" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+            <Text fill="#b1a4a4" layoutX="412.0" layoutY="470.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Club Theme" />
+            <AnchorPane layoutX="-115.0" prefHeight="700.0" prefWidth="300.0" style="-fx-background-color: #0598ff;">
+               <children>
+                  <Pane layoutX="8.0" layoutY="148.0" prefHeight="277.0" prefWidth="284.0" style="-fx-background-color: transparent; -fx-border-color: #ffffff; -fx-border-style: dotted; -fx-border-width: 2px 2px 2px 2px;">
+                     <children>
+                        <ImageView fx:id="logoImageView" fitHeight="261.0" fitWidth="268.0" layoutX="9.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 3px;" />
+                        <Button fx:id="uploadButton" layoutX="86.0" layoutY="203.0" mnemonicParsing="false" onAction="#onUploadButtonClick" prefHeight="31.0" prefWidth="110.0" style="-fx-background-color: transparent;" text="Browse Here" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Button>
+                        <Text fill="WHITE" layoutX="73.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Drag and Drop Logo">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="130.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Or" wrappingWidth="22.018798828125">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <FontIcon fill="#0598ff" iconColor="WHITE" iconLiteral="fas-upload" iconSize="35" layoutX="124.0" layoutY="100.0" text="" />
+                     </children>
+                  </Pane>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </right>
+</BorderPane>
