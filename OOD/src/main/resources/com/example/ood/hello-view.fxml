@@ -1,52 +1,118 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
 <AnchorPane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Text layoutX="127.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome" textAlignment="CENTER" underline="true" wrappingWidth="945.279296875">
+      <Text layoutX="735.0" layoutY="22.0" opacity="0.34" strokeType="OUTSIDE" strokeWidth="0.0" text="X" wrappingWidth="95.0">
+         <font>
+            <Font name="System Bold" size="150.0" />
+         </font>
+      </Text>
+      <Text layoutX="838.0" layoutY="130.0" opacity="0.34" strokeType="OUTSIDE" strokeWidth="0.0" text="X" wrappingWidth="95.0">
+         <font>
+            <Font name="System Bold" size="150.0" />
+         </font>
+      </Text>
+      <Text layoutX="940.0" layoutY="22.0" opacity="0.34" strokeType="OUTSIDE" strokeWidth="0.0" text="X" wrappingWidth="95.0">
+         <font>
+            <Font name="System Bold" size="150.0" />
+         </font>
+      </Text>
+      <Text layoutX="736.0" layoutY="545.0" opacity="0.34" strokeType="OUTSIDE" strokeWidth="0.0" text="X" wrappingWidth="95.0">
+         <font>
+            <Font name="System Bold" size="150.0" />
+         </font>
+      </Text>
+      <Text layoutX="632.0" layoutY="652.0" opacity="0.34" strokeType="OUTSIDE" strokeWidth="0.0" text="X" wrappingWidth="95.0">
+         <font>
+            <Font name="System Bold" size="150.0" />
+         </font>
+      </Text>
+      <Text layoutX="735.0" layoutY="760.0" opacity="0.34" strokeType="OUTSIDE" strokeWidth="0.0" text="X" wrappingWidth="95.0">
+         <font>
+            <Font name="System Bold" size="150.0" />
+         </font>
+      </Text>
+      <Text layoutX="837.0" layoutY="652.0" opacity="0.34" strokeType="OUTSIDE" strokeWidth="0.0" text="X" wrappingWidth="95.0">
+         <font>
+            <Font name="System Bold" size="150.0" />
+         </font>
+      </Text>
+      <Text layoutX="403.0" layoutY="290.0" opacity="0.34" strokeType="OUTSIDE" strokeWidth="0.0" text="X" wrappingWidth="95.0">
+         <font>
+            <Font name="System Bold" size="150.0" />
+         </font>
+      </Text>
+      <Text layoutX="299.0" layoutY="397.0" opacity="0.34" strokeType="OUTSIDE" strokeWidth="0.0" text="X" wrappingWidth="95.0">
+         <font>
+            <Font name="System Bold" size="150.0" />
+         </font>
+      </Text>
+      <Text layoutX="120.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome" textAlignment="CENTER" underline="true" wrappingWidth="945.279296875">
          <font>
             <Font name="System Bold" size="84.0" />
          </font>
       </Text>
-      <Text layoutX="409.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="We are glad to see you back with us" textAlignment="CENTER" wrappingWidth="380.279296875">
+      <Text layoutX="402.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="We are glad to see you back with us" textAlignment="CENTER" wrappingWidth="380.279296875">
          <font>
             <Font size="19.0" />
          </font>
       </Text>
       <Pane layoutX="551.0" layoutY="59.0" style="-fx-border-radius: 7; -fx-background-radius: 7;" />
-      <HBox layoutY="459.0" prefHeight="48.0" prefWidth="1200.0">
-         <children>
-            <Button mnemonicParsing="false" prefHeight="48.0" prefWidth="300.0" style="-fx-background-radius: 7;" text="CLUB ADVISOR" textFill="#030303">
-               <font>
-                  <Font name="System Bold" size="24.0" />
-               </font>
-               <HBox.margin>
-                  <Insets left="150.0" />
-               </HBox.margin>
-            </Button>
-            <Button mnemonicParsing="false" prefHeight="68.0" prefWidth="300.0" style="-fx-background-radius: 7;" text="STUDENT">
-               <font>
-                  <Font name="System Bold" size="24.0" />
-               </font>
-               <HBox.margin>
-                  <Insets left="300.0" />
-               </HBox.margin>
-            </Button>
-         </children>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </HBox>
-      <Text layoutX="335.0" layoutY="371.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please select your role to continue: Are you a Club advisor or a Student?" textAlignment="CENTER" wrappingWidth="527.9830722808838">
+      <Button layoutX="469.0" layoutY="640.0" mnemonicParsing="false" prefHeight="78.0" prefWidth="261.0" style="-fx-background-radius: 14; -fx-border-radius: 14;">
          <font>
-            <Font size="24.0" />
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <FontIcon iconColor="WHITE" iconLiteral="fltral-arrow-sync-12" iconSize="40" layoutX="497.0" layoutY="699.0" />
+      <Text fill="WHITE" layoutX="524.0" layoutY="686.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SWITCH PROFILE" textAlignment="CENTER" wrappingWidth="191.279296875">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="241.0" fitWidth="242.0" layoutX="105.0" layoutY="215.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/loginstudent.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="1.0" arcWidth="5.0" fill="#fafafa18" height="241.0" layoutX="105.0" layoutY="215.0" stroke="#a1abb2" strokeType="INSIDE" strokeWidth="5.0" width="241.0" />
+      <Text layoutX="140.0" layoutY="482.0" strokeType="OUTSIDE" strokeWidth="0.0" text="STUDENT" textAlignment="CENTER" wrappingWidth="170.279296875">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="402.0" layoutY="505.0" opacity="0.34" strokeType="OUTSIDE" strokeWidth="0.0" text="X" wrappingWidth="95.0">
+         <font>
+            <Font name="System Bold" size="150.0" />
+         </font>
+      </Text>
+      <Text layoutX="504.0" layoutY="397.0" opacity="0.34" strokeType="OUTSIDE" strokeWidth="0.0" text="X" wrappingWidth="95.0">
+         <font>
+            <Font name="System Bold" size="150.0" />
+         </font>
+      </Text>
+      <Text layoutX="94.0" layoutY="645.0" opacity="0.34" strokeType="OUTSIDE" strokeWidth="0.0" text="X" wrappingWidth="95.0">
+         <font>
+            <Font name="System Bold" size="150.0" />
+         </font>
+      </Text>
+      <Text layoutX="-10.0" layoutY="752.0" opacity="0.34" strokeType="OUTSIDE" strokeWidth="0.0" text="X" wrappingWidth="95.0">
+         <font>
+            <Font name="System Bold" size="150.0" />
+         </font>
+      </Text>
+      <Text layoutX="195.0" layoutY="752.0" opacity="0.34" strokeType="OUTSIDE" strokeWidth="0.0" text="X" wrappingWidth="95.0">
+         <font>
+            <Font name="System Bold" size="150.0" />
          </font>
       </Text>
    </children>
