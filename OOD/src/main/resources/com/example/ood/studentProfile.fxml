@@ -99,9 +99,9 @@
             <center>
                 <AnchorPane fx:id="contentArea" prefHeight="700.0" prefWidth="1051.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
                     <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#09335b" height="77.0" layoutX="-1.0" layoutY="50.0" stroke="BLACK" strokeType="INSIDE" width="1040.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#09335b" height="77.0" layoutX="-1.0" layoutY="50.0" stroke="BLACK" strokeType="INSIDE" width="1042.0" />
                   <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="429.0" layoutY="96.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-                        <Label alignment="TOP_CENTER" layoutX="337.0" layoutY="14.0" prefHeight="18.0" prefWidth="363.0" text="Student Profile" textAlignment="CENTER" textFill="#032d4d">
+                        <Label alignment="TOP_CENTER" layoutX="347.0" layoutY="14.0" prefHeight="18.0" prefWidth="363.0" text="Student Profile" textAlignment="CENTER" textFill="#032d4d">
                             <font>
                                 <Font name="System Bold" size="18.0" />
                             </font>
@@ -116,28 +116,27 @@
                         <Image url="@../../../images/profilePic.png" />
                      </image>
                   </ImageView>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="46.0" layoutX="59.0" layoutY="336.0" stroke="BLACK" strokeType="INSIDE" width="462.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="46.0" layoutX="59.0" layoutY="336.0" stroke="#09335b" strokeType="INSIDE" width="462.0" />
                   <Label layoutX="59.0" layoutY="308.0" text="Personal Details">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="338.0" layoutX="553.0" layoutY="336.0" stroke="BLACK" strokeType="INSIDE" width="462.0" />
                   <Label layoutX="553.0" layoutY="308.0" text="Clubs">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="46.0" layoutX="59.0" layoutY="408.0" stroke="BLACK" strokeType="INSIDE" width="462.0" />
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="46.0" layoutX="59.0" layoutY="481.0" stroke="BLACK" strokeType="INSIDE" width="462.0" />
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="46.0" layoutX="59.0" layoutY="548.0" stroke="BLACK" strokeType="INSIDE" width="462.0" />
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="46.0" layoutX="59.0" layoutY="624.0" stroke="BLACK" strokeType="INSIDE" width="462.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="46.0" layoutX="59.0" layoutY="408.0" stroke="#09335b" strokeType="INSIDE" width="462.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="46.0" layoutX="59.0" layoutY="481.0" stroke="#09335b" strokeType="INSIDE" width="462.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="46.0" layoutX="59.0" layoutY="548.0" stroke="#09335b" strokeType="INSIDE" width="462.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="46.0" layoutX="59.0" layoutY="624.0" stroke="#09335b" strokeType="INSIDE" width="462.0" />
                   <Label layoutX="85.0" layoutY="351.0" text="First Name" />
                   <Label layoutX="85.0" layoutY="422.0" text="Last Name" />
                   <Label layoutX="81.0" layoutY="496.0" text="DOB" />
                   <Label layoutX="78.0" layoutY="562.0" text="Gender" />
                   <Label layoutX="78.0" layoutY="638.0" text="Home Address" />
-                  <TextArea layoutX="566.0" layoutY="350.0" prefHeight="312.0" prefWidth="438.0" text="Club details&#10;" />
+                  <TextArea layoutX="567.0" layoutY="340.0" prefHeight="330.0" prefWidth="438.0" style="-fx-background-color: white; -fx-border-color: #09335b;" text="Club details&#10;" />
                     </children></AnchorPane>
             </center>
         </BorderPane>
