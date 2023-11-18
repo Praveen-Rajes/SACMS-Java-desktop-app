@@ -4,6 +4,7 @@ module com.example.ood {
     requires org.kordamp.ikonli.core;
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.ikonli.fontawesome5;
+    requires java.sql;
 
 
     opens com.example.ood to javafx.fxml;

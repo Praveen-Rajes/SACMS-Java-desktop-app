@@ -3,13 +3,14 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
@@ -97,44 +98,46 @@
             </left>
             <center>
                 <AnchorPane fx:id="contentArea" prefHeight="700.0" prefWidth="1051.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
-               <children>
-                  <Pane layoutX="73.0" layoutY="197.0" prefHeight="306.0" prefWidth="311.0" style="-fx-border-color: #032d4d; -fx-border-radius: 16;">
-                     <children>
-                        <ImageView fx:id="advisorImageField" fitHeight="278.0" fitWidth="284.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../images/usericon.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </Pane>
-                  <Pane layoutX="521.0" layoutY="75.0" prefHeight="550.0" prefWidth="452.0" style="-fx-border-color: #032d4d; -fx-border-radius: 16;">
-                     <children>
-                        <Label layoutX="14.0" layoutY="-13.0" style="-fx-background-color: white;" text="Personal Details" textFill="#032d4d">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
+                    <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#09335b" height="77.0" layoutX="-1.0" layoutY="50.0" stroke="BLACK" strokeType="INSIDE" width="1042.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="429.0" layoutY="96.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+                        <Label alignment="TOP_CENTER" layoutX="347.0" layoutY="14.0" prefHeight="18.0" prefWidth="363.0" text="Student Profile" textAlignment="CENTER" textFill="#032d4d">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
                         </Label>
-                        <TextField fx:id="advisorIdField" layoutX="72.0" layoutY="32.0" prefHeight="26.0" prefWidth="307.0" promptText="Enter Advisor ID" />
-                        <TextField fx:id="advisorFNameField" layoutX="72.0" layoutY="104.0" prefHeight="26.0" prefWidth="307.0" promptText="Enter First Name" />
-                        <TextField fx:id="advisorLNameField" layoutX="72.0" layoutY="173.0" prefHeight="26.0" prefWidth="307.0" promptText="Enter Last Name" />
-                        <TextField fx:id="advisorDOBField" layoutX="72.0" layoutY="243.0" prefHeight="26.0" prefWidth="307.0" promptText="Enter Date of Birth" />
-                        <TextField fx:id="advisorGenderField" layoutX="72.0" layoutY="312.0" prefHeight="26.0" prefWidth="307.0" promptText="Enter Gender" />
-                        <TextField fx:id="advisorAddressField" layoutX="72.0" layoutY="380.0" prefHeight="26.0" prefWidth="307.0" promptText="Enter Home Address" />
-                        <TextField fx:id="advisorPhoneField" layoutX="72.0" layoutY="458.0" prefHeight="26.0" prefWidth="307.0" promptText="Enter Phone Number" />
-                     </children>
-                  </Pane>
-                  <Label alignment="TOP_CENTER" layoutX="294.0" layoutY="14.0" prefHeight="18.0" prefWidth="363.0" text="Club Advisor Registration Form" textAlignment="CENTER" textFill="#032d4d">
+                  <Label layoutX="468.0" layoutY="60.0" text="Student ID" textFill="WHITE">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Button fx:id="selectimagebutton2" layoutX="388.0" layoutY="477.0" mnemonicParsing="false" onAction="#onSelectImageButton2Click" text="Select Image " />
-                  <Button fx:id="submitButton2" layoutX="186.0" layoutY="547.0" mnemonicParsing="false" onAction="#onSubmitButton2Click" style="-fx-background-color: #032d4d;" text="Submit" textFill="#e3e5e7">
+                  <ImageView fitHeight="134.0" fitWidth="141.0" layoutX="458.0" layoutY="129.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../../../images/profilePic.png" />
+                     </image>
+                  </ImageView>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="46.0" layoutX="59.0" layoutY="336.0" stroke="#09335b" strokeType="INSIDE" width="462.0" />
+                  <Label layoutX="59.0" layoutY="308.0" text="Personal Details">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font size="18.0" />
                      </font>
-                  </Button>
-               </children></AnchorPane>
+                  </Label>
+                  <Label layoutX="553.0" layoutY="308.0" text="Clubs">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="46.0" layoutX="59.0" layoutY="408.0" stroke="#09335b" strokeType="INSIDE" width="462.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="46.0" layoutX="59.0" layoutY="481.0" stroke="#09335b" strokeType="INSIDE" width="462.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="46.0" layoutX="59.0" layoutY="548.0" stroke="#09335b" strokeType="INSIDE" width="462.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="46.0" layoutX="59.0" layoutY="624.0" stroke="#09335b" strokeType="INSIDE" width="462.0" />
+                  <Label layoutX="85.0" layoutY="351.0" text="First Name" />
+                  <Label layoutX="85.0" layoutY="422.0" text="Last Name" />
+                  <Label layoutX="81.0" layoutY="496.0" text="DOB" />
+                  <Label layoutX="78.0" layoutY="562.0" text="Gender" />
+                  <Label layoutX="78.0" layoutY="638.0" text="Home Address" />
+                  <TextArea layoutX="567.0" layoutY="340.0" prefHeight="330.0" prefWidth="438.0" style="-fx-background-color: white; -fx-border-color: #09335b;" text="Club details&#10;" />
+                    </children></AnchorPane>
             </center>
         </BorderPane>
     </children>
