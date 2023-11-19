@@ -38,7 +38,6 @@ public class RegistrationController {
         s1.setStudentId(studentId);
         s1.setStudentFirstName(studentFirstName);
         System.out.println(s1.getStudentId());
-        System.out.println(123);
     }
     @FXML
     protected void onSubmitButton2Click(){ AdvisorRegistration c1 = new AdvisorRegistration();

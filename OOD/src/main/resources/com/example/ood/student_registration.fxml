@@ -115,13 +115,12 @@
                                     </font>
                                 </Label>
                                 <TextField fx:id="studentIdField" layoutX="72.0" layoutY="26.0" prefHeight="26.0" prefWidth="307.0" promptText="Enter Student Id" />
-                                <TextField fx:id="studentFNameField" layoutX="72.0" layoutY="73.0" prefHeight="26.0" prefWidth="307.0" promptText="Enter First Name" />
-                                <TextField fx:id="studentLNameField" layoutX="72.0" layoutY="121.0" prefHeight="26.0" prefWidth="307.0" promptText="Enter Last Name" />
-                                <TextField fx:id="studentDOBField" layoutX="72.0" layoutY="168.0" prefHeight="26.0" prefWidth="307.0" promptText="Enter Date of Birth" />
-                                <TextField fx:id="studentGenderField" layoutX="72.0" layoutY="216.0" prefHeight="26.0" prefWidth="307.0" promptText="Enter your gender" />
-                                <TextField fx:id="studentAddressField" layoutX="72.0" layoutY="265.0" prefHeight="26.0" prefWidth="307.0" promptText="Enter Home Address" />
-                                <TextField fx:id="studentGradeField" layoutX="72.0" layoutY="324.0" prefHeight="26.0" prefWidth="307.0" promptText="Enter your grade" />
-                                <TextField fx:id="studentClassField" layoutX="72.0" layoutY="371.0" prefHeight="26.0" prefWidth="307.0" promptText="Enter your class" />
+                                <TextField fx:id="studentFNameField" layoutX="73.0" layoutY="79.0" prefHeight="26.0" prefWidth="307.0" promptText="Enter First Name" />
+                                <TextField fx:id="studentLNameField" layoutX="72.0" layoutY="135.0" prefHeight="26.0" prefWidth="307.0" promptText="Enter Last Name" />
+                                <TextField fx:id="studentDOBField" layoutX="72.0" layoutY="193.0" prefHeight="26.0" prefWidth="307.0" promptText="Enter Date of Birth" />
+                                <TextField fx:id="studentGenderField" layoutX="73.0" layoutY="246.0" prefHeight="26.0" prefWidth="307.0" promptText="Enter your gender" />
+                                <TextField fx:id="studentAddressField" layoutX="73.0" layoutY="296.0" prefHeight="26.0" prefWidth="307.0" promptText="Enter Home Address" />
+                                <TextField fx:id="studentGradeClassField" layoutX="73.0" layoutY="347.0" prefHeight="26.0" prefWidth="307.0" promptText="Enter your Grade and Class" />
                             </children>
                         </Pane>
                         <Label alignment="TOP_CENTER" layoutX="294.0" layoutY="14.0" prefHeight="18.0" prefWidth="363.0" text="Student Registration Form" textAlignment="CENTER" textFill="#032d4d">
