@@ -10,7 +10,7 @@ public class Main {
     public static Connection getConnection() {
         try {
             String driver = "com.mysql.cj.jdbc.Driver";
-            String databaseurl = "jdbc:mysql://localhost:3306/clubmaster";
+            String databaseurl = "jdbc:mysql://localhost:3306/megafirm";
             String username = "root";
             String password = "Praveen@2003";
             Class.forName(driver);

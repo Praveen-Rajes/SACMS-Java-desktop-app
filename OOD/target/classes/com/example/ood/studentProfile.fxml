@@ -113,7 +113,7 @@
                   </Label>
                   <ImageView fitHeight="134.0" fitWidth="141.0" layoutX="458.0" layoutY="129.0" pickOnBounds="true">
                      <image>
-                        <Image url="@../../../images/profilePic.png" />
+                        <Image url="@../../../../../src/main/resources/images/loginstudent.jpg" />
                      </image>
                   </ImageView>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="46.0" layoutX="59.0" layoutY="336.0" stroke="#09335b" strokeType="INSIDE" width="462.0" />
