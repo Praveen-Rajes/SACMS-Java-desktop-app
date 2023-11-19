@@ -7,8 +7,7 @@ public class StudentRegistration {
     private String studentDOB;
     private String studentGender;
     private String studentAddress;
-    private int studentGrade;
-    private String studentClass;
+    private String studentGradeClass;
     private String studentGuardianName;
     private String studentGuardianPhone;
 
@@ -60,20 +59,12 @@ public class StudentRegistration {
         this.studentAddress = studentAddress;
     }
 
-    public int getStudentGrade() {
-        return studentGrade;
+    public String getStudentGradeClass() {
+        return studentGradeClass;
     }
 
-    public void setStudentGrade(int studentGrade) {
-        this.studentGrade = studentGrade;
-    }
-
-    public String getStudentClass() {
-        return studentClass;
-    }
-
-    public void setStudentClass(String studentClass) {
-        this.studentClass = studentClass;
+    public void setStudentGradeClass(String studentGradeClass) {
+        this.studentGradeClass = studentGradeClass;
     }
 
     public String getStudentGuardianName() {
