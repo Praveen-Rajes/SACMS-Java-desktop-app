@@ -8,8 +8,13 @@ public class StudentRegistration {
     private String studentGender;
     private String studentAddress;
     private String studentGradeClass;
-    private String studentGuardianName;
-    private String studentGuardianPhone;
+    private GuardianDetails GuardianDetails;
+
+    public StudentRegistration(int studentId,String studentGuardianName,int studentGuardianPhone,String studentGuardianEmail){
+        this.studentId = studentId;
+        GuardianDetails = new GuardianDetails(studentGuardianName,studentGuardianPhone,studentGuardianEmail);
+    }
+    public StudentRegistration(){}
 
     public int getStudentId() {
         return studentId;
@@ -67,20 +72,5 @@ public class StudentRegistration {
         this.studentGradeClass = studentGradeClass;
     }
 
-    public String getStudentGuardianName() {
-        return studentGuardianName;
-    }
-
-    public void setStudentGuardianName(String studentGuardianName) {
-        this.studentGuardianName = studentGuardianName;
-    }
-
-    public String getStudentGuardianPhone() {
-        return studentGuardianPhone;
-    }
-
-    public void setStudentGuardianPhone(String studentGuardianPhone) {
-        this.studentGuardianPhone = studentGuardianPhone;
-    }
 
 }
