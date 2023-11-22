@@ -2,13 +2,9 @@ package com.example.ood;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.ChoiceBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 
@@ -48,12 +44,12 @@ public class EventsController {
     @FXML
     private TableColumn<Student, String> attendanceColumn;
 
-    @FXML
-    private ChoiceBox<String> attendanceChoiceBox;
-
     private final List<String> clubIDs = new ArrayList<>();
     private final List<String> clubNames = new ArrayList<>();
     private String selectedClubID; // Store the selected club ID
+
+    @FXML
+    private ChoiceBox<String> attendanceChoiceBox;
 
     @FXML
     private void initialize() {
@@ -64,7 +60,8 @@ public class EventsController {
         studentIDColumn.setCellValueFactory(new PropertyValueFactory<>("studentID"));
         studentNameColumn.setCellValueFactory(new PropertyValueFactory<>("studentName"));
 
-
+        // Set the cell factory for the attendanceColumn
+        attendanceColumn.setCellFactory(ChoiceBoxTableCell.forTableColumn());
     }
 
     @FXML
@@ -110,9 +107,21 @@ public class EventsController {
             // Create an ObservableList of students and set it to the table
             ObservableList<Student> studentData = FXCollections.observableArrayList(students);
             studentTableView.setItems(studentData);
+
+            // Update the last column (attendanceColumn) with a ChoiceBox
+            updateAttendanceColumn(students.size());
         }
     }
 
+    private void updateAttendanceColumn(int studentCount) {
+        ObservableList<String> attendanceOptions = FXCollections.observableArrayList();
+        for (int i = 0; i <= studentCount; i++) {
+            attendanceOptions.add(String.valueOf(i));
+        }
+
+        // Set the cell factory for the attendanceColumn
+        attendanceColumn.setCellFactory(ChoiceBoxTableCell.forTableColumn(attendanceOptions));
+    }
 
     private void readClubDataFromFile() {
         try (BufferedReader br = new BufferedReader(new FileReader("clubData.txt"))) {
