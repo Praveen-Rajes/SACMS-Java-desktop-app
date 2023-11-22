@@ -100,7 +100,7 @@
                     <children>
                         <Pane layoutX="73.0" layoutY="197.0" prefHeight="306.0" prefWidth="311.0" style="-fx-border-color: #032d4d; -fx-border-radius: 16;">
                      <children>
-                        <ImageView fitHeight="283.0" fitWidth="289.0" layoutX="11.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="studentImageField" fitHeight="283.0" fitWidth="289.0" layoutX="11.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../images/usericon.png" />
                            </image>
