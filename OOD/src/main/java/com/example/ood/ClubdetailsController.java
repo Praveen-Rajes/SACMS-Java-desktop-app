@@ -17,7 +17,11 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.kordamp.ikonli.javafx.FontIcon;
 
-import java.io.File;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 
 public class ClubdetailsController {
 
@@ -137,20 +141,75 @@ public class ClubdetailsController {
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg"));
         Stage stage = (Stage) uploadButton.getScene().getWindow();
         File file = fileChooser.showOpenDialog(stage);
-        if (file != null) {
-            Image image = new Image(file.toURI().toString());
-            int requiredWidth = 261;
-            int requiredHeight = 250;
 
-            if (image.getWidth() == requiredWidth && image.getHeight() == requiredHeight) {
-                selectedImage = new Image(file.toURI().toString(), 200, 200, true, true);
-                logoImageView.setFitHeight(200);
-                logoImageView.setFitWidth(200);
-                logoImageView.setImage(selectedImage);
+        if (file != null && file.exists()) {
+            selectedImage = new Image(file.toURI().toString());
+            logoImageView.setImage(selectedImage);
+            String clubID = clubIDField.getText();
+
+            // Corrected the destinationFilePath creation
+            Path destinationDirectory = Paths.get("OOD","src", "main", "resources", "LogoImages");
+            Path destinationFilePath = destinationDirectory.resolve(clubID+".jpg");
+
+            try {
+                // Create the directory if it doesn't exist
+                if (!Files.exists(destinationDirectory)) {
+                    Files.createDirectories(destinationDirectory);
+                }
+
+                // Copy the file to the destination
+                Files.copy(file.toPath(), destinationFilePath, StandardCopyOption.REPLACE_EXISTING);
+                System.out.println("File copied to: " + destinationFilePath);
                 removeText();
-            } else {
-                System.out.println("Image does not meet the required dimensions.");
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Handle the exception appropriately, e.g., show an error message to the user
             }
+
+        } else {
+            System.err.println("Selected file is null or does not exist.");
+        }
+    }
+
+
+
+
+
+    private void onImageDragDropped(DragEvent event) {
+        Dragboard dragboard = event.getDragboard();
+        boolean success = false;
+
+        if (dragboard.hasFiles()) {
+            File file = dragboard.getFiles().get(0);
+
+            selectedImage = new Image(file.toURI().toString());
+            logoImageView.setImage(selectedImage);
+            success = true;
+            String clubID = clubIDField.getText();
+
+            // Corrected the destinationFilePath creation
+            Path destinationDirectory = Paths.get("OOD","src", "main", "resources", "LogoImages");
+            Path destinationFilePath = destinationDirectory.resolve(clubID+".jpg");
+
+            try {
+                // Create the directory if it doesn't exist
+                if (!Files.exists(destinationDirectory)) {
+                    Files.createDirectories(destinationDirectory);
+                }
+
+                // Copy the file to the destination
+                Files.copy(file.toPath(), destinationFilePath, StandardCopyOption.REPLACE_EXISTING);
+                System.out.println("File copied to: " + destinationFilePath);
+                removeText();
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Handle the exception appropriately, e.g., show an error message to the user
+            }
+            event.setDropCompleted(success);
+            event.consume();
+
+        } else {
+            System.err.println("Selected file is null or does not exist.");
         }
     }
 
@@ -161,31 +220,6 @@ public class ClubdetailsController {
         event.consume();
     }
 
-    private void onImageDragDropped(DragEvent event) {
-        Dragboard dragboard = event.getDragboard();
-        boolean success = false;
-
-        if (dragboard.hasFiles()) {
-            File file = dragboard.getFiles().get(0);
-            Image image = new Image(file.toURI().toString());
-            int requiredWidth = 261;
-            int requiredHeight = 250;
-
-            if (image.getWidth() == requiredWidth && image.getHeight() == requiredHeight) {
-                selectedImage = new Image(file.toURI().toString(), 200, 200, true, true);
-                logoImageView.setFitHeight(200);
-                logoImageView.setFitWidth(200);
-                logoImageView.setImage(selectedImage);
-                success = true;
-                removeText();
-            } else {
-                System.out.println("Image does not meet the required dimensions.");
-            }
-        }
-
-        event.setDropCompleted(success);
-        event.consume();
-    }
 
     private void removeText() {
         Pane imagePane = (Pane) logoImageView.getParent();
