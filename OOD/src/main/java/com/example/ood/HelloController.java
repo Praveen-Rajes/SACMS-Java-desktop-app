@@ -41,4 +41,10 @@ public class HelloController {
         Parent root = FXMLLoader.load(getClass().getResource("advisor_registration.fxml"));
         previousStage.setScene(new Scene(root, 1200, 750));
     }
+    @FXML
+    public void onLoginButtonClick(ActionEvent e3) throws IOException{
+        Stage previousStage = (Stage) ((Node) e3.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("clubdashboard.fxml"));
+        previousStage.setScene(new Scene(root, 1200, 750));
+    }
 }

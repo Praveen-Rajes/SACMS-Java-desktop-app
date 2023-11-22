@@ -93,7 +93,7 @@
       <Text layoutX="639.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADVISOR ID" />
       <Text layoutX="641.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PASSWORD" />
       <Line endX="-100.0" endY="377.134765625" layoutX="697.0" layoutY="220.0" startX="-100.0" startY="-136.29867553710938" strokeWidth="5.0" />
-      <Button layoutX="680.0" layoutY="362.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="250.0" style="-fx-background-radius: 14; -fx-border-radius: 14; -fx-background-color: DODGERBLUE;">
+      <Button onAction="#onLoginButtonClick" layoutX="680.0" layoutY="362.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="250.0" style="-fx-background-radius: 14; -fx-border-radius: 14; -fx-background-color: DODGERBLUE;">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
