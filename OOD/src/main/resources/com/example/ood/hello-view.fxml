@@ -12,8 +12,13 @@
 <?import javafx.scene.text.Text?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ood.HelloController">
+<AnchorPane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ood.HelloController">
    <children>
+      <Text layoutX="736.0" layoutY="545.0" opacity="0.34" strokeType="OUTSIDE" strokeWidth="0.0" text="X" wrappingWidth="95.0">
+         <font>
+            <Font name="System Bold" size="150.0" />
+         </font>
+      </Text>
       <Text layoutX="196.0" layoutY="321.0" opacity="0.34" strokeType="OUTSIDE" strokeWidth="0.0" text="X" wrappingWidth="95.0">
          <font>
             <Font name="System Bold" size="150.0" />
@@ -36,6 +41,18 @@
       </Text>
       <Pane layoutX="54.0" layoutY="8.0" prefHeight="740.0" prefWidth="1190.0" style="-fx-border-radius: 21; -fx-background-radius: 21; -fx-border-color: black;" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
          <children>
+            <Button layoutX="667.0" layoutY="440.0" mnemonicParsing="false" onAction="#onSignupButtonClick" prefHeight="45.0" prefWidth="250.0" style="-fx-background-radius: 14; -fx-border-radius: 14; -fx-background-color: DODGERBLUE;">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <graphic>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="SIGNUP" textAlignment="CENTER" wrappingWidth="191.279296875">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Text>
+               </graphic>
+            </Button>
             <Line endX="-100.0" endY="509.134765625" layoutX="695.0" layoutY="86.0" startX="-100.0" startY="56.134765625" strokeWidth="5.0" />
             <Button layoutX="667.0" layoutY="348.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="250.0" style="-fx-background-radius: 14; -fx-border-radius: 14; -fx-background-color: DODGERBLUE;">
                <font>
@@ -92,11 +109,6 @@
          </font>
       </Text>
       <Text layoutX="940.0" layoutY="22.0" opacity="0.34" strokeType="OUTSIDE" strokeWidth="0.0" text="X" wrappingWidth="95.0">
-         <font>
-            <Font name="System Bold" size="150.0" />
-         </font>
-      </Text>
-      <Text layoutX="736.0" layoutY="545.0" opacity="0.34" strokeType="OUTSIDE" strokeWidth="0.0" text="X" wrappingWidth="95.0">
          <font>
             <Font name="System Bold" size="150.0" />
          </font>
@@ -176,5 +188,6 @@
             <Font name="System Bold" size="150.0" />
          </font>
       </Text>
+      <FontIcon iconColor="WHITE" iconLiteral="fltral-bot-add-24" iconSize="40" layoutX="699.0" layoutY="487.0" />
    </children>
 </AnchorPane>
