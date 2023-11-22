@@ -14,7 +14,7 @@
 
 <AnchorPane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ood.HelloController">
    <children>
-      <Pane layoutX="64.0" layoutY="18.0" prefHeight="740.0" prefWidth="1190.0" style="-fx-border-radius: 21; -fx-background-radius: 21; -fx-border-color: black;" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
+      <Pane layoutX="64.0" layoutY="18.0" prefHeight="740.0" prefWidth="1190.0" style="-fx-border-radius: 21; -fx-background-radius: 21; -fx-border-color: #0A4969;" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
          <children>
             <Text layoutX="515.0" layoutY="804.0" opacity="0.34" rotate="-45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SACMS" wrappingWidth="456.3315854072571">
                <font>
@@ -36,7 +36,7 @@
                   <Font name="System Bold" size="130.0" />
                </font>
             </Text>
-            <Button layoutX="678.0" layoutY="434.0" mnemonicParsing="false" onAction="#onSignupButton2Click" prefHeight="45.0" prefWidth="250.0" style="-fx-background-radius: 14; -fx-border-radius: 14; -fx-background-color: DODGERBLUE;">
+            <Button layoutX="678.0" layoutY="434.0" mnemonicParsing="false" onAction="#onSignupButton2Click" prefHeight="45.0" prefWidth="250.0" style="-fx-background-radius: 14; -fx-border-radius: 14; -fx-background-color: #0A4969;">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -47,7 +47,13 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Text>
-            <Line endX="-100.0" endY="377.134765625" layoutX="764.0" layoutY="40.0" startX="178.3636474609375" startY="377.134765625" strokeWidth="2.0" />
+            <Line endX="-100.0" endY="377.134765625" layoutX="764.0" layoutY="40.0" startX="178.3636474609375" startY="377.134765625" stroke="#0a4969" strokeWidth="2.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0a4969" height="90.0" layoutX="150.0" layoutY="109.0" stroke="#0a4969" strokeType="INSIDE" width="382.0" />
+            <Text fill="WHITE" layoutX="155.0" layoutY="187.0" stroke="BLACK" strokeType="OUTSIDE" text="ClubMaster" wrappingWidth="373.0">
+               <font>
+                  <Font name="Bernard MT Condensed" size="90.0" />
+               </font>
+            </Text>
          </children>
       </Pane>
       <Text layoutX="971.0" layoutY="261.0" opacity="0.34" rotate="-45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SACMS" wrappingWidth="456.3315854072571">
@@ -55,15 +61,14 @@
             <Font name="System Bold" size="130.0" />
          </font>
       </Text>
-      <Rectangle arcHeight="1.0" arcWidth="5.0" fill="#fafafa18" height="340.0" layoutX="132.0" layoutY="184.0" stroke="DODGERBLUE" strokeType="INSIDE" strokeWidth="5.0" width="429.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0a0a0a" height="90.0" layoutX="49.0" layoutY="54.0" stroke="BLACK" strokeType="INSIDE" width="382.0" />
+      <Rectangle arcHeight="1.0" arcWidth="5.0" fill="#fafafa18" height="340.0" layoutX="132.0" layoutY="237.0" stroke="#0a4969" strokeType="INSIDE" strokeWidth="5.0" width="429.0" />
       <Text layoutX="309.0" layoutY="437.0" opacity="0.34" strokeType="OUTSIDE" strokeWidth="0.0" text="X" wrappingWidth="95.0">
          <font>
             <Font name="System Bold" size="150.0" />
          </font>
       </Text>
       <Pane layoutX="561.0" layoutY="69.0" style="-fx-border-radius: 7; -fx-background-radius: 7;" />
-      <Button layoutX="479.0" layoutY="650.0" mnemonicParsing="false" onAction="#switchStudent" prefHeight="78.0" prefWidth="261.0" style="-fx-background-radius: 14; -fx-border-radius: 14; -fx-background-color: DODGERBLUE;">
+      <Button layoutX="479.0" layoutY="650.0" mnemonicParsing="false" onAction="#switchStudent" prefHeight="78.0" prefWidth="261.0" style="-fx-background-radius: 14; -fx-border-radius: 14; -fx-background-color: #0A4969;">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -74,12 +79,12 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Text>
-      <ImageView fitHeight="288.0" fitWidth="416.0" layoutX="139.0" layoutY="191.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="288.0" fitWidth="416.0" layoutX="139.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/advisor.jpg" />
          </image>
       </ImageView>
-      <Text layoutX="139.0" layoutY="503.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADVISOR" textAlignment="CENTER" wrappingWidth="416.0">
+      <Text fill="#0a4969" layoutX="139.0" layoutY="556.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADVISOR" textAlignment="CENTER" wrappingWidth="416.0">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>
@@ -92,8 +97,8 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f8f8f8" height="18.0" layoutX="640.0" layoutY="287.0" stroke="WHITE" strokeType="INSIDE" width="76.0" />
       <Text layoutX="639.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADVISOR ID" />
       <Text layoutX="641.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PASSWORD" />
-      <Line endX="-100.0" endY="377.134765625" layoutX="697.0" layoutY="220.0" startX="-100.0" startY="-136.29867553710938" strokeWidth="5.0" />
-      <Button layoutX="680.0" layoutY="362.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="250.0" style="-fx-background-radius: 14; -fx-border-radius: 14; -fx-background-color: DODGERBLUE;">
+      <Line endX="-100.0" endY="377.134765625" layoutX="697.0" layoutY="220.0" startX="-100.0" startY="-136.29867553710938" stroke="#0a4969" strokeWidth="5.0" />
+      <Button layoutX="680.0" layoutY="362.0" mnemonicParsing="false" onAction="#onLoginButtonClick" prefHeight="45.0" prefWidth="250.0" style="-fx-background-radius: 14; -fx-border-radius: 14; -fx-background-color: #0A4969;">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -102,11 +107,6 @@
       <Text fill="WHITE" layoutX="709.0" layoutY="391.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LOGIN" textAlignment="CENTER" wrappingWidth="191.279296875">
          <font>
             <Font name="System Bold" size="18.0" />
-         </font>
-      </Text>
-      <Text fill="WHITE" layoutX="54.0" layoutY="132.0" stroke="BLACK" strokeType="OUTSIDE" text="ClubMaster" wrappingWidth="373.0">
-         <font>
-            <Font name="Bernard MT Condensed" size="90.0" />
          </font>
       </Text>
    </children>
