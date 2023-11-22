@@ -1,8 +1,8 @@
 package com.example.ood;
 
 public class Student {
-    private String studentID;
-    private String studentName;
+    private final String studentID;
+    private final String studentName;
     private String attendance;
 
     public Student(String studentID, String studentName) {

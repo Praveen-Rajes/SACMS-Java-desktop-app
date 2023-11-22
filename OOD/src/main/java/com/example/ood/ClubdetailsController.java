@@ -148,8 +148,8 @@ public class ClubdetailsController {
             String clubID = clubIDField.getText();
 
             // Corrected the destinationFilePath creation
-            Path destinationDirectory = Paths.get("OOD","src", "main", "resources", "LogoImages");
-            Path destinationFilePath = destinationDirectory.resolve(clubID+".jpg");
+            Path destinationDirectory = Paths.get("OOD", "src", "main", "resources", "LogoImages");
+            Path destinationFilePath = destinationDirectory.resolve(clubID + ".jpg");
 
             try {
                 // Create the directory if it doesn't exist
@@ -172,9 +172,6 @@ public class ClubdetailsController {
     }
 
 
-
-
-
     private void onImageDragDropped(DragEvent event) {
         Dragboard dragboard = event.getDragboard();
         boolean success = false;
@@ -188,8 +185,8 @@ public class ClubdetailsController {
             String clubID = clubIDField.getText();
 
             // Corrected the destinationFilePath creation
-            Path destinationDirectory = Paths.get("OOD","src", "main", "resources", "LogoImages");
-            Path destinationFilePath = destinationDirectory.resolve(clubID+".jpg");
+            Path destinationDirectory = Paths.get("OOD", "src", "main", "resources", "LogoImages");
+            Path destinationFilePath = destinationDirectory.resolve(clubID + ".jpg");
 
             try {
                 // Create the directory if it doesn't exist
@@ -225,6 +222,7 @@ public class ClubdetailsController {
         Pane imagePane = (Pane) logoImageView.getParent();
         imagePane.getChildren().removeIf(node -> node instanceof FontIcon || node instanceof Text);
     }
+
     @FXML
     private void onCloseButtonClick() {
         Stage stage = (Stage) closeButton.getScene().getWindow();
@@ -232,5 +230,5 @@ public class ClubdetailsController {
         // Close the stage
         stage.close();
     }
-
 }
+
