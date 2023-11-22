@@ -10,9 +10,9 @@ public class StudentRegistration extends Person {
     private String studentGradeClass;
     private GuardianDetails GuardianDetails;
 
-    public StudentRegistration(int studentId,String studentGuardianName,int studentGuardianPhone,String studentGuardianEmail){
+    public StudentRegistration(int studentId,String guardianName,int guardianPhone,String guardianEmail){
         this.studentId = studentId;
-        GuardianDetails = new GuardianDetails(studentGuardianName,studentGuardianPhone,studentGuardianEmail);
+        GuardianDetails = new GuardianDetails(guardianName,guardianPhone,guardianEmail);
     }
     public StudentRegistration(){}
 
