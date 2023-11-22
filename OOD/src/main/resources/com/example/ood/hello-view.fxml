@@ -84,17 +84,6 @@
             <Font name="System Bold" size="150.0" />
          </font>
       </Text>
-      <Pane layoutX="551.0" layoutY="59.0" style="-fx-border-radius: 7; -fx-background-radius: 7;" />
-      <Button layoutX="469.0" layoutY="640.0" mnemonicParsing="false" onAction="#switchAdvisor" prefHeight="78.0" prefWidth="261.0" style="-fx-background-radius: 14; -fx-border-radius: 14; -fx-background-color: #0A4969;">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-      <Text fill="WHITE" layoutX="524.0" layoutY="686.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SWITCH PROFILE" textAlignment="CENTER" wrappingWidth="191.279296875">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Text>
       <Text layoutX="94.0" layoutY="645.0" opacity="0.34" strokeType="OUTSIDE" strokeWidth="0.0" text="X" wrappingWidth="95.0">
          <font>
             <Font name="System Bold" size="150.0" />
@@ -110,14 +99,6 @@
             <Font name="System Bold" size="150.0" />
          </font>
       </Text>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fafafa00" height="45.0" layoutX="620.0" layoutY="229.0" stroke="BLACK" strokeType="INSIDE" width="341.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fafafa00" height="45.0" layoutX="620.0" layoutY="286.0" stroke="BLACK" strokeType="INSIDE" width="341.0" />
-      <TextField layoutX="620.0" layoutY="229.0" prefHeight="45.0" prefWidth="341.0" />
-      <TextField layoutX="620.0" layoutY="286.0" prefHeight="45.0" prefWidth="341.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f8f8f8" height="18.0" layoutX="628.0" layoutY="220.0" stroke="#fffdfd" strokeType="INSIDE" width="76.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f8f8f8" height="18.0" layoutX="630.0" layoutY="277.0" stroke="WHITE" strokeType="INSIDE" width="76.0" />
-      <Text layoutX="629.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="STUDENT ID" />
-      <Text layoutX="631.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PASSWORD" />
       <Text layoutX="1078.0" layoutY="299.0" opacity="0.34" strokeType="OUTSIDE" strokeWidth="0.0" text="X" wrappingWidth="95.0">
          <font>
             <Font name="System Bold" size="150.0" />
@@ -143,6 +124,15 @@
             <Font name="System Bold" size="150.0" />
          </font>
       </Text>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fafafa00" height="45.0" layoutX="620.0" layoutY="229.0" stroke="BLACK" strokeType="INSIDE" width="341.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fafafa00" height="45.0" layoutX="620.0" layoutY="286.0" stroke="BLACK" strokeType="INSIDE" width="341.0" />
+      <TextField layoutX="620.0" layoutY="229.0" prefHeight="45.0" prefWidth="341.0" />
+      <TextField layoutX="620.0" layoutY="286.0" prefHeight="45.0" prefWidth="341.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f8f8f8" height="18.0" layoutX="628.0" layoutY="220.0" stroke="#fffdfd" strokeType="INSIDE" width="76.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f8f8f8" height="18.0" layoutX="630.0" layoutY="277.0" stroke="WHITE" strokeType="INSIDE" width="76.0" />
+      <Text layoutX="629.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="STUDENT ID" />
+      <Text layoutX="631.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PASSWORD" />
+      <FontIcon iconColor="WHITE" iconLiteral="fltral-bot-add-24" iconSize="40" layoutX="684.0" layoutY="487.0" />
       <Pane layoutX="54.0" layoutY="8.0" prefHeight="740.0" prefWidth="1190.0" style="-fx-border-radius: 21; -fx-background-radius: 21; -fx-border-color: #0A4969;" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
          <children>
             <Button layoutX="667.0" layoutY="440.0" mnemonicParsing="false" onAction="#onSignupButtonClick" prefHeight="45.0" prefWidth="250.0" style="-fx-background-radius: 14; -fx-border-radius: 14; -fx-background-color: #0A4969;">
@@ -187,8 +177,13 @@
                   <Image url="@../../../images/loginstudent.jpg" />
                </image>
             </ImageView>
-            <FontIcon iconColor="WHITE" iconLiteral="fltral-arrow-sync-12" iconSize="40" layoutX="486.0" layoutY="696.0" text="" />
+            <Button layoutX="467.0" layoutY="641.0" mnemonicParsing="false" onAction="#switchAdvisor" prefHeight="78.0" prefWidth="261.0" style="-fx-background-radius: 14; -fx-border-radius: 14; -fx-background-color: #0A4969;" />
+            <Text fill="WHITE" layoutX="556.0" layoutY="687.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SWITCH PROFILE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Text>
+            <FontIcon iconColor="#f4f4f4" iconLiteral="fltral-arrow-sync-12" iconSize="40" layoutX="492.0" layoutY="700.0" />
          </children></Pane>
-      <FontIcon iconColor="WHITE" iconLiteral="fltral-bot-add-24" iconSize="40" layoutX="684.0" layoutY="487.0" />
    </children>
 </AnchorPane>
