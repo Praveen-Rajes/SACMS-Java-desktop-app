@@ -97,9 +97,9 @@
                 <AnchorPane fx:id="contentArea" prefHeight="700.0" prefWidth="1051.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
                     <children>
                         <Pane layoutX="73.0" layoutY="197.0" prefHeight="306.0" prefWidth="311.0" style="-fx-border-color: #032d4d; -fx-border-radius: 16;">
-                     <children>
-                        <FontIcon iconLiteral="fa-image" layoutX="137.0" layoutY="103.0" wrappingWidth="92.00006103515625" />
-                     </children>
+<!--                     <children>-->
+<!--                        <FontIcon iconLiteral="fa-image" layoutX="137.0" layoutY="103.0" wrappingWidth="92.00006103515625" />-->
+<!--                     </children>-->
                         </Pane>
                         <Pane layoutX="521.0" layoutY="75.0" prefHeight="411.0" prefWidth="452.0" style="-fx-border-color: #032d4d; -fx-border-radius: 16;">
                             <children>
