@@ -134,6 +134,7 @@
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </Button>
+                  <FontIcon iconLiteral="fltfal-accessibility-16" layoutX="132.0" layoutY="104.0" wrappingWidth="172.79998779296875" />
                     </children></AnchorPane>
             </center>
         </BorderPane>

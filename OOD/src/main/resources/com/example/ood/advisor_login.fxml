@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Text?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" style="-fx-background-color: white;" type="AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ood.HelloController">
+<AnchorPane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ood.HelloController">
    <children>
       <Pane layoutX="64.0" layoutY="18.0" prefHeight="740.0" prefWidth="1190.0" style="-fx-border-radius: 21; -fx-background-radius: 21; -fx-border-color: black;" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
          <children>
@@ -42,7 +42,7 @@
                </font>
             </Button>
             <FontIcon iconColor="WHITE" iconLiteral="fltral-bot-add-24" iconSize="40" layoutX="689.0" layoutY="477.0" />
-            <Text fill="WHITE" layoutX="707.0" layoutY="463.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SINGUP" textAlignment="CENTER" wrappingWidth="191.279296875">
+            <Text fill="WHITE" layoutX="707.0" layoutY="463.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SIGNUP" textAlignment="CENTER" wrappingWidth="191.279296875">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -63,7 +63,7 @@
          </font>
       </Text>
       <Pane layoutX="561.0" layoutY="69.0" style="-fx-border-radius: 7; -fx-background-radius: 7;" />
-      <Button layoutX="479.0" layoutY="650.0" mnemonicParsing="false" prefHeight="78.0" prefWidth="261.0" style="-fx-background-radius: 14; -fx-border-radius: 14; -fx-background-color: DODGERBLUE;">
+      <Button layoutX="479.0" layoutY="650.0" mnemonicParsing="false" onAction="#switchStudent" prefHeight="78.0" prefWidth="261.0" style="-fx-background-radius: 14; -fx-border-radius: 14; -fx-background-color: DODGERBLUE;">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -110,4 +110,4 @@
          </font>
       </Text>
    </children>
-</fx:root>
+</AnchorPane>
