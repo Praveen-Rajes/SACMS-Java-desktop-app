@@ -2,7 +2,7 @@ package com.example.ood;
 
 public class StudentRegistration extends Person {
     private int studentId;
-//    private String studentFirstName;
+    private String studentFirstName;
 //    private String studentLastName;
 //    private String studentDOB;
 //    private String studentGender;
@@ -14,6 +14,11 @@ public class StudentRegistration extends Person {
         this.studentId = studentId;
         GuardianDetails = new GuardianDetails(studentGuardianName,studentGuardianPhone,studentGuardianEmail);
     }
+
+    public StudentRegistration(int studentId, String studentFirstName){
+        this.studentId = studentId;
+        this.studentFirstName = studentFirstName;
+    }
     public StudentRegistration(){}
 
     public int getStudentId() {
@@ -24,14 +29,12 @@ public class StudentRegistration extends Person {
         this.studentId = studentId;
     }
 
-//    public String getStudentFirstName() {
-//        return studentFirstName;
-//    }
-//
-//    public void setStudentFirstName(String studentFirstName) {
-//        this.studentFirstName = studentFirstName;
-//    }
-//
+    public String getStudentFirstName() {
+        return studentFirstName;
+    }
+    public void setStudentFirstName(String studentFirstName) {
+        this.studentFirstName = studentFirstName;}
+
 //    public String getStudentLastName() {
 //        return studentLastName;
 //    }
