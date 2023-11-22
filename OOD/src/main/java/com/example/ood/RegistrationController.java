@@ -25,6 +25,8 @@ public class RegistrationController {
     @FXML
     private TextField advisorIdField;
     @FXML
+    private TextField advisorFNameField;
+    @FXML
     private ImageView studentImageField;
     @FXML
     private ImageView advisorImageField;
@@ -36,14 +38,19 @@ public class RegistrationController {
         int studentId = Integer.parseInt(studentIdField.getText());
         String studentFirstName = studentFNameField.getText();
         s1.setStudentId(studentId);
-        s1.setStudentFirstName(studentFirstName);
+        s1.setFirstName(studentFirstName);
         System.out.println(s1.getStudentId());
+        System.out.println(s1.getFirstName());
     }
     @FXML
-    protected void onSubmitButton2Click(){ AdvisorRegistration c1 = new AdvisorRegistration();
+    protected void onSubmitButton2Click(){
+        AdvisorRegistration c1 = new AdvisorRegistration();
         int advisorId = Integer.parseInt(advisorIdField.getText());
+        String advisorFirstName = advisorFNameField.getText();
         c1.setAdvisorId(advisorId);
-        System.out.println(c1.getAdvisorId());}
+        c1.setFirstName(advisorFirstName);
+        System.out.println(c1.getAdvisorId());
+        System.out.println(c1.getFirstName());}
     @FXML
     protected void onStudentIdFill(){
 //        StudentRegistration s1 = new StudentRegistration();

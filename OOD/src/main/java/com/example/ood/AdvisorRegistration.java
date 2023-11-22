@@ -1,12 +1,12 @@
 package com.example.ood;
 
-public class AdvisorRegistration {
+public class AdvisorRegistration extends Person {
     private int advisorId;
-    private String advisorFirstName;
-    private String advisorLastName;
-    private String advisorDOB;
-    private String advisorGender;
-    private String advisorAddress;
+//    private String advisorFirstName;
+//    private String advisorLastName;
+//    private String advisorDOB;
+//    private String advisorGender;
+//    private String advisorAddress;
     private int advisorPhone;
 
     public int getAdvisorId() {
@@ -17,45 +17,45 @@ public class AdvisorRegistration {
         this.advisorId = advisorId;
     }
 
-    public String getAdvisorFirstName() {
-        return advisorFirstName;
-    }
-
-    public void setAdvisorFirstName(String advisorFirstName) {
-        this.advisorFirstName = advisorFirstName;
-    }
-
-    public String getAdvisorLastName() {
-        return advisorLastName;
-    }
-
-    public void setAdvisorLastName(String advisorLastNAme) {
-        this.advisorLastName = advisorLastNAme;
-    }
-
-    public String getAdvisorDOB() {
-        return advisorDOB;
-    }
-
-    public void setAdvisorDOB(String advisorDOB) {
-        this.advisorDOB = advisorDOB;
-    }
-
-    public String getAdvisorGender() {
-        return advisorGender;
-    }
-
-    public void setAdvisorGender(String advisorGender) {
-        this.advisorGender = advisorGender;
-    }
-
-    public String getAdvisorAddress() {
-        return advisorAddress;
-    }
-
-    public void setAdvisorAddress(String advisorAddress) {
-        this.advisorAddress = advisorAddress;
-    }
+//    public String getAdvisorFirstName() {
+//        return advisorFirstName;
+//    }
+//
+//    public void setAdvisorFirstName(String advisorFirstName) {
+//        this.advisorFirstName = advisorFirstName;
+//    }
+//
+//    public String getAdvisorLastName() {
+//        return advisorLastName;
+//    }
+//
+//    public void setAdvisorLastName(String advisorLastNAme) {
+//        this.advisorLastName = advisorLastNAme;
+//    }
+//
+//    public String getAdvisorDOB() {
+//        return advisorDOB;
+//    }
+//
+//    public void setAdvisorDOB(String advisorDOB) {
+//        this.advisorDOB = advisorDOB;
+//    }
+//
+//    public String getAdvisorGender() {
+//        return advisorGender;
+//    }
+//
+//    public void setAdvisorGender(String advisorGender) {
+//        this.advisorGender = advisorGender;
+//    }
+//
+//    public String getAdvisorAddress() {
+//        return advisorAddress;
+//    }
+//
+//    public void setAdvisorAddress(String advisorAddress) {
+//        this.advisorAddress = advisorAddress;
+//    }
 
     public int getAdvisorPhone() {
         return advisorPhone;
@@ -64,4 +64,12 @@ public class AdvisorRegistration {
     public void setAdvisorPhone(int advisorPhone) {
         this.advisorPhone = advisorPhone;
     }
+
+    //unique getId method for each class
+    @Override
+    public int getId() {
+        return getAdvisorId();
+    }
+
+
 }
