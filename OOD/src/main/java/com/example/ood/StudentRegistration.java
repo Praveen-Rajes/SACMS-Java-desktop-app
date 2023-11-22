@@ -1,6 +1,6 @@
 package com.example.ood;
 
-public class StudentRegistration {
+public class StudentRegistration extends Person {
     private int studentId;
     private String studentFirstName;
     private String studentLastName;
@@ -70,6 +70,11 @@ public class StudentRegistration {
 
     public void setStudentGradeClass(String studentGradeClass) {
         this.studentGradeClass = studentGradeClass;
+    }
+
+    @Override
+    public int getId() {
+        return getStudentId();
     }
 
 

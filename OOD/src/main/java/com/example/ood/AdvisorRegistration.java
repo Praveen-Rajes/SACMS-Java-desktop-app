@@ -1,6 +1,6 @@
 package com.example.ood;
 
-public class AdvisorRegistration {
+public class AdvisorRegistration extends Person {
     private int advisorId;
     private String advisorFirstName;
     private String advisorLastName;
@@ -64,4 +64,11 @@ public class AdvisorRegistration {
     public void setAdvisorPhone(int advisorPhone) {
         this.advisorPhone = advisorPhone;
     }
+
+    @Override
+    public int getId() {
+        return getAdvisorId();
+    }
+
+
 }
