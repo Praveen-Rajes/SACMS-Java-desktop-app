@@ -13,7 +13,7 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ood.ClubHomeController">
    <children>
-      <Pane prefHeight="50.0" prefWidth="750.0" style="-fx-background-color: #09335b;">
+      <Pane prefHeight="50.0" prefWidth="750.0" style="-fx-background-color: #0A4969;">
          <children>
             <Button layoutX="708.0" layoutY="11.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="26.0" style="-fx-background-color: transparent;" text="Button">
                <graphic>
@@ -27,14 +27,14 @@
             <Font name="System Bold" size="26.0" />
          </font>
       </Text>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#09335b" height="200.0" layoutX="39.0" layoutY="127.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0a4969" height="200.0" layoutX="39.0" layoutY="127.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
       <ImageView fitHeight="176.0" fitWidth="177.0" layoutX="51.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true" />
       <TextField layoutX="319.0" layoutY="150.0" prefHeight="29.0" prefWidth="399.0" promptText="Club Name" style="-fx-background-color: transparent;" />
       <TextField layoutX="319.0" layoutY="187.0" prefHeight="29.0" prefWidth="399.0" promptText="Category" style="-fx-background-color: transparent;" />
       <TextField layoutX="319.0" layoutY="227.0" prefHeight="29.0" prefWidth="399.0" promptText="Club advisor" style="-fx-background-color: transparent;" />
       <TextArea layoutX="319.0" layoutY="277.0" prefHeight="200.0" prefWidth="399.0" promptText="Description" style="-fx-background-color: transparent;" />
       <TextField layoutX="319.0" layoutY="117.0" prefHeight="26.0" prefWidth="399.0" promptText="ClubID" style="-fx-background-color: transparent;" />
-      <Button layoutX="86.0" layoutY="385.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="106.0" style="-fx-background-color: #09335b;" text="Remove Club" textFill="WHITE">
+      <Button layoutX="86.0" layoutY="385.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="106.0" style="-fx-background-color: #0A4969;" text="Remove Club" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
