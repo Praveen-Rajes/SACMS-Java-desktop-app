@@ -2,7 +2,10 @@ package com.example.ood;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -12,6 +15,8 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.IOException;
+
 public class RegistrationController {
 
     @FXML
@@ -102,6 +107,12 @@ public class RegistrationController {
             System.out.println(userImage2);
         }
 
+    }
+    @FXML
+    protected void onLogoutButtonClick(ActionEvent e2)throws IOException {
+        Stage previousStage = (Stage) ((Node) e2.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("student_login.fxml"));
+        previousStage.setScene(new Scene(root, 1200, 750));
     }
 
 

@@ -81,7 +81,7 @@
                                         <FontIcon iconColor="WHITE" iconLiteral="far-chart-bar" iconSize="15" />
                                     </graphic>
                                 </Button>
-                                <Button fx:id="attendance" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="176.0" style="-fx-background-color: transparent;" styleClass="sidebarItem" stylesheets="@dashboard.css" text="Log Out" textFill="WHITE">
+                                <Button fx:id="Logout" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#onLogoutButtonClick" prefHeight="30.0" prefWidth="176.0" style="-fx-background-color: transparent;" styleClass="sidebarItem" stylesheets="@dashboard.css" text="Log Out" textFill="WHITE">
                                     <font>
                                         <Font name="System Bold" size="15.0" />
                                     </font>
