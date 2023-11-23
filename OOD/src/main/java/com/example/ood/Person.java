@@ -7,6 +7,18 @@ public abstract class Person {
     private String gender;
     private String address;
 
+    public Person(String firstName,String lastName,String dateOfBirth,String gender,String address){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+        this.gender = gender;
+        this.address = address;
+    }
+
+    public Person() {
+
+    }
+
     public String getFirstName() {
         return firstName;
     }

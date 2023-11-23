@@ -29,10 +29,10 @@ public class Attendance {
         this.attendance = attendance;
     }
 
-    public StudentRegistration createStudent(int studentId, String studentFirstName) {
-        student = new StudentRegistration(studentId,studentFirstName);
-        return student;
-    }
+//    public StudentRegistration createStudent(int studentId, String studentFirstName) {
+//        student = new StudentRegistration(studentId,studentFirstName);
+//        return student;
+//    }
 }
 
 
