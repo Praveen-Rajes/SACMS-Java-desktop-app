@@ -8,7 +8,6 @@ public class Attendance {
     private StudentRegistration student;
 
 
-
     public Attendance(CheckBox attendance) {
 
         this.attendance =new CheckBox();
