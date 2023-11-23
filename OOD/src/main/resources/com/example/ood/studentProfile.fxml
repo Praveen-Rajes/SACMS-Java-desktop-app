@@ -59,7 +59,7 @@
                                         <FontIcon iconColor="WHITE" iconLiteral="fas-users" iconSize="15" />
                                     </graphic>
                                 </Button>
-                                <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="176.0" style="-fx-background-color: transparent;" styleClass="sidebarItem" stylesheets="@dashboard.css" text="Event Schedule" textFill="WHITE">
+                                <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="176.0" style="-fx-background-color: transparent;" styleClass="sidebarItem" stylesheets="@dashboard.css" text="Events" textFill="WHITE">
                                     <font>
                                         <Font name="System Bold" size="15.0" />
                                     </font>
