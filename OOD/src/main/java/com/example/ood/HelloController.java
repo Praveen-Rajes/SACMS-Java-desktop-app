@@ -19,7 +19,7 @@ public class HelloController {
     @FXML
     public void  switchStudent (ActionEvent e1) throws IOException {
         Stage previousStage = (Stage) ((Node) e1.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("student_login.fxml"));
         previousStage.setScene(new Scene(root, 1200, 750));
 
     }
