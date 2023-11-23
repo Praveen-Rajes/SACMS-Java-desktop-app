@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
-<?import org.kordamp.ikonli.javafx.FontIcon?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import org.kordamp.ikonli.javafx.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ood.RegistrationController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ood.RegistrationController">
     <children>
         <BorderPane prefHeight="750.0" prefWidth="1200.0">
             <top>
@@ -47,7 +41,7 @@
                     <children>
                         <VBox layoutX="72.0" layoutY="70.0" prefHeight="630.0" prefWidth="163.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
                             <children>
-                                <Button fx:id="clubs" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="176.0" style="-fx-background-color: transparent;" styleClass="sidebarItem" stylesheets="@dashboard.css" text="Clubs" textAlignment="RIGHT" textFill="WHITE">
+                                <Button fx:id="clubs" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#onClubButttonClick" prefHeight="30.0" prefWidth="176.0" style="-fx-background-color: transparent;" styleClass="sidebarItem" stylesheets="@dashboard.css" text="Clubs" textAlignment="RIGHT" textFill="WHITE">
                                     <VBox.margin>
                                         <Insets bottom="50.0" left="10.0" top="25.0" />
                                     </VBox.margin>
@@ -58,7 +52,7 @@
                                         <FontIcon iconColor="WHITE" iconLiteral="fas-users" iconSize="15" />
                                     </graphic>
                                 </Button>
-                                <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="176.0" style="-fx-background-color: transparent;" styleClass="sidebarItem" stylesheets="@dashboard.css" text="Event Schedule" textFill="WHITE">
+                                <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="176.0" style="-fx-background-color: transparent;" styleClass="sidebarItem" stylesheets="@dashboard.css" text="Events" textFill="WHITE">
                                     <font>
                                         <Font name="System Bold" size="15.0" />
                                     </font>
@@ -67,17 +61,6 @@
                                     </VBox.margin>
                                     <graphic>
                                         <FontIcon iconColor="WHITE" iconLiteral="fas-calendar-alt" iconSize="15" />
-                                    </graphic>
-                                </Button>
-                                <Button fx:id="attendance" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="176.0" style="-fx-background-color: transparent;" styleClass="sidebarItem" stylesheets="@dashboard.css" text="Attendance " textFill="WHITE">
-                                    <font>
-                                        <Font name="System Bold" size="15.0" />
-                                    </font>
-                                    <VBox.margin>
-                                        <Insets bottom="50.0" left="10.0" top="25.0" />
-                                    </VBox.margin>
-                                    <graphic>
-                                        <FontIcon iconColor="WHITE" iconLiteral="fas-clipboard-list" iconSize="15" />
                                     </graphic>
                                 </Button>
                                 <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="176.0" style="-fx-background-color: transparent;" styleClass="sidebarItem" stylesheets="@dashboard.css" text="Reports" textFill="WHITE">
@@ -91,6 +74,17 @@
                                         <FontIcon iconColor="WHITE" iconLiteral="far-chart-bar" iconSize="15" />
                                     </graphic>
                                 </Button>
+                                <Button fx:id="Logout" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#onLogoutButtonClick" prefHeight="30.0" prefWidth="176.0" style="-fx-background-color: transparent;" styleClass="sidebarItem" stylesheets="@dashboard.css" text="Log Out" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="15.0" />
+                                    </font>
+                                    <VBox.margin>
+                                        <Insets bottom="50.0" left="10.0" top="25.0" />
+                                    </VBox.margin>
+                                    <graphic>
+                                        <FontIcon iconColor="WHITE" iconLiteral="fltfmz-power-20" iconSize="15" />
+                                    </graphic>
+                                </Button>
                             </children>
                         </VBox>
                     </children>
@@ -100,7 +94,7 @@
                 <AnchorPane fx:id="contentArea" prefHeight="700.0" prefWidth="1051.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
                     <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#09335b" height="77.0" layoutX="-1.0" layoutY="50.0" stroke="BLACK" strokeType="INSIDE" width="1042.0" />
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="429.0" layoutY="96.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+                  <Rectangle arcHeight="2.0" arcWidth="2.0" height="200.0" layoutX="700.0" layoutY="145.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
                         <Label alignment="TOP_CENTER" layoutX="347.0" layoutY="14.0" prefHeight="18.0" prefWidth="363.0" text="Student Profile" textAlignment="CENTER" textFill="#032d4d">
                             <font>
                                 <Font name="System Bold" size="18.0" />
@@ -111,32 +105,38 @@
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="134.0" fitWidth="141.0" layoutX="458.0" layoutY="129.0" pickOnBounds="true">
+                  <ImageView fitHeight="186.0" fitWidth="191.0" layoutX="705.0" layoutY="152.0" pickOnBounds="true">
                      <image>
-                        <Image url="@../../../images/profilePic.png" />
+                        <Image url="@../../../images/profilePic.jpg" />
                      </image>
                   </ImageView>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="46.0" layoutX="59.0" layoutY="336.0" stroke="#09335b" strokeType="INSIDE" width="462.0" />
-                  <Label layoutX="59.0" layoutY="308.0" text="Personal Details">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="46.0" layoutX="67.0" layoutY="199.0" stroke="#09335b" strokeType="INSIDE" width="462.0" />
+                  <Label layoutX="58.0" layoutY="161.0" text="Personal Details">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="553.0" layoutY="308.0" text="Clubs">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="46.0" layoutX="67.0" layoutY="293.0" stroke="#09335b" strokeType="INSIDE" width="462.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="46.0" layoutX="67.0" layoutY="381.0" stroke="#09335b" strokeType="INSIDE" width="462.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="46.0" layoutX="67.0" layoutY="474.0" stroke="#09335b" strokeType="INSIDE" width="462.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="46.0" layoutX="67.0" layoutY="568.0" stroke="#09335b" strokeType="INSIDE" width="462.0" />
+                  <Label layoutX="82.0" layoutY="213.0" text="First Name" />
+                  <Label layoutX="77.0" layoutY="307.0" text="Last Name" />
+                  <Label layoutX="79.0" layoutY="395.0" text="DOB" />
+                  <Label layoutX="84.0" layoutY="488.0" text="Gender" />
+                  <Label layoutX="84.0" layoutY="582.0" text="Home Address" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="46.0" layoutX="583.0" layoutY="385.0" stroke="#09335b" strokeType="INSIDE" width="436.0" />
+                  <Label layoutX="582.0" layoutY="356.0" text="New Password">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="46.0" layoutX="59.0" layoutY="408.0" stroke="#09335b" strokeType="INSIDE" width="462.0" />
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="46.0" layoutX="59.0" layoutY="481.0" stroke="#09335b" strokeType="INSIDE" width="462.0" />
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="46.0" layoutX="59.0" layoutY="548.0" stroke="#09335b" strokeType="INSIDE" width="462.0" />
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="46.0" layoutX="59.0" layoutY="624.0" stroke="#09335b" strokeType="INSIDE" width="462.0" />
-                  <Label layoutX="85.0" layoutY="351.0" text="First Name" />
-                  <Label layoutX="85.0" layoutY="422.0" text="Last Name" />
-                  <Label layoutX="81.0" layoutY="496.0" text="DOB" />
-                  <Label layoutX="78.0" layoutY="562.0" text="Gender" />
-                  <Label layoutX="78.0" layoutY="638.0" text="Home Address" />
-                  <TextArea layoutX="567.0" layoutY="340.0" prefHeight="330.0" prefWidth="438.0" style="-fx-background-color: white; -fx-border-color: #09335b;" text="Club details&#10;" />
+                  <Button layoutX="908.0" layoutY="443.0" mnemonicParsing="false" text="Change Password" />
+                  <TableView layoutX="584.0" layoutY="474.0" prefHeight="200.0" prefWidth="434.0">
+                    <columns>
+                      <TableColumn prefWidth="433.5999755859375" text="Clubs" />
+                    </columns>
+                  </TableView>
                     </children></AnchorPane>
             </center>
         </BorderPane>

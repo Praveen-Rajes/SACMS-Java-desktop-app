@@ -24,6 +24,10 @@ public class Club {
         this.category = category;
 
     }
+    public Club(String clubID,String name) {
+        this.clubID = clubID;
+        this.name = name;
+    }
 
     public String getName() {
         return name;

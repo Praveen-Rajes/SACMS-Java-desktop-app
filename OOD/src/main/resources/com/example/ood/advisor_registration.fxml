@@ -4,7 +4,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -100,11 +99,8 @@
                     <children>
                         <Pane layoutX="73.0" layoutY="197.0" prefHeight="306.0" prefWidth="311.0" style="-fx-border-color: #032d4d; -fx-border-radius: 16;">
                             <children>
-                                <ImageView fx:id="advisorImageField" fitHeight="278.0" fitWidth="284.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@../../../images/usericon.png" />
-                                    </image>
-                                </ImageView>
+                                <ImageView fx:id="advisorImageField" fitHeight="278.0" fitWidth="284.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+                        <FontIcon iconLiteral="fltfmz-person-add-24" iconSize="200" layoutX="56.0" layoutY="253.0" opacity="0.5" />
                             </children>
                         </Pane>
                         <Pane layoutX="521.0" layoutY="75.0" prefHeight="550.0" prefWidth="452.0" style="-fx-border-color: #032d4d; -fx-border-radius: 16;">
@@ -134,7 +130,6 @@
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </Button>
-                  <FontIcon iconLiteral="fltfal-accessibility-16" layoutX="132.0" layoutY="104.0" wrappingWidth="172.79998779296875" />
                     </children></AnchorPane>
             </center>
         </BorderPane>

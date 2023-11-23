@@ -2,16 +2,28 @@ package com.example.ood;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.kordamp.ikonli.javafx.FontIcon;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+
 public class RegistrationController {
 
     @FXML
@@ -25,7 +37,14 @@ public class RegistrationController {
     @FXML
     private TextField advisorIdField;
     @FXML
+    private Button selectimagebutton;
+    @FXML
+    private Button selectimagebutton2;
+    @FXML
     private TextField advisorFNameField;
+
+    private Image studentImage;
+    private Image advisorImage;
     @FXML
     private ImageView studentImageField;
     @FXML
@@ -60,50 +79,92 @@ public class RegistrationController {
     }
 
     @FXML
-    protected void onSelectImageButtonClick(ActionEvent e){
-        // Open a file chooser to let the user select an image file
-        FileChooser choosingImage = new FileChooser();
-        choosingImage.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif")
-        );
+    protected void onSelectImageButtonClick(){
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg"));
+        Stage stage = (Stage) selectimagebutton.getScene().getWindow();
+        File file = fileChooser.showOpenDialog(stage);
 
-        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-        File selectedFile = choosingImage.showOpenDialog(stage);
+        if (file != null && file.exists()) {
+            studentImage = new Image(file.toURI().toString());
+            studentImageField.setImage(studentImage);
+            String studentId = studentIdField.getText();
 
-        if (selectedFile != null) {
-            userImage = selectedFile.toURI().toString();
-            // Create an Image object with the selected file
-            Image image = new Image(userImage);
+            // Corrected the destinationFilePath creation
+            Path destinationDirectory = Paths.get("OOD", "src", "main", "resources", "studentImages");
+            Path destinationFilePath = destinationDirectory.resolve(studentId + ".jpg");
 
-            // Set the image to the ImageView
-            studentImageField.setImage(image);
-            System.out.println(userImage);
+            try {
+                // Create the directory if it doesn't exist
+                if (!Files.exists(destinationDirectory)) {
+                    Files.createDirectories(destinationDirectory);
+                }
+
+                // Copy the file to the destination
+                Files.copy(file.toPath(), destinationFilePath, StandardCopyOption.REPLACE_EXISTING);
+                System.out.println("File copied to: " + destinationFilePath);
+                removeText();
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Handle the exception appropriately, e.g., show an error message to the user
+            }
+
+        } else {
+            System.err.println("Selected file is null or does not exist.");
         }
-
     }
     @FXML
-    protected void onSelectImageButton2Click(ActionEvent e1){
-        // Open a file chooser to let the user select an image file
-        FileChooser choosingImage2 = new FileChooser();
-        choosingImage2.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif")
-        );
+    protected void onSelectImageButton2Click(){
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg"));
+        Stage stage = (Stage) selectimagebutton2.getScene().getWindow();
+        File file = fileChooser.showOpenDialog(stage);
 
-        Stage stage = (Stage) ((Node) e1.getSource()).getScene().getWindow();
-        File selectedFile = choosingImage2.showOpenDialog(stage);
+        if (file != null && file.exists()) {
+            advisorImage = new Image(file.toURI().toString());
+            advisorImageField.setImage(advisorImage);
+            String advisorId = advisorIdField.getText();
 
-        if (selectedFile != null) {
-            userImage2 = selectedFile.toURI().toString();
-            // Create an Image object with the selected file
-            Image image2 = new Image(userImage2);
+            // Corrected the destinationFilePath creation
+            Path destinationDirectory = Paths.get("OOD", "src", "main", "resources", "advisorImages");
+            Path destinationFilePath = destinationDirectory.resolve(advisorId + ".jpg");
 
-            // Set the image to the ImageView
-            advisorImageField.setImage(image2);
-            System.out.println(userImage2);
+            try {
+                // Create the directory if it doesn't exist
+                if (!Files.exists(destinationDirectory)) {
+                    Files.createDirectories(destinationDirectory);
+                }
+
+                // Copy the file to the destination
+                Files.copy(file.toPath(), destinationFilePath, StandardCopyOption.REPLACE_EXISTING);
+                System.out.println("File copied to: " + destinationFilePath);
+                removeText();
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Handle the exception appropriately, e.g., show an error message to the user
+            }
+
+        } else {
+            System.err.println("Selected file is null or does not exist.");
         }
 
     }
+    private void removeText() {
+        Pane imagePane = (Pane) studentImageField.getParent();
+        imagePane.getChildren().removeIf(node -> node instanceof FontIcon || node instanceof Text);
+    }
+    @FXML
+    protected void onLogoutButtonClick(ActionEvent e2)throws IOException {
+        Stage previousStage = (Stage) ((Node) e2.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("student_login.fxml"));
+        previousStage.setScene(new Scene(root, 1200, 750));
+    }
 
 
-
+    @FXML
+    protected void onClubButttonClick(ActionEvent actionEvent) throws IOException{
+        Stage previousStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("JoinClub.fxml"));
+        previousStage.setScene(new Scene(root, 1200, 750));
+    }
 }

@@ -4,7 +4,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -46,18 +45,7 @@
                     <children>
                         <VBox layoutX="72.0" layoutY="70.0" prefHeight="630.0" prefWidth="163.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
                             <children>
-                                <Button fx:id="clubs" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="176.0" style="-fx-background-color: transparent;" styleClass="sidebarItem" stylesheets="@dashboard.css" text="Clubs" textAlignment="RIGHT" textFill="WHITE">
-                                    <VBox.margin>
-                                        <Insets bottom="50.0" left="10.0" top="25.0" />
-                                    </VBox.margin>
-                                    <font>
-                                        <Font name="System Bold" size="15.0" />
-                                    </font>
-                                    <graphic>
-                                        <FontIcon iconColor="WHITE" iconLiteral="fas-users" iconSize="15" />
-                                    </graphic>
-                                </Button>
-                                <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="176.0" style="-fx-background-color: transparent;" styleClass="sidebarItem" stylesheets="@dashboard.css" text="Event Schedule" textFill="WHITE">
+                                <Button fx:id="Back" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#onLogoutButtonClick" prefHeight="30.0" prefWidth="176.0" style="-fx-background-color: transparent;" styleClass="sidebarItem" stylesheets="@dashboard.css" text="Go Back" textFill="WHITE">
                                     <font>
                                         <Font name="System Bold" size="15.0" />
                                     </font>
@@ -65,29 +53,7 @@
                                         <Insets bottom="50.0" left="10.0" top="25.0" />
                                     </VBox.margin>
                                     <graphic>
-                                        <FontIcon iconColor="WHITE" iconLiteral="fas-calendar-alt" iconSize="15" />
-                                    </graphic>
-                                </Button>
-                                <Button fx:id="attendance" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="176.0" style="-fx-background-color: transparent;" styleClass="sidebarItem" stylesheets="@dashboard.css" text="Attendance " textFill="WHITE">
-                                    <font>
-                                        <Font name="System Bold" size="15.0" />
-                                    </font>
-                                    <VBox.margin>
-                                        <Insets bottom="50.0" left="10.0" top="25.0" />
-                                    </VBox.margin>
-                                    <graphic>
-                                        <FontIcon iconColor="WHITE" iconLiteral="fas-clipboard-list" iconSize="15" />
-                                    </graphic>
-                                </Button>
-                                <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="176.0" style="-fx-background-color: transparent;" styleClass="sidebarItem" stylesheets="@dashboard.css" text="Reports" textFill="WHITE">
-                                    <font>
-                                        <Font name="System Bold" size="15.0" />
-                                    </font>
-                                    <VBox.margin>
-                                        <Insets bottom="50.0" left="10.0" top="25.0" />
-                                    </VBox.margin>
-                                    <graphic>
-                                        <FontIcon iconColor="WHITE" iconLiteral="far-chart-bar" iconSize="15" />
+                                        <FontIcon iconColor="WHITE" iconLiteral="fltfal-arrow-left-28" iconSize="15" />
                                     </graphic>
                                 </Button>
                             </children>
@@ -100,26 +66,30 @@
                     <children>
                         <Pane layoutX="73.0" layoutY="197.0" prefHeight="306.0" prefWidth="311.0" style="-fx-border-color: #032d4d; -fx-border-radius: 16;">
                      <children>
-                        <ImageView fx:id="studentImageField" fitHeight="283.0" fitWidth="289.0" layoutX="11.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../images/usericon.png" />
-                           </image>
-                        </ImageView>
+                        <FontIcon iconLiteral="fltfmz-person-add-24" iconSize="200" layoutX="35.0" layoutY="243.0" opacity="0.5" text="" textAlignment="CENTER" wrappingWidth="240.79999542236328" />
+                        <ImageView fx:id="studentImageField" fitHeight="283.0" fitWidth="289.0" layoutX="11.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" />
                      </children></Pane>
                         <Pane layoutX="521.0" layoutY="75.0" prefHeight="411.0" prefWidth="452.0" style="-fx-border-color: #032d4d; -fx-border-radius: 16;">
                             <children>
+                                <TextField fx:id="studentIdField" layoutX="72.0" layoutY="26.0" prefHeight="26.0" prefWidth="307.0" />
                                 <Label layoutX="14.0" layoutY="-13.0" style="-fx-background-color: white;" text="Personal Details" textFill="#032d4d">
                                     <font>
                                         <Font size="18.0" />
                                     </font>
                                 </Label>
-                                <TextField fx:id="studentIdField" layoutX="72.0" layoutY="26.0" prefHeight="26.0" prefWidth="307.0" promptText="Enter Student Id" />
-                                <TextField fx:id="studentFNameField" layoutX="73.0" layoutY="79.0" prefHeight="26.0" prefWidth="307.0" promptText="Enter First Name" />
-                                <TextField fx:id="studentLNameField" layoutX="72.0" layoutY="135.0" prefHeight="26.0" prefWidth="307.0" promptText="Enter Last Name" />
-                                <TextField fx:id="studentDOBField" layoutX="72.0" layoutY="193.0" prefHeight="26.0" prefWidth="307.0" promptText="Enter Date of Birth" />
-                                <TextField fx:id="studentGenderField" layoutX="73.0" layoutY="246.0" prefHeight="26.0" prefWidth="307.0" promptText="Enter your gender" />
-                                <TextField fx:id="studentAddressField" layoutX="73.0" layoutY="296.0" prefHeight="26.0" prefWidth="307.0" promptText="Enter Home Address" />
-                                <TextField fx:id="studentGradeClassField" layoutX="73.0" layoutY="347.0" prefHeight="26.0" prefWidth="307.0" promptText="Enter your Grade and Class" />
+                                <TextField fx:id="studentFNameField" layoutX="73.0" layoutY="79.0" prefHeight="26.0" prefWidth="307.0" />
+                                <TextField fx:id="studentLNameField" layoutX="72.0" layoutY="135.0" prefHeight="26.0" prefWidth="307.0" />
+                                <TextField fx:id="studentDOBField" layoutX="72.0" layoutY="193.0" prefHeight="26.0" prefWidth="307.0" />
+                                <TextField fx:id="studentGenderField" layoutX="73.0" layoutY="246.0" prefHeight="26.0" prefWidth="307.0" />
+                                <TextField fx:id="studentAddressField" layoutX="73.0" layoutY="296.0" prefHeight="26.0" prefWidth="307.0" />
+                                <TextField fx:id="studentGradeClassField" layoutX="73.0" layoutY="347.0" prefHeight="26.0" prefWidth="307.0" />
+                        <Label layoutX="83.0" layoutY="17.0" style="-fx-background-color: white;" text="Student ID" />
+                        <Label layoutX="83.0" layoutY="71.0" style="-fx-background-color: white;" text="First Name" />
+                        <Label layoutX="83.0" layoutY="127.0" style="-fx-background-color: white;" text="Last Name" />
+                        <Label layoutX="83.0" layoutY="185.0" style="-fx-background-color: white;" text="Date of Birth" />
+                        <Label layoutX="83.0" layoutY="238.0" style="-fx-background-color: white;" text="Gender" />
+                        <Label layoutX="83.0" layoutY="288.0" style="-fx-background-color: white;" text="Home Address" />
+                        <Label layoutX="83.0" layoutY="339.0" style="-fx-background-color: white;" text="Grade and Class" />
                             </children>
                         </Pane>
                         <Label alignment="TOP_CENTER" layoutX="294.0" layoutY="14.0" prefHeight="18.0" prefWidth="363.0" text="Student Registration Form" textAlignment="CENTER" textFill="#032d4d">
@@ -134,14 +104,17 @@
                         </Button>
                         <Pane layoutX="518.0" layoutY="511.0" prefHeight="160.0" prefWidth="451.0" style="-fx-border-color: #032d4d; -fx-border-radius: 16;">
                             <children>
-                                <TextField fx:id="studentGuardianNameField" layoutX="79.0" layoutY="26.0" prefHeight="26.0" prefWidth="307.0" promptText="Enter guardian name" />
-                                <TextField fx:id="studentGuardianPhoneField" layoutX="79.0" layoutY="73.0" prefHeight="26.0" prefWidth="307.0" promptText="Enter guardian phone number" />
+                                <TextField fx:id="studentGuardianNameField" layoutX="79.0" layoutY="26.0" prefHeight="26.0" prefWidth="307.0" />
+                                <TextField fx:id="studentGuardianPhoneField" layoutX="79.0" layoutY="73.0" prefHeight="26.0" prefWidth="307.0" />
                                 <Label layoutX="14.0" layoutY="-13.0" style="-fx-background-color: white;" text="Guardian Details" textFill="#032d4d">
                                     <font>
                                         <Font size="18.0" />
                                     </font>
                                 </Label>
-                                <TextField fx:id="studentGuardianEmailField" layoutX="79.0" layoutY="121.0" prefHeight="25.0" prefWidth="307.0" promptText="Enter guardian email" />
+                                <TextField fx:id="studentGuardianEmailField" layoutX="79.0" layoutY="121.0" prefHeight="25.0" prefWidth="307.0" />
+                        <Label layoutX="90.0" layoutY="18.0" style="-fx-background-color: white;" text="Guardian Name" />
+                        <Label layoutX="90.0" layoutY="65.0" style="-fx-background-color: white;" text="Phone Number" />
+                        <Label layoutX="90.0" layoutY="112.0" style="-fx-background-color: white;" text="Email" />
                             </children>
                         </Pane>
                         <Button fx:id="selectimagebutton" layoutX="392.0" layoutY="473.0" mnemonicParsing="false" onAction="#onSelectImageButtonClick" text="Select Image" />
