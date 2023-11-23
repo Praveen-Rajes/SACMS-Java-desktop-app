@@ -36,13 +36,4 @@ public class Attendance {
         this.club = club;
     }
 
-    public StudentRegistration createStudent(int studentId, String studentFirstName) {
-        student = new StudentRegistration(studentId,studentFirstName);
-        return student;
-    }
-
-    public Club createClub(String clubID, String name){
-        club = new Club(clubID,name);
-        return club;
-    }
 }
