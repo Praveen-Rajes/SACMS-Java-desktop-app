@@ -4,26 +4,25 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ClubDashboardController implements Initializable {
-    @FXML
-    private Label menu;
-
-    @FXML
-    private Label menuBack;
 
     @FXML
     private Button clubs;
 
     @FXML
     private Button attendance;
+    @FXML
+    private Button logout;
     @FXML
     private AnchorPane contentArea;
     @FXML
@@ -44,6 +43,18 @@ public class ClubDashboardController implements Initializable {
     @FXML
     private void showAttendance() {
         loadFXML("attendanceTracker.fxml");
+    }
+    @FXML
+    private void advisorlogin() throws IOException {
+        Stage stage = (Stage) logout.getScene().getWindow();
+        // Close the stage
+        stage.close();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("advisor_login.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1200, 750);
+        Stage stage2 = new Stage();
+        stage2.setTitle("Hello!");
+        stage2.setScene(scene);
+        stage2.show();
     }
 
 
@@ -69,6 +80,13 @@ public class ClubDashboardController implements Initializable {
 
         attendance.setOnMouseClicked(event -> {
             showAttendance();
+        });
+        logout.setOnMouseClicked(event -> {
+            try {
+                advisorlogin();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         });
     }
 }

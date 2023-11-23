@@ -65,7 +65,7 @@ public class ClubHomeController {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("clubdetails.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 1200, 750);
             Stage stage = new Stage();
-            stage.setTitle("Hello!");
+            stage.setTitle("Club Details");
             stage.setScene(scene);
 
             ClubdetailsController clubdetailsController = fxmlLoader.getController();
