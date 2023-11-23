@@ -40,7 +40,7 @@ public class ClubdetailsController {
     @FXML
     private Button continueButton;
     @FXML
-    private Button closeButton;
+    private Button backButton;
     private Image selectedImage;
     private ClubHomeController homeController;
 
@@ -132,8 +132,6 @@ public class ClubdetailsController {
 
         homeController.addClubDetail(club);
 
-        Stage stage = (Stage) closeButton.getScene().getWindow();
-        stage.close();
     }
 
     public void onUploadButtonClick() {
@@ -224,8 +222,8 @@ public class ClubdetailsController {
     }
 
     @FXML
-    private void onCloseButtonClick() {
-        Stage stage = (Stage) closeButton.getScene().getWindow();
+    private void onBackButtonClick() {
+        Stage stage = (Stage) backButton.getScene().getWindow();
 
         // Close the stage
         stage.close();

@@ -2,8 +2,10 @@ package com.example.ood;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -58,15 +60,15 @@ public class ClubHomeController {
     }
 
     @FXML
-    private void onHomeButtonClick() {
+    private void onHomeButtonClick(ActionEvent e1) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("ClubDetails.fxml"));
-            Parent root = loader.load();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("clubdetails.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 1200, 750);
             Stage stage = new Stage();
-            stage.setTitle("Club Details");
-            stage.setScene(new Scene(root));
+            stage.setTitle("Hello!");
+            stage.setScene(scene);
 
-            ClubdetailsController clubdetailsController = loader.getController();
+            ClubdetailsController clubdetailsController = fxmlLoader.getController();
             clubdetailsController.setHomeController(this); // Set a reference to HomeController
 
             stage.showAndWait();
@@ -77,6 +79,7 @@ public class ClubHomeController {
             e.printStackTrace();
         }
     }
+
 
     public void saveDataToFile() {
         try (FileWriter fileWriter = new FileWriter(DATA_FILE_NAME);
