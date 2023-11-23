@@ -3,7 +3,7 @@ package com.example.ood;
 public class StudentRegistration extends com.example.ood.Person {
     private int studentId;
     private String studentGradeClass;
-    private GuardianDetails GuardianDetails;
+    private GuardianDetails guardianDetails;
 
     public StudentRegistration(int studentId,String firstName,String lastName,String dateOfBirth,String gender,String address,String studentGradeClass){
         super(firstName,lastName,dateOfBirth,gender,address);
@@ -13,6 +13,11 @@ public class StudentRegistration extends com.example.ood.Person {
 
     public StudentRegistration() {
         super();
+    }
+
+    public StudentRegistration(int studentId,String guardianName,int guardianPhone,String guardianEmail){
+        this.studentId=studentId;
+        guardianDetails = new GuardianDetails(guardianName,guardianPhone,guardianEmail);
     }
 
 
