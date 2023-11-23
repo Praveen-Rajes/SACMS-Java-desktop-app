@@ -116,5 +116,10 @@ public class RegistrationController {
     }
 
 
-
+    @FXML
+    protected void onClubButttonClick(ActionEvent actionEvent) throws IOException{
+        Stage previousStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("JoinClub.fxml"));
+        previousStage.setScene(new Scene(root, 1200, 750));
+    }
 }
