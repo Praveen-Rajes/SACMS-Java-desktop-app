@@ -2,22 +2,47 @@ package com.example.ood;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.image.Image;
 
 public class Club {
+    private AdvisorRegistration advisor;
     private String name;
     private String category;
     private String description;
+    private ColorPicker theme;
     private String clubID;
     private Image logoImage;
 
-    public Club(String name, String clubID, String category, String description, Image logoImage) {
+    public Club(AdvisorRegistration advisor, String name, String category, String description, ColorPicker theme, String clubID, Image logoImage) {
+        this.advisor = advisor;
+        this.name = name;
+        this.category = category;
+        this.description = description;
+        this.theme = theme;
+        this.clubID = clubID;
+        this.logoImage = logoImage;
+    }
+
+    public Club(String name, String clubID, String category, String description, ColorPicker theme, Image logoImage) {
         this.name = name;
         this.clubID = clubID;
         this.category = category;
         this.description = description;
+        this.theme = theme;
         this.logoImage = logoImage;
     }
+
+    public int getAdvisorId() {
+        return advisor.getAdvisorId();
+    }
+
+
+
+    public void setAdvisor(AdvisorRegistration advisor) {
+        this.advisor = advisor;
+    }
+
     public Club(String name, String clubID, String category) {
         this.name = name;
         this.clubID = clubID;
@@ -59,6 +84,14 @@ public class Club {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public ColorPicker getTheme() {
+        return theme;
+    }
+
+    public void setTheme(ColorPicker theme) {
+        this.theme = theme;
     }
 
     public Image getLogoImage() {

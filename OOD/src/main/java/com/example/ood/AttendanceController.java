@@ -44,13 +44,13 @@ public class AttendanceController {
     @FXML
     private void initialize() {
         // Populate club data
-        clubs.add(new Club("English Literature", "EL_AC", "Academic", "sssssssssssssssssssssssss", null));
-        clubs.add(new Club("Swimming", "SW_SP", "Sports", "sssssssssssssssssssss", null));
-        clubs.add(new Club("Sinhala Literature Society", "SLS_AC", "Academic", "ssssssssssssssss", null));
-        clubs.add(new Club("Badminton", "BA_SP", "Sports", "ddddddddddddddddd", null));
-        clubs.add(new Club("Japanese Language Society", "JLS_CU", "Cultural", "dddddddddddddd", null));
-        clubs.add(new Club("Cricket", "CR_SP", "Sports", "cccccccccccccccc", null));
-        clubs.add(new Club("Information Communication Technology", "ICT_TE", "Technological", "2222222222222222222", null));
+        clubs.add(new Club("English Literature", "EL_AC", "Academic", "sssssssssssssssssssssssss", null, null));
+        clubs.add(new Club("Swimming", "SW_SP", "Sports", "sssssssssssssssssssss", null,null));
+        clubs.add(new Club("Sinhala Literature Society", "SLS_AC", "Academic", "ssssssssssssssss", null,null));
+        clubs.add(new Club("Badminton", "BA_SP", "Sports", "ddddddddddddddddd",null, null));
+        clubs.add(new Club("Japanese Language Society", "JLS_CU", "Cultural", "dddddddddddddd", null,null));
+        clubs.add(new Club("Cricket", "CR_SP", "Sports", "cccccccccccccccc", null,null));
+        clubs.add(new Club("Information Communication Technology", "ICT_TE", "Technological", "2222222222222222222", null,null));
 
 
     }

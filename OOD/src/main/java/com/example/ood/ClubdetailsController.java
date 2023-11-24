@@ -2,10 +2,7 @@
 package com.example.ood;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
@@ -33,6 +30,8 @@ public class ClubdetailsController {
     private TextArea descriptionTextArea;
     @FXML
     private TextField clubIDField;
+    @FXML
+    private ColorPicker ThemeField;
     @FXML
     private ImageView logoImageView;
     @FXML
@@ -122,9 +121,10 @@ public class ClubdetailsController {
         String category = categoryChoiceBox.getValue();
         String description = descriptionTextArea.getText();
 
+
         String clubID = clubIDField.getText();
 
-        Club club = new Club(clubName, clubID, category, description, selectedImage);
+        Club club = new Club(clubName, clubID, category, description, ThemeField,selectedImage);
 
         if (selectedImage != null) {
             club.setLogoImage(selectedImage);

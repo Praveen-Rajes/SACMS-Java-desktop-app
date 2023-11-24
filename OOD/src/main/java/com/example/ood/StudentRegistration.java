@@ -20,6 +20,9 @@ public class StudentRegistration extends com.example.ood.Person {
         guardianDetails = new GuardianDetails(guardianName,guardianPhone,guardianEmail);
     }
 
+    public GuardianDetails getGuardianDetails() {
+        return guardianDetails;
+    }
 
     public int getStudentId() {
         return studentId;
