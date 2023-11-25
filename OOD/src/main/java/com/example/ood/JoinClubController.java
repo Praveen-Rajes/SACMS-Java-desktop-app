@@ -17,4 +17,6 @@ public class JoinClubController {
         Parent root = FXMLLoader.load(getClass().getResource("studentProfile.fxml"));
         previousStage.setScene(new Scene(root, 1200, 750));
     }
+
+
 }
