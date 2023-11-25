@@ -1,5 +1,6 @@
 package com.example.ood;
 import java.sql.*;
+import java.util.ArrayList;
 
 
 public class DBQuery {
@@ -37,6 +38,79 @@ public class DBQuery {
                 System.out.println("Error closing connection"+e.getMessage());
             }
         }
+    }
+    public ArrayList<Club> getClubList() {
+        String query = "SELECT c.clubID, c.clubName, c.clubCategory, c.clubDescription, c.clubTheme, c.clubLogo, ac.advisorID" +
+                "FROM club c" +
+                "JOIN advisor_club ac ON c.clubID = ac.clubID";
+        ArrayList<Club> clubList = new ArrayList<>();
+
+
+        Connection connection = null;
+        try {
+            connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                Club club = new Club(resultSet.getString("clubID"));
+                resultSet.getString("clubName");
+                resultSet.getString("clubDescription");
+                resultSet.getString("clubCategory");
+                resultSet.getString("clubLogo");
+                resultSet.getString("clubTheme");
+                resultSet.getInt("advisorID");
+                clubList.add(club);
+            }
+            return clubList;
+
+        } catch (SQLException e) {
+            System.out.println("Error!");
+        } finally {
+            try {
+                if (connection != null && !connection.isClosed()) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("Error closing connection" + e.getMessage());
+            }
+        }
+        return null;
+    }
+    public Club getClub() {
+        String query = "SELECT c.clubID, c.clubName, c.clubCategory, c.clubDescription, c.clubTheme, c.clubLogo, ac.advisorID" +
+                "FROM club c" +
+                "JOIN advisor_club ac ON c.clubID = ac.clubID" +
+                "WHERE c.clubID = ?";
+
+
+        Connection connection = null;
+        try {
+            connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                Club club = new Club(resultSet.getString("clubID"));
+                resultSet.getString("clubName");
+                resultSet.getString("clubDescription");
+                resultSet.getString("clubCategory");
+                resultSet.getString("clubLogo");
+                resultSet.getString("clubTheme");
+                resultSet.getInt("advisorID");
+                return club;
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error!");
+        } finally {
+            try {
+                if (connection != null && !connection.isClosed()) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("Error closing connection" + e.getMessage());
+            }
+        }
+        return null;
     }
 
     public void addStudent(StudentRegistration student){
@@ -113,6 +187,7 @@ public class DBQuery {
             }
         }
     }
+
     public static Connection getConnection() {
         try {
             String driver = "com.mysql.cj.jdbc.Driver";

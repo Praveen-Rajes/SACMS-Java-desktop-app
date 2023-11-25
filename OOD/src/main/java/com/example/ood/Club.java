@@ -32,6 +32,20 @@ public class Club {
         this.theme = theme;
         this.logoImage = logoImage;
     }
+    public Club(String name, String clubID, String category) {
+        this.name = name;
+        this.clubID = clubID;
+        this.category = category;
+
+    }
+    public Club(String clubID,String name) {
+        this.clubID = clubID;
+        this.name = name;
+    }
+
+    public Club(String name) {
+        this.name = name;
+    }
 
     public int getAdvisorId() {
         return advisor.getAdvisorId();
@@ -43,16 +57,8 @@ public class Club {
         this.advisor = advisor;
     }
 
-    public Club(String name, String clubID, String category) {
-        this.name = name;
-        this.clubID = clubID;
-        this.category = category;
 
-    }
-    public Club(String clubID,String name) {
-        this.clubID = clubID;
-        this.name = name;
-    }
+
 
     public String getName() {
         return name;
