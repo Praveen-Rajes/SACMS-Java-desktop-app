@@ -113,7 +113,7 @@ public class DBQuery {
         return null;
     }
 
-    public void addStudent(StudentRegistration student){
+    public static void addStudent(StudentRegistration student){
         String query1 = "INSERT INTO student(studentID, studentFName, studentLName, dob, gender, address, gradeClass) VALUES(?,?,?,?,?,?,?)";
         String query2 = "INSERT INTO guardian (guardianName, phoneNo, email, studentID) VALUES(?,?,?,?)";
 
@@ -154,7 +154,7 @@ public class DBQuery {
             }
         }
     }
-    public void addAdvisor(AdvisorRegistration advisor){
+    public static void addAdvisor(AdvisorRegistration advisor){
         String query1 = "INSERT INTO clubadvisor(advisorID, advisorFirstName, advisorLastName, advisorDOB, advisorGender, advisorAddress, advisorPhone) VALUES(?,?,?,?,?,?,?)";
 
 
