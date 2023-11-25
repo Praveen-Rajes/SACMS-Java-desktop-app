@@ -68,6 +68,7 @@
                         <TableColumn prefWidth="312.8000793457031" text="Description" />
                     </columns>
                   </TableView>
+                  <Button layoutX="494.0" layoutY="573.0" mnemonicParsing="false" text="Join" />
                </children></AnchorPane>
             </center>
         </BorderPane>

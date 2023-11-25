@@ -6,13 +6,16 @@ public abstract class Person {
     private String dateOfBirth;
     private String gender;
     private String address;
+    private String imagePath;
+//    private String password = "abc123";
 
-    public Person(String firstName,String lastName,String dateOfBirth,String gender,String address){
+    public Person(String firstName,String lastName,String dateOfBirth,String gender,String address,String imagePath){
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
         this.address = address;
+        this.imagePath = imagePath;
     }
 
     public Person() {
@@ -59,7 +62,17 @@ public abstract class Person {
         this.address = address;
     }
 
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
     // The method getting ID for each subclass
     public abstract int getId();
+    public abstract String getPassword();
 }
+
 

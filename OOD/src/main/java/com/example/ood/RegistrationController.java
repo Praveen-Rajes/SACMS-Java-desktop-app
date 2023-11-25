@@ -26,22 +26,42 @@ import java.nio.file.StandardCopyOption;
 
 public class RegistrationController {
 
-    @FXML
-    private Button submitButton;
-    @FXML
-    private Button submitButton2;
+//    @FXML
+//    private Button submitButton;
+//    @FXML
+//    private Button submitButton2;
     @FXML
     private TextField studentIdField;
     @FXML
     private TextField studentFNameField;
     @FXML
+    private TextField studentLNameField;
+    @FXML
+    private TextField studentDOBField;
+    @FXML
+    private TextField studentGenderField;
+    @FXML
+    private TextField studentAddressField;
+    @FXML
+    private TextField studentGradeClassField;
+    @FXML
     private TextField advisorIdField;
+    @FXML
+    private TextField advisorFNameField;
+    @FXML
+    private TextField advisorLNameField;
+    @FXML
+    private TextField advisorDOBField;
+    @FXML
+    private TextField advisorGenderField;
+    @FXML
+    private TextField advisorAddressField;
+    @FXML
+    private TextField advisorPhoneField;
     @FXML
     private Button selectimagebutton;
     @FXML
     private Button selectimagebutton2;
-    @FXML
-    private TextField advisorFNameField;
 
     private Image studentImage;
     private Image advisorImage;
@@ -49,27 +69,51 @@ public class RegistrationController {
     private ImageView studentImageField;
     @FXML
     private ImageView advisorImageField;
-    private String userImage = "";
-    private String userImage2 = "";
+//    private String userImage = "";
+//    private String userImage2 = "";
+
+    public void getStudentDetails(){
+        StudentRegistration s1 = new StudentRegistration();
+        s1.setStudentId(Integer.parseInt(studentIdField.getText()));
+        s1.setFirstName(studentFNameField.getText());
+        s1.setLastName(studentLNameField.getText());
+        s1.setDateOfBirth(studentDOBField.getText());
+        s1.setGender(studentGenderField.getText());
+        s1.setAddress(studentAddressField.getText());
+        s1.setStudentGradeClass(studentGradeClassField.getText());
+        // Set the image path
+        String studentId = studentIdField.getText();
+        Path destinationDirectory = Paths.get("OOD", "src", "main", "resources", "studentImages");
+        Path destinationFilePath = destinationDirectory.resolve(studentId + ".jpg");
+        s1.setImagePath(destinationFilePath.toString());
+        DBQuery.addStudentLogin(s1);
+        DBQuery.addStudentLogin(s1);
+    }
+    public void getAdvisorDetails(){
+        AdvisorRegistration a1 = new AdvisorRegistration();
+        a1.setAdvisorId(Integer.parseInt(advisorIdField.getText()));
+        a1.setFirstName(advisorFNameField.getText());
+        a1.setLastName(advisorLNameField.getText());
+        a1.setDateOfBirth(advisorDOBField.getText());
+        a1.setGender(advisorGenderField.getText());
+        a1.setAddress(advisorAddressField.getText());
+        a1.setAdvisorPhone(Integer.parseInt(advisorPhoneField.getText()));
+        // Set the image path
+        String advisorId = advisorIdField.getText();
+        Path destinationDirectory = Paths.get("OOD", "src", "main", "resources", "advisorImages");
+        Path destinationFilePath = destinationDirectory.resolve(advisorId + ".jpg");
+        a1.setImagePath(destinationFilePath.toString());
+        DBQuery.addAdvisorLogin(a1);
+    }
     @FXML
     protected void onSubmitButtonClick(){
-        StudentRegistration s1 = new StudentRegistration();
-        int studentId = Integer.parseInt(studentIdField.getText());
-        String studentFirstName = studentFNameField.getText();
-        s1.setStudentId(studentId);
-        s1.setFirstName(studentFirstName);
-        System.out.println(s1.getStudentId());
-        System.out.println(s1.getFirstName());
+        getStudentDetails();
     }
     @FXML
     protected void onSubmitButton2Click(){
-        AdvisorRegistration c1 = new AdvisorRegistration();
-        int advisorId = Integer.parseInt(advisorIdField.getText());
-        String advisorFirstName = advisorFNameField.getText();
-        c1.setAdvisorId(advisorId);
-        c1.setFirstName(advisorFirstName);
-        System.out.println(c1.getAdvisorId());
-        System.out.println(c1.getFirstName());}
+        getAdvisorDetails();
+    }
+
     @FXML
     protected void onStudentIdFill(){
 //        StudentRegistration s1 = new StudentRegistration();
@@ -138,7 +182,7 @@ public class RegistrationController {
                 // Copy the file to the destination
                 Files.copy(file.toPath(), destinationFilePath, StandardCopyOption.REPLACE_EXISTING);
                 System.out.println("File copied to: " + destinationFilePath);
-                removeText();
+                removeText2();
             } catch (IOException e) {
                 e.printStackTrace();
                 // Handle the exception appropriately, e.g., show an error message to the user
@@ -151,6 +195,10 @@ public class RegistrationController {
     }
     private void removeText() {
         Pane imagePane = (Pane) studentImageField.getParent();
+        imagePane.getChildren().removeIf(node -> node instanceof FontIcon || node instanceof Text);
+    }
+    private void removeText2() {
+        Pane imagePane = (Pane) advisorImageField.getParent();
         imagePane.getChildren().removeIf(node -> node instanceof FontIcon || node instanceof Text);
     }
     @FXML

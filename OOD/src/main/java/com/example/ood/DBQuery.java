@@ -187,6 +187,62 @@ public class DBQuery {
             }
         }
     }
+    public static void addStudentLogin(StudentRegistration student) {
+        String query1 = "INSERT INTO studentlogin(studentId, Password) VALUES(?, ?)";
+
+        Connection connection = null;
+        try {
+            connection = getConnection();
+            PreparedStatement preparedStatement1 = connection.prepareStatement(query1);
+
+            preparedStatement1.setInt(1, student.getStudentId());
+
+            // Assuming you have a method getPassword() in StudentRegistration class
+            preparedStatement1.setString(2, student.getPassword());
+
+            preparedStatement1.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println("Error!");
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                if (connection != null && !connection.isClosed()) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("Error closing connection" + e.getMessage());
+            }
+        }
+    }
+    public static void addAdvisorLogin(AdvisorRegistration advisor) {
+        String query1 = "INSERT INTO advisorlogin(advisorId, Password) VALUES(?, ?)";
+
+        Connection connection = null;
+        try {
+            connection = getConnection();
+            PreparedStatement preparedStatement1 = connection.prepareStatement(query1);
+
+            preparedStatement1.setInt(1, advisor.getAdvisorId());
+
+            // Assuming you have a method getPassword() in StudentRegistration class
+            preparedStatement1.setString(2, advisor.getPassword());
+
+            preparedStatement1.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println("Error!");
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                if (connection != null && !connection.isClosed()) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("Error closing connection" + e.getMessage());
+            }
+        }
+    }
 
     public static Connection getConnection() {
         try {
