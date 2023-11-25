@@ -12,7 +12,7 @@
 
 <AnchorPane prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ood.EventSchedule">
    <children>
-      <Button layoutX="1031.0" layoutY="73.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="138.0" style="-fx-background-color: #0A4969; -fx-border-radius: 11; -fx-background-radius: 11;" text="ADD EVENT" textFill="WHITE">
+      <Button layoutX="1031.0" layoutY="73.0" mnemonicParsing="false" onAction="#addEvent" prefHeight="54.0" prefWidth="138.0" style="-fx-background-color: #0A4969; -fx-border-radius: 11; -fx-background-radius: 11;" text="ADD EVENT" textFill="WHITE">
          <graphic>
             <FontIcon iconColor="WHITE" iconLiteral="fltfal-calendar-add-24" iconSize="30" textAlignment="CENTER" wrappingWidth="30.0" />
          </graphic>
@@ -20,7 +20,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <TableView layoutX="812.0" layoutY="143.0" prefHeight="575.0" prefWidth="357.0" style="-fx-border-color: #0A4969;" />
+      <TableView layoutX="812.0" layoutY="143.0" prefHeight="561.0" prefWidth="357.0" style="-fx-border-color: #0A4969;" />
       <AnchorPane layoutX="139.0" layoutY="143.0" prefHeight="575.0" prefWidth="661.0">
          <children>
             <HBox alignment="CENTER" prefHeight="44.0" prefWidth="661.0" spacing="5.0" style="-fx-border-color: black;">
