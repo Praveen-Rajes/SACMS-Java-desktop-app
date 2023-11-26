@@ -6,7 +6,7 @@ public class StudentRegistration extends com.example.ood.Person {
     private int studentId;
     private String studentPassword = "abc123";
     private String studentGradeClass;
-    private GuardianDetails guardianDetails;
+    private GuardianDetails guardian;
     private ArrayList<Club> clublist = new ArrayList<>();
 
     public StudentRegistration(int studentId,String firstName,String lastName,String dateOfBirth,String gender,String address,String studentGradeClass,String studentPassword,String imagePath){
@@ -34,15 +34,16 @@ public class StudentRegistration extends com.example.ood.Person {
 
     public StudentRegistration() {
         super();
+        this.guardian = new GuardianDetails();
     }
 
     public StudentRegistration(int studentId,String guardianName,int guardianPhone,String guardianEmail){
         this.studentId=studentId;
-        guardianDetails = new GuardianDetails(guardianName,guardianPhone,guardianEmail);
+        guardian = new GuardianDetails(guardianName,guardianPhone,guardianEmail);
     }
 
-    public GuardianDetails getGuardianDetails() {
-        return guardianDetails;
+    public GuardianDetails getGuardian() {
+        return guardian;
     }
 
     public int getStudentId() {
@@ -68,9 +69,12 @@ public class StudentRegistration extends com.example.ood.Person {
         this.studentGradeClass=studentGradeClass;
     }
 
-    public void setGuardianDetails(GuardianDetails guardianDetails) {
-        this.guardianDetails = guardianDetails;
+    public void setGuardian(GuardianDetails guardian) {
+        this.guardian = guardian;
     }
+//    public void setGuardianDetails(String guardianName, int guardianPhone, String guardianEmail) {
+//        this.guardian = new GuardianDetails(guardianName, guardianPhone, guardianEmail);
+//    }
 
     //unique getId methd for each class
     @Override

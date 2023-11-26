@@ -12,43 +12,55 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane prefHeight="550.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ood.Addevent">
+<AnchorPane prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ood.Addevent">
    <children>
-      <DatePicker fx:id="datePicker" layoutX="164.0" layoutY="56.0" prefHeight="25.0" prefWidth="200.0" />
-      <TableView fx:id="viewTable" layoutX="14.0" layoutY="99.0" prefHeight="412.0" prefWidth="532.0" />
-      <Button layoutX="556.0" layoutY="56.0" mnemonicParsing="false" onAction="#viewDate" text="VIEW DATE" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="412.0" layoutX="556.0" layoutY="99.0" stroke="BLACK" strokeType="INSIDE" width="294.0" />
-      <ChoiceBox fx:id="clubChoiceBox" layoutX="396.0" layoutY="56.0" prefWidth="150.0" />
-      <TextArea fx:id="eventDesc" layoutX="577.0" layoutY="193.0" prefHeight="85.0" prefWidth="258.0" promptText="Event Description ...." />
-      <HBox layoutX="574.0" layoutY="319.0" prefHeight="31.0" prefWidth="258.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="106.0" layoutX="11.0" layoutY="137.0" stroke="BLACK" strokeType="INSIDE" width="1177.0" />
+      <DatePicker fx:id="datePicker" layoutX="211.0" layoutY="200.0" prefHeight="25.0" prefWidth="200.0" />
+      <TableView fx:id="viewTable" layoutX="11.0" layoutY="252.0" prefHeight="412.0" prefWidth="868.0" />
+      <Button layoutX="603.0" layoutY="200.0" mnemonicParsing="false" onAction="#viewDate" text="VIEW DATE" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="412.0" layoutX="889.0" layoutY="252.0" stroke="BLACK" strokeType="INSIDE" width="294.0" />
+      <ChoiceBox fx:id="clubChoiceBox" layoutX="443.0" layoutY="200.0" prefWidth="150.0" />
+      <TextArea fx:id="eventDesc" layoutX="910.0" layoutY="346.0" prefHeight="85.0" prefWidth="258.0" promptText="Event Description ...." />
+      <HBox layoutX="907.0" layoutY="472.0" prefHeight="31.0" prefWidth="258.0">
          <children>
             <Spinner fx:id="startHourSpinner" editable="true" />
             <Spinner fx:id="startMinuteSpinner" editable="true" />
          </children>
       </HBox>
-      <HBox layoutX="577.0" layoutY="379.0" prefHeight="31.0" prefWidth="258.0">
+      <HBox layoutX="910.0" layoutY="532.0" prefHeight="31.0" prefWidth="258.0">
          <children>
             <Spinner fx:id="endHourSpinner" editable="true" />
             <Spinner fx:id="endMinuteSpinner" editable="true" />
          </children>
       </HBox>
-      <TextField fx:id="eventID" layoutX="577.0" layoutY="153.0" prefHeight="25.0" prefWidth="121.0" promptText="EVENT ID" />
-      <TextField fx:id="eventName" layoutX="706.0" layoutY="153.0" prefHeight="25.0" prefWidth="129.0" promptText="EVENT NAME" />
-      <TextField fx:id="eventLoc" layoutX="577.0" layoutY="419.0" prefHeight="25.0" prefWidth="258.0" promptText="EVENT LOCATION" />
-      <Button layoutX="577.0" layoutY="459.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="121.0" text="SAVE" />
-      <Button layoutX="710.0" layoutY="459.0" mnemonicParsing="false" onAction="#clearData" prefHeight="25.0" prefWidth="121.0" text="CLEAR" />
-      <Text layoutX="646.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADD EVENT DETAILS">
+      <TextField fx:id="eventID" layoutX="910.0" layoutY="306.0" prefHeight="25.0" prefWidth="121.0" promptText="EVENT ID" />
+      <TextField fx:id="eventName" layoutX="1039.0" layoutY="306.0" prefHeight="25.0" prefWidth="129.0" promptText="EVENT NAME" />
+      <TextField fx:id="eventLoc" layoutX="910.0" layoutY="572.0" prefHeight="25.0" prefWidth="258.0" promptText="EVENT LOCATION" />
+      <Button layoutX="910.0" layoutY="612.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="121.0" text="SAVE" />
+      <Button layoutX="1043.0" layoutY="612.0" mnemonicParsing="false" onAction="#clearData" prefHeight="25.0" prefWidth="121.0" text="CLEAR" />
+      <Text layoutX="979.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADD EVENT DETAILS">
          <font>
             <Font name="Calibri Light" size="14.0" />
          </font>
       </Text>
-      <Text layoutX="396.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SELECT CLUB" />
-      <Text layoutX="164.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SELECT DATE" />
-      <Text layoutX="577.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="START TIME Hrs" />
-      <Text layoutX="574.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" text="END TIME Hrs" />
-      <Text layoutX="703.0" layoutY="375.0" strokeType="OUTSIDE" strokeWidth="0.0" text="END TIME Mins" />
-      <Text layoutX="706.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="START TIME Mins" />
+      <Text layoutX="443.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SELECT CLUB" />
+      <Text layoutX="211.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SELECT DATE" />
+      <Text layoutX="910.0" layoutY="470.0" strokeType="OUTSIDE" strokeWidth="0.0" text="START TIME Hrs" />
+      <Text layoutX="907.0" layoutY="527.0" strokeType="OUTSIDE" strokeWidth="0.0" text="END TIME Hrs" />
+      <Text layoutX="1036.0" layoutY="528.0" strokeType="OUTSIDE" strokeWidth="0.0" text="END TIME Mins" />
+      <Text layoutX="1039.0" layoutY="469.0" strokeType="OUTSIDE" strokeWidth="0.0" text="START TIME Mins" />
+      <Button layoutX="919.0" layoutY="169.0" mnemonicParsing="false" onAction="#backToAddMenu" prefHeight="45.0" prefWidth="248.0" text="  BACK TO THE MENU">
+         <graphic>
+            <FontIcon iconLiteral="fltrmz-text-change-previous-24" iconSize="30" wrappingWidth="22.0" />
+         </graphic>
+      </Button>
+      <Text layoutX="183.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SELCET DATE AND CLUB TO VIEW THE AVAILABLE EVENT SLOTS ON THE TABLE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Text>
       
       
    </children>

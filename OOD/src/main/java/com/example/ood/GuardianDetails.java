@@ -12,6 +12,8 @@ public class GuardianDetails {
         this.guardianEmail = guardianEmail;
     }
 
+    public GuardianDetails() {}
+
     public String getGuardianName() {
         return guardianName;
     }
