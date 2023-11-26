@@ -25,7 +25,7 @@
             <Font name="System Bold" size="30.0" />
          </font>
       </Text>
-      <Button fx:id="homeButton" layoutX="479.0" layoutY="602.0" mnemonicParsing="false" onAction="#onHomeButtonClick" style="-fx-background-color: transoarent; -fx-border-color: white; -fx-border-width: 2px 2px 2px 2px; -fx-border-radius: 3;" text="Create Club" textFill="WHITE">
+      <Button fx:id="homeButton" layoutX="675.0" layoutY="602.0" mnemonicParsing="false" onAction="#onHomeButtonClick" style="-fx-background-color: transoarent; -fx-border-color: white; -fx-border-width: 2px 2px 2px 2px; -fx-border-radius: 3;" text="Create Club" textFill="WHITE">
          <graphic>
             <FontIcon iconColor="WHITE" iconLiteral="fas-edit" iconSize="20" />
          </graphic>
@@ -33,5 +33,6 @@
             <Font size="20.0" />
          </font></Button>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="700.0" layoutX="-2.0" stroke="BLACK" strokeType="INSIDE" width="10.0" />
+      <Button layoutX="359.0" layoutY="613.0" mnemonicParsing="false" text="View Club Profile" />
    </children>
 </AnchorPane>

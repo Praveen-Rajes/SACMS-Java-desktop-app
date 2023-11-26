@@ -18,6 +18,7 @@ public class Club {
     private int advisorId;
 
 
+
     public AdvisorRegistration getAdvisor() {
         return advisor;
     }

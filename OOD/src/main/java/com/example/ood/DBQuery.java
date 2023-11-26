@@ -76,6 +76,43 @@ public class DBQuery {
         }
         return null;
     }
+    public void removeClub(Club club) {
+        String deleteAdvisorClubQuery = "DELETE FROM advisor_club WHERE clubID = ?";
+        String deleteClubQuery = "DELETE FROM club WHERE clubID = ?";
+
+        try (Connection connection = getConnection()) {
+            // Delete from advisor_club table
+            try (PreparedStatement deleteAdvisorClubStatement = connection.prepareStatement(deleteAdvisorClubQuery)) {
+                deleteAdvisorClubStatement.setString(1, club.getClubID());
+                int rowsAffectedAdvisorClub = deleteAdvisorClubStatement.executeUpdate();
+
+                if (rowsAffectedAdvisorClub > 0) {
+                    System.out.println("Records removed from advisor_club table.");
+                } else {
+                    System.out.println("No records found with the given clubID in advisor_club table.");
+                }
+            }
+
+            // Delete from club table
+            try (PreparedStatement deleteClubStatement = connection.prepareStatement(deleteClubQuery)) {
+                deleteClubStatement.setString(1, club.getClubID());
+                int rowsAffectedClub = deleteClubStatement.executeUpdate();
+
+                if (rowsAffectedClub > 0) {
+                    System.out.println("Club removed from the club table.");
+                } else {
+                    System.out.println("No club found with the given ID in the club table.");
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle the exception appropriately, e.g., show an error message to the user
+        }
+    }
+
+
+
     public Club getClub() {
         String query = "SELECT c.clubID, c.clubName, c.clubCategory, c.clubDescription, c.clubTheme, c.clubLogo, ac.advisorID" +
                 "FROM club c" +
