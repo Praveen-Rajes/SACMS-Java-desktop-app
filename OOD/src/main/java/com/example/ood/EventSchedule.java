@@ -164,11 +164,13 @@ public class EventSchedule implements Initializable {
         int year = dateFocus.getYear();
         int month = dateFocus.getMonth().getValue();
 
-        Random random = new Random();
-        for (int i = 0; i < 50; i++) {
-            ZonedDateTime time = ZonedDateTime.of(year, month, random.nextInt(27)+1, 16,0,0,0,dateFocus.getZone());
-            calendarActivities.add(new CalendarActivity(time, "Hans", 111111));
-        }
+//        Random random = new Random();
+//        for (int i = 0; i < 50; i++) {
+//            ZonedDateTime time = ZonedDateTime.of(year, month, random.nextInt(27)+1, 16,0,0,0,dateFocus.getZone());
+//            calendarActivities.add(new CalendarActivity(time, "Hans", 111111));
+//        }
+        ZonedDateTime time = ZonedDateTime.of(year, month, 27, 00,0,0,0,dateFocus.getZone());
+        calendarActivities.add(new CalendarActivity(time, "Hans", 111111));
 
         return createCalendarMap(calendarActivities);
     }
