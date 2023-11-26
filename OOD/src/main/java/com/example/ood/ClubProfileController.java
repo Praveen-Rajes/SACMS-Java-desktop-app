@@ -78,7 +78,8 @@ public class ClubProfileController {
             // Remove from the database (you need to implement this method in DBQuery)
             DBQuery dbQuery = new DBQuery();
             dbQuery.removeClub(selectedClub);
-
+            Stage stage = (Stage) removeClubButton.getScene().getWindow();
+            stage.close();
         }
 
     }
