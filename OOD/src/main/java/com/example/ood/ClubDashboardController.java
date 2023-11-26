@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -18,6 +19,11 @@ public class ClubDashboardController implements Initializable {
 
     @FXML
     private Button clubs;
+    @FXML
+    public Label advisorNameLabel;
+
+    @FXML
+    public Circle advisorImageView;
 
     @FXML
     private Button attendance;
@@ -29,10 +35,20 @@ public class ClubDashboardController implements Initializable {
     private AnchorPane slider;
 
     private ClubHomeController homeController;
+    private HelloController helloController;
+    private int loggedInAdvisorId;
+
+    public void setLoggedInAdvisorId(int loggedInAdvisorId) {
+        this.loggedInAdvisorId = loggedInAdvisorId;
+        // You can use loggedInAdvisorId as needed in this class
+    }
+
 
     public void setHomeController(ClubHomeController homeController) {
         this.homeController = homeController;
     }
+
+    public void setHelloController (HelloController helloController){this.helloController = helloController;}
 
     @FXML
     private void showClubPart() {
@@ -89,4 +105,6 @@ public class ClubDashboardController implements Initializable {
             }
         });
     }
+
+
 }

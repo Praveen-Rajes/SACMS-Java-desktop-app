@@ -9,6 +9,7 @@ import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -41,10 +42,18 @@ public class ClubdetailsController {
     @FXML
     private Button backButton;
     private Image selectedImage;
+    private static int loggedInAdvisorId;
     private ClubHomeController homeController;
+
+
 
     public void setHomeController(ClubHomeController homeController) {
         this.homeController = homeController;
+    }
+
+    public static void setLoggedInAdvisorId(int advisorId) {
+        ClubdetailsController.loggedInAdvisorId = advisorId;
+
     }
 
     public void initialize() {
@@ -120,19 +129,23 @@ public class ClubdetailsController {
         String clubName = clubNameTextField.getText();
         String category = categoryChoiceBox.getValue();
         String description = descriptionTextArea.getText();
+        Color theme = ThemeField.getValue();
 
 
         String clubID = clubIDField.getText();
 
-        Club club = new Club(clubName, clubID, category, description, ThemeField,selectedImage);
+        Club club = new Club(clubName, clubID, category, description, theme,selectedImage, loggedInAdvisorId);
 
         if (selectedImage != null) {
             club.setLogoImage(selectedImage);
         }
 
+        DBQuery dbQuery = new DBQuery();
+        dbQuery.addClub(club);
         homeController.addClubDetail(club);
 
     }
+
 
     public void onUploadButtonClick() {
         FileChooser fileChooser = new FileChooser();
@@ -158,6 +171,7 @@ public class ClubdetailsController {
                 // Copy the file to the destination
                 Files.copy(file.toPath(), destinationFilePath, StandardCopyOption.REPLACE_EXISTING);
                 System.out.println("File copied to: " + destinationFilePath);
+                Club.setImagePath(destinationFilePath.toString());
                 removeText();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -185,6 +199,7 @@ public class ClubdetailsController {
             // Corrected the destinationFilePath creation
             Path destinationDirectory = Paths.get("OOD", "src", "main", "resources", "LogoImages");
             Path destinationFilePath = destinationDirectory.resolve(clubID + ".jpg");
+            Club.setImagePath(destinationFilePath.toString());
 
             try {
                 // Create the directory if it doesn't exist
@@ -195,6 +210,7 @@ public class ClubdetailsController {
                 // Copy the file to the destination
                 Files.copy(file.toPath(), destinationFilePath, StandardCopyOption.REPLACE_EXISTING);
                 System.out.println("File copied to: " + destinationFilePath);
+                Club.setImagePath(destinationFilePath.toString());
                 removeText();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -229,4 +245,3 @@ public class ClubdetailsController {
         stage.close();
     }
 }
-

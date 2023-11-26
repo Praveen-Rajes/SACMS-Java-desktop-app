@@ -14,6 +14,10 @@ public class AdvisorRegistration extends com.example.ood.Person {
 
     public AdvisorRegistration() {}
 
+    public AdvisorRegistration(int advisorID) {
+        this.advisorId =advisorID;
+    }
+
     public int getAdvisorId() {
         return advisorId;
     }

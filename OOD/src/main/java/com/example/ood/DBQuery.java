@@ -5,11 +5,11 @@ import java.util.ArrayList;
 
 public class DBQuery {
     public void addClub(Club club){
-        String query1 = "INSERT INTO club(clubID, clubName, clubCategory, clubDescription, clubTheme, clubLogo,advisorID) VALUES(?,?,?,?,?,?,?)";
+        String query1 = "INSERT INTO club(clubID, clubName, clubCategory, clubDescription, clubTheme, clubLogo, advisorID) VALUES(?,?,?,?,?,?,?)";
         String query2 = "INSERT INTO advisor_club (advisorID, clubID) VALUES(?,?)";
 
         Connection connection = null;
-        try{
+        try {
             connection = getConnection();
             PreparedStatement preparedStatement1 = connection.prepareStatement(query1);
             PreparedStatement preparedStatement2 = connection.prepareStatement(query2);
@@ -18,24 +18,29 @@ public class DBQuery {
             preparedStatement1.setString(2, club.getName());
             preparedStatement1.setString(3, club.getCategory());
             preparedStatement1.setString(4, club.getDescription());
-            preparedStatement1.setString(5, String.valueOf(club.getTheme()));
-            preparedStatement1.setString(6, String.valueOf(club.getLogoImage()));
+            preparedStatement1.setString(5, club.getThemeHex());
+            preparedStatement1.setString(6, club.getImagePath());  // Verify if this is the correct way to store an image
             preparedStatement1.setInt(7, club.getAdvisorId());
 
-            preparedStatement2.setInt(1,club.getAdvisorId());
-            preparedStatement2.setString(2,club.getClubID());
+            preparedStatement2.setInt(1, club.getAdvisorId());
+            preparedStatement2.setString(2, club.getClubID());
 
+            // Execute both queries
             preparedStatement1.executeUpdate();
             preparedStatement2.executeUpdate();
-        }catch (SQLException e){
-            System.out.println("Error!");
-        }finally {
+
+            System.out.println("Club added successfully.");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error adding club to the database.");
+        } finally {
             try {
-                if(connection != null && !connection.isClosed()){
+                if (connection != null && !connection.isClosed()) {
                     connection.close();
                 }
-            }catch (SQLException e){
-                System.out.println("Error closing connection"+e.getMessage());
+            } catch (SQLException e) {
+                System.out.println("Error closing connection: " + e.getMessage());
             }
         }
     }
@@ -216,7 +221,7 @@ public class DBQuery {
         }
     }
     public static void addAdvisorLogin(AdvisorRegistration advisor) {
-        String query1 = "INSERT INTO advisorlogin(advisorId, Password) VALUES(?, ?)";
+        String query1 = "INSERT INTO advisorlogin(advisorId, loginPassword) VALUES(?, ?)";
 
         Connection connection = null;
         try {
@@ -243,6 +248,51 @@ public class DBQuery {
             }
         }
     }
+    public AdvisorRegistration getAdvisorById(int advisorId) {
+        String query = "SELECT al.advisorID, a.advisorFirstName, a.advisorLastName " +
+                "FROM clubadvisor a " +
+                "JOIN advisorlogin al ON al.advisorID = a.advisorID " +
+                "WHERE al.advisorID = ?";
+
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, advisorId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                AdvisorRegistration advisor = new AdvisorRegistration(resultSet.getInt("advisorID"));
+                advisor.setFirstName(resultSet.getString("advisorFirstName"));
+                advisor.setLastName(resultSet.getString("advisorLastName"));
+                return advisor;
+            }
+            System.out.println("Data Retrieval Successful");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public AdvisorRegistration getAdvisorByLogin(int advisorId, String password) {
+        String query = "SELECT * FROM advisorlogin WHERE advisorID = ? AND loginPassword = ?";
+
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, advisorId);
+            preparedStatement.setString(2, password);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                return getAdvisorById(advisorId);
+            }
+            System.out.println("Data Retrieval Successful");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
     public static Connection getConnection() {
         try {

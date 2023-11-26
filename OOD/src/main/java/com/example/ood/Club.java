@@ -2,43 +2,47 @@ package com.example.ood;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
-import javafx.scene.control.ColorPicker;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 
 public class Club {
     private AdvisorRegistration advisor;
     private String name;
     private String category;
     private String description;
-    private ColorPicker theme;
+    private Color theme;
     private String clubID;
     private Image logoImage;
+    private static String imagePath;
+    private int advisorId;
 
-    public Club(AdvisorRegistration advisor, String name, String category, String description, ColorPicker theme, String clubID, Image logoImage) {
-        this.advisor = advisor;
-        this.name = name;
-        this.category = category;
-        this.description = description;
-        this.theme = theme;
-        this.clubID = clubID;
-        this.logoImage = logoImage;
-    }
 
-    public Club(String name, String clubID, String category, String description, ColorPicker theme, Image logoImage) {
+    public Club(String name, String clubID, String category, String description, Color theme, Image logoImage, int advisorId) {
         this.name = name;
         this.clubID = clubID;
         this.category = category;
         this.description = description;
         this.theme = theme;
         this.logoImage = logoImage;
+        this.advisor = new AdvisorRegistration(advisorId);
     }
+
+    public Club(String name, String clubID, String category, String description, Color theme, Image logoImage) {
+        this.name = name;
+        this.clubID = clubID;
+        this.category = category;
+        this.description = description;
+        this.theme = theme;
+        this.logoImage = logoImage;
+    }
+
     public Club(String name, String clubID, String category) {
         this.name = name;
         this.clubID = clubID;
         this.category = category;
-
     }
-    public Club(String clubID,String name) {
+
+    public Club(String clubID, String name) {
         this.clubID = clubID;
         this.name = name;
     }
@@ -50,15 +54,14 @@ public class Club {
     public int getAdvisorId() {
         return advisor.getAdvisorId();
     }
-
+    public void setAdvisorId(int advisorId) {
+        this.advisorId = advisorId;
+    }
 
 
     public void setAdvisor(AdvisorRegistration advisor) {
         this.advisor = advisor;
     }
-
-
-
 
     public String getName() {
         return name;
@@ -92,11 +95,11 @@ public class Club {
         this.description = description;
     }
 
-    public ColorPicker getTheme() {
+    public Color getTheme() {
         return theme;
     }
 
-    public void setTheme(ColorPicker theme) {
+    public void setTheme(Color theme) {
         this.theme = theme;
     }
 
@@ -119,4 +122,30 @@ public class Club {
     public ObservableValue<String> categoryProperty() {
         return new SimpleStringProperty(category);
     }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public static void setImagePath(String imagePath) {
+        Club.imagePath = imagePath;
+    }
+
+    public String getThemeHex() {
+        return String.format("#%02X%02X%02X",
+                (int) (theme.getRed() * 255),
+                (int) (theme.getGreen() * 255),
+                (int) (theme.getBlue() * 255));
+    }
+    @Override
+    public String toString() {
+        return "Club{" +
+                "clubID='" + clubID + '\'' +
+                ", name='" + name + '\'' +
+                ", category='" + category + '\'' +
+                '}';
+    }
+
+
+
 }
