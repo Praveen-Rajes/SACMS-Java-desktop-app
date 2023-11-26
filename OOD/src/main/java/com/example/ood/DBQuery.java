@@ -91,6 +91,7 @@ public class DBQuery {
                 } else {
                     System.out.println("No records found with the given clubID in advisor_club table.");
                 }
+
             }
 
             // Delete from club table

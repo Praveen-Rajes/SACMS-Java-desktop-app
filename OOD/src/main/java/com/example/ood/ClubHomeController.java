@@ -78,6 +78,7 @@ public class ClubHomeController {
 
     public void removeClub(Club club) {
         clubDetails.remove(club);
+
     }
 
 

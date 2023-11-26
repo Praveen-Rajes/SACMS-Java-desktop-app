@@ -79,7 +79,6 @@ public class ClubProfileController {
             DBQuery dbQuery = new DBQuery();
             dbQuery.removeClub(selectedClub);
 
-
         }
 
     }

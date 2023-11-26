@@ -34,6 +34,7 @@ public class Club {
         this.advisor = new AdvisorRegistration(advisorId);
     }
 
+
     public Club(String name, String clubID, String category, String description, Color theme, Image logoImage) {
         this.name = name;
         this.clubID = clubID;
