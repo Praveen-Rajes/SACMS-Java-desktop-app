@@ -22,7 +22,7 @@ public class HelloController {
 
     @FXML
     private TextField advisorPasswordField;
-    private int loggedInAdvisorId;
+    public int loggedInAdvisorId;
 
 
     @FXML
@@ -56,11 +56,14 @@ public class HelloController {
         String enteredPassword = advisorPasswordField.getText();
 
         DBQuery dbQuery = new DBQuery();
+        dbQuery.setLoggedInAdvisorId(loggedInAdvisorId);
         AdvisorRegistration loggedInAdvisor = dbQuery.getAdvisorByLogin(enteredAdvisorId, enteredPassword);
 
         if (loggedInAdvisor != null) {
             // Set the logged-in advisor ID
             loggedInAdvisorId = loggedInAdvisor.getAdvisorId();
+            dbQuery.setLoggedInAdvisorId(loggedInAdvisorId);
+
 
             // Load the Club Dashboard FXML
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ClubDashboard.fxml"));
@@ -88,6 +91,9 @@ public class HelloController {
 
             // Call setLoggedInAdvisorId after the FXML is loaded and controller is initialized
             dashboardController.setLoggedInAdvisorId(loggedInAdvisorId);
+
+
+
         } else {
             // Handle invalid login (display an error message, etc.)
             System.out.println("Login failed");

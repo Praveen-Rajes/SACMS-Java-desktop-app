@@ -86,8 +86,8 @@ public class RegistrationController {
         Path destinationDirectory = Paths.get("OOD", "src", "main", "resources", "studentImages");
         Path destinationFilePath = destinationDirectory.resolve(studentId + ".jpg");
         s1.setImagePath(destinationFilePath.toString());
-        DBQuery.addStudentLogin(s1);
         DBQuery.addStudent(s1);
+        DBQuery.addStudentLogin(s1);
     }
     public void getAdvisorDetails(){
         AdvisorRegistration a1 = new AdvisorRegistration();
@@ -103,8 +103,9 @@ public class RegistrationController {
         Path destinationDirectory = Paths.get("OOD", "src", "main", "resources", "advisorImages");
         Path destinationFilePath = destinationDirectory.resolve(advisorId + ".jpg");
         a1.setImagePath(destinationFilePath.toString());
-        DBQuery.addAdvisorLogin(a1);
         DBQuery.addAdvisor(a1);
+        DBQuery.addAdvisorLogin(a1);
+
     }
     @FXML
     protected void onSubmitButtonClick(){

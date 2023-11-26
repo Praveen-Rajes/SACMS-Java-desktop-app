@@ -1,5 +1,6 @@
 package com.example.ood;
 
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.image.Image;
@@ -15,6 +16,11 @@ public class Club {
     private Image logoImage;
     private static String imagePath;
     private int advisorId;
+
+
+    public AdvisorRegistration getAdvisor() {
+        return advisor;
+    }
 
 
     public Club(String name, String clubID, String category, String description, Color theme, Image logoImage, int advisorId) {
@@ -52,7 +58,12 @@ public class Club {
     }
 
     public int getAdvisorId() {
-        return advisor.getAdvisorId();
+        if (advisor != null) {
+            return advisor.getAdvisorId();
+        } else {
+            // Handle the case where advisor is null
+            return 0; // Or throw an exception, depending on your requirements
+        }
     }
     public void setAdvisorId(int advisorId) {
         this.advisorId = advisorId;
@@ -122,6 +133,7 @@ public class Club {
     public ObservableValue<String> categoryProperty() {
         return new SimpleStringProperty(category);
     }
+
 
     public String getImagePath() {
         return imagePath;

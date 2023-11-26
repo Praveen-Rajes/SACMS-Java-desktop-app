@@ -1,5 +1,7 @@
 package com.example.ood;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,6 +16,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import java.io.*;
+import java.util.ArrayList;
 
 
 public class ClubHomeController {
@@ -34,24 +37,19 @@ public class ClubHomeController {
     private TableColumn<Club, String> categoryColumn;
     @FXML
     private TableColumn<Club, String> clubAdvisorColumn;
-    private static final String DATA_FILE_NAME = "club_data.txt";
+
+
 
     private ObservableList<Club> clubDetails = FXCollections.observableArrayList();
 
     public void initialize() {
-        // Check if the data file exists
-        File dataFile = new File(DATA_FILE_NAME);
-        if (dataFile.exists()) {
-            // If the data file exists, load data from it
-            loadDataFromFile();
-        }
-
         // Set cell value for the table columns
         clubIDColumn.setCellValueFactory(data -> data.getValue().clubIDProperty());
         clubNameColumn.setCellValueFactory(data -> data.getValue().clubNameProperty());
         categoryColumn.setCellValueFactory(data -> data.getValue().categoryProperty());
 
         // Bind the table view to the observable list
+        loadDataFromDatabase();
         tableView.setItems(clubDetails);
     }
 
@@ -73,51 +71,24 @@ public class ClubHomeController {
 
             stage.showAndWait();
 
-            // Save data to the text file when the program closes
-            saveDataToFile();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-
-    public void saveDataToFile() {
-        try (FileWriter fileWriter = new FileWriter(DATA_FILE_NAME);
-             BufferedWriter writer = new BufferedWriter(fileWriter)) {
-            for (Club club : clubDetails) {
-                writer.write(club.getClubID() + "," + club.getName() + "," + club.getCategory() + "," + club.getDescription() + "\n");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+    private void loadDataFromDatabase() {
+        DBQuery dbQuery = new DBQuery();
+        ArrayList<Club> clubList = dbQuery.getClubList();
+        if (clubList != null) {
+            clubDetails.addAll(clubList);
         }
     }
 
 
-    public void loadDataFromFile() {
-        try (BufferedReader reader = new BufferedReader(new FileReader(DATA_FILE_NAME))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] data = line.split(",");
-                if (data.length >= 4) {
-                    Club club = new Club(data[1], data[0], data[2]);
-                    club.setDescription(data[3]);
-                    clubDetails.add(club);
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    @FXML
-    private void onRemoveButtonClick() {
-        Club selectedItem = tableView.getSelectionModel().getSelectedItem();
-        if (selectedItem != null) {
-            clubDetails.remove(selectedItem);
-            saveDataToFile(); // Save the updated data to the text file
-        } else {
-            //
-        }
-    }
+
+
+
+
+
 
 
 }

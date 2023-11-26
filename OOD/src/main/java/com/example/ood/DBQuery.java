@@ -4,6 +4,11 @@ import java.util.ArrayList;
 
 
 public class DBQuery {
+    private static int loggedInAdvisorId;
+    public static void setLoggedInAdvisorId(int loggedInAdvisorId) {
+        DBQuery.loggedInAdvisorId = loggedInAdvisorId;
+    }
+
     public void addClub(Club club){
         String query1 = "INSERT INTO club(clubID, clubName, clubCategory, clubDescription, clubTheme, clubLogo, advisorID) VALUES(?,?,?,?,?,?,?)";
         String query2 = "INSERT INTO advisor_club (advisorID, clubID) VALUES(?,?)";
@@ -45,39 +50,29 @@ public class DBQuery {
         }
     }
     public ArrayList<Club> getClubList() {
-        String query = "SELECT c.clubID, c.clubName, c.clubCategory, c.clubDescription, c.clubTheme, c.clubLogo, ac.advisorID" +
-                "FROM club c" +
-                "JOIN advisor_club ac ON c.clubID = ac.clubID";
+        setLoggedInAdvisorId(loggedInAdvisorId);
+        System.out.println(loggedInAdvisorId);
+        setLoggedInAdvisorId(loggedInAdvisorId);
+        String query = "SELECT * FROM club WHERE advisorID = "+loggedInAdvisorId+";";
         ArrayList<Club> clubList = new ArrayList<>();
 
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
 
-        Connection connection = null;
-        try {
-            connection = getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                Club club = new Club(resultSet.getString("clubID"));
-                resultSet.getString("clubName");
-                resultSet.getString("clubDescription");
-                resultSet.getString("clubCategory");
-                resultSet.getString("clubLogo");
-                resultSet.getString("clubTheme");
-                resultSet.getInt("advisorID");
+                Club club = new Club(resultSet.getString("clubName"));
+                club.setClubID(resultSet.getString("clubID"));
+                club.setCategory(resultSet.getString("clubCategory"));
+                club.setDescription(resultSet.getString("clubDescription"));
+                // set other attributes as needed
                 clubList.add(club);
             }
             return clubList;
 
         } catch (SQLException e) {
-            System.out.println("Error!");
-        } finally {
-            try {
-                if (connection != null && !connection.isClosed()) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                System.out.println("Error closing connection" + e.getMessage());
-            }
+            e.printStackTrace();
+            System.out.println("Error retrieving club list from the database.");
         }
         return null;
     }
@@ -181,7 +176,7 @@ public class DBQuery {
             preparedStatement1.executeUpdate();
 
         }catch (SQLException e){
-            System.out.println("Error!");
+            System.out.println("Error!" + e.getMessage());
         }finally {
             try {
                 if(connection != null && !connection.isClosed()){
@@ -236,7 +231,7 @@ public class DBQuery {
             preparedStatement1.executeUpdate();
 
         } catch (SQLException e) {
-            System.out.println("Error!");
+            System.out.println("Error!" +e.getMessage());
             System.out.println(e.getMessage());
         } finally {
             try {
