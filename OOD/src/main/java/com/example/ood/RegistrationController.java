@@ -45,6 +45,12 @@ public class RegistrationController {
     @FXML
     private TextField studentGradeClassField;
     @FXML
+    private TextField studentGuardianNameField;
+    @FXML
+    private TextField studentGuardianPhoneField;
+    @FXML
+    private TextField studentGuardianEmailField;
+    @FXML
     private TextField advisorIdField;
     @FXML
     private TextField advisorFNameField;
@@ -72,7 +78,12 @@ public class RegistrationController {
 //    private String userImage = "";
 //    private String userImage2 = "";
 
+
     public void getStudentDetails(){
+        GuardianDetails g1 = new GuardianDetails();
+        g1.setGuardianName(studentGuardianNameField.getText());
+        g1.setGuardianPhone(Integer.parseInt(studentGuardianPhoneField.getText()));
+        g1.setGuardianEmail(studentGuardianEmailField.getText());
         StudentRegistration s1 = new StudentRegistration();
         s1.setStudentId(Integer.parseInt(studentIdField.getText()));
         s1.setFirstName(studentFNameField.getText());

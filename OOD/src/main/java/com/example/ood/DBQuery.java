@@ -115,7 +115,7 @@ public class DBQuery {
 
     public static void addStudent(StudentRegistration student){
         String query1 = "INSERT INTO student(studentID, studentFName, studentLName, dob, gender, address, gradeClass) VALUES(?,?,?,?,?,?,?)";
-        String query2 = "INSERT INTO guardian (guardianName, phoneNo, email, studentID) VALUES(?,?,?,?)";
+        String query2 = "INSERT INTO guardian (gaurdianName, phoneNo, email, studentID) VALUES(?,?,?,?)";
 
         Connection connection = null;
         try{
@@ -132,7 +132,7 @@ public class DBQuery {
             preparedStatement1.setString(7, student.getStudentGradeClass());
 
             // Get guardian details from the composition relationship
-            GuardianDetails guardianDetails = student.getGuardianDetails();
+            GuardianDetails guardianDetails = student.getGuardian();
 
             // Set parameters for guardian table
             preparedStatement2.setString(1, guardianDetails.getGuardianName());
@@ -143,7 +143,7 @@ public class DBQuery {
             preparedStatement1.executeUpdate();
             preparedStatement2.executeUpdate();
         }catch (SQLException e){
-            System.out.println("Error!");
+            System.out.println("Error!"+e.getMessage());
         }finally {
             try {
                 if(connection != null && !connection.isClosed()){
@@ -188,7 +188,7 @@ public class DBQuery {
         }
     }
     public static void addStudentLogin(StudentRegistration student) {
-        String query1 = "INSERT INTO studentlogin(studentId, Password) VALUES(?, ?)";
+        String query1 = "INSERT INTO studentlogin(studentId, loginPassword) VALUES(?, ?)";
 
         Connection connection = null;
         try {
