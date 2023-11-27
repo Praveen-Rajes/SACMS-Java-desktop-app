@@ -101,17 +101,12 @@ public class Addevent {
 
     }
 
-    public void backToAddMenu(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("clubdashboard.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1200, 750);
-        Stage stage = new Stage();
-        stage.setTitle("Club Dashboard");
-        stage.setScene(scene);
+    public void backToAddMenu(ActionEvent actionEvent) {
         Stage currentstage = (Stage) backToMenu.getScene().getWindow();
 
         // Close the stage
         currentstage.close();
-        stage.show();
+
 
     }
 
