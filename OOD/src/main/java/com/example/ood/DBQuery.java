@@ -326,6 +326,31 @@ public class DBQuery {
         return null;
     }
 
+    public ArrayList<Attendance> getClubListForAttendance() {
+        setLoggedInAdvisorId(loggedInAdvisorId);
+        System.out.println(loggedInAdvisorId);
+        setLoggedInAdvisorId(loggedInAdvisorId);
+        String query = "SELECT clubName FROM club WHERE advisorID = "+loggedInAdvisorId+";";
+        ArrayList<Attendance> clubList = new ArrayList<>();
+
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+
+            while (resultSet.next()) {
+                Attendance attendance = new Attendance(resultSet.getString("clubName"));
+                // set other attributes as needed
+                clubList.add(attendance);
+            }
+            return clubList;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error retrieving club list from the database.");
+        }
+        return null;
+    }
+
 
     public static Connection getConnection() {
         try {
