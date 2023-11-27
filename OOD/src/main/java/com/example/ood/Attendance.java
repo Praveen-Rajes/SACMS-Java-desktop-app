@@ -69,3 +69,4 @@ public class Attendance {
         return new SimpleStringProperty(ClubName);
     }
 }
+

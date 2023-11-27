@@ -77,6 +77,7 @@ public class AttendanceController {
         }
     }
 
+
     @FXML
     private void onDateOrClubSelection(ActionEvent event) {
     }
