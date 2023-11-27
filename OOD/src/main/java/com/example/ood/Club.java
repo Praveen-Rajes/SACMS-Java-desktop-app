@@ -18,7 +18,6 @@ public class Club {
     private int advisorId;
 
 
-
     public AdvisorRegistration getAdvisor() {
         return advisor;
     }
@@ -67,6 +66,7 @@ public class Club {
             return 0; // Or throw an exception, depending on your requirements
         }
     }
+
     public void setAdvisorId(int advisorId) {
         this.advisorId = advisorId;
     }
@@ -151,6 +151,7 @@ public class Club {
                 (int) (theme.getGreen() * 255),
                 (int) (theme.getBlue() * 255));
     }
+
     @Override
     public String toString() {
         return "Club{" +
@@ -159,7 +160,4 @@ public class Club {
                 ", category='" + category + '\'' +
                 '}';
     }
-
-
-
 }
