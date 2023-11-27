@@ -14,7 +14,7 @@ public class JoinClubController {
     @FXML
     protected void onBackButtonClick(ActionEvent actionEvent)throws IOException {
         Stage previousStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("studentProfile.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("StudentProfile.fxml"));
         previousStage.setScene(new Scene(root, 1200, 750));
     }
 

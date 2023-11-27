@@ -28,7 +28,7 @@ public class HelloController {
     @FXML
     public void  switchStudent (ActionEvent e1) throws IOException {
         Stage previousStage = (Stage) ((Node) e1.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("student_login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("StudentLogin.fxml"));
         previousStage.setScene(new Scene(root, 1200, 750));
 
     }
@@ -36,7 +36,7 @@ public class HelloController {
     @FXML
     public void onSignupButton2Click(ActionEvent e4) throws IOException{
         Stage previousStage = (Stage) ((Node) e4.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("advisor_registration.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("AdvisorRegistrationForm.fxml"));
         previousStage.setScene(new Scene(root, 1200, 750));
     }
     @FXML
@@ -46,7 +46,7 @@ public class HelloController {
 
         DBQuery dbQuery = new DBQuery();
         dbQuery.setLoggedInAdvisorId(loggedInAdvisorId);
-        AdvisorRegistration loggedInAdvisor = dbQuery.getAdvisorByLogin(enteredAdvisorId, enteredPassword);
+        ClubAdvisor loggedInAdvisor = dbQuery.getAdvisorByLogin(enteredAdvisorId, enteredPassword);
 
         if (loggedInAdvisor != null) {
             // Set the logged-in advisor ID

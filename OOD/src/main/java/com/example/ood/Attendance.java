@@ -6,7 +6,7 @@ import javafx.scene.control.CheckBox;
 
 public class Attendance {
     private CheckBox attendance;
-    private StudentRegistration student;
+    private Student student;
     private Club club;
     private String ClubName;
     private Event event;
@@ -14,7 +14,7 @@ public class Attendance {
     private String EstartTime;
     private String EendTime;
 
-    public Attendance(CheckBox attendance, StudentRegistration student, Club club, String ClubName, Event event, String EventName, String EstartTime, String EendTime) {
+    public Attendance(CheckBox attendance, Student student, Club club, String ClubName, Event event, String EventName, String EstartTime, String EendTime) {
         this.attendance = attendance;
         this.student = student;
         this.club = club;
@@ -81,11 +81,11 @@ public class Attendance {
         this.attendance = attendance;
     }
 
-    public StudentRegistration getStudent() {
+    public Student getStudent() {
         return student;
     }
 
-    public void setStudent(StudentRegistration student) {
+    public void setStudent(Student student) {
         this.student = student;
     }
 

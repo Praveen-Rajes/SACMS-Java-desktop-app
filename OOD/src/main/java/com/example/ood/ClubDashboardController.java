@@ -70,7 +70,7 @@ public class ClubDashboardController implements Initializable {
         Stage stage = (Stage) logout.getScene().getWindow();
         // Close the stage
         stage.close();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("advisor_login.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AdvisorLogin.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1200, 750);
         Stage stage2 = new Stage();
         stage2.setTitle("Hello!");
