@@ -14,7 +14,7 @@
    <children>
       <Pane prefHeight="50.0" prefWidth="750.0" style="-fx-background-color: #0A4969;">
          <children>
-            <Button layoutX="708.0" layoutY="11.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="26.0" style="-fx-background-color: transparent;" text="Button">
+            <Button fx:id="closeButton" onAction="#onCloseButtonClick" layoutX="708.0" layoutY="11.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="26.0" style="-fx-background-color: transparent;" text="Button">
                <graphic>
                   <FontIcon iconColor="WHITE" iconLiteral="fas-times" iconSize="20" textAlignment="CENTER" />
                </graphic>

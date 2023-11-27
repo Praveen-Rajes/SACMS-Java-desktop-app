@@ -11,6 +11,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -38,6 +39,8 @@ public class ClubProfileController {
     private TextField clubIDField;
     @FXML
     private Button removeClubButton;
+
+
 
 
     private ClubHomeController homeController; // Reference to the HomeController
@@ -82,6 +85,12 @@ public class ClubProfileController {
             stage.close();
         }
 
+    }
+    @FXML
+    private void onCloseButtonClick() {
+        // Your custom close logic here
+        Stage stage = (Stage) closeButton.getScene().getWindow();
+        stage.close();
     }
 
     public void setHomeController(ClubHomeController homeController) {
