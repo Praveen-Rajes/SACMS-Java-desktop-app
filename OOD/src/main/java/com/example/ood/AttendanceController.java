@@ -115,6 +115,7 @@ public class AttendanceController {
 
             System.out.println(eventDetails);
 
+
         }
     }
 }

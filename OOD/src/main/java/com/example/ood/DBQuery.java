@@ -402,6 +402,7 @@ public class DBQuery {
         return null;
     }
 
+
     public ArrayList<Attendance> getEventListForAttendance(String selectedDate, String selectedClub) {
         String query = "SELECT e.eventName, e.eventStartTime, e.eventEndTime FROM events e JOIN club c ON e.clubID = c.clubID WHERE e.eventDate=? AND c.clubName = ?";
         ArrayList<Attendance> eventList = new ArrayList<>();

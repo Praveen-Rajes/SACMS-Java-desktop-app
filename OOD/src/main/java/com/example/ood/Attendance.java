@@ -97,12 +97,9 @@ public class Attendance {
         this.club = club;
     }
 
-
-
     public ObservableValue<String> clubNameProperty() {
         return new SimpleStringProperty(ClubName);
     }
-
 
     public String getEventStartTime() {
         return event.getEstartTime();
