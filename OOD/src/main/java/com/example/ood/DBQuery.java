@@ -389,16 +389,19 @@ public class DBQuery {
             }
         }
     }
-    public ArrayList<Event> getEventList() {
-        String query = "SELECT e.clubID, e.eventName, e.eventID FROM events e JOIN club c ON e.clubID = c.clubID WHERE e.eventDate=? & c.clubName = ?";
+    public ArrayList<Event> getEventList(String date,String clubname) {
+        String query = "SELECT e.clubID, e.eventName, e.eventID FROM events e JOIN club c ON e.clubID = c.clubID WHERE e.eventDate=? AND c.clubName = ?";
 
 
         ArrayList<Event> eventList = new ArrayList<>();
 
-        try (Connection connection = getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(query);
 
-             ResultSet resultSet = preparedStatement.executeQuery()) {
+        try (Connection connection = getConnection();
+
+             PreparedStatement preparedStatement = connection.prepareStatement(query)){
+             preparedStatement.setString(1, date);
+             preparedStatement.setString(2, clubname);
+            try(ResultSet resultSet = preparedStatement.executeQuery()) {
 
             while (resultSet.next()) {
                 Event event1 = new Event(resultSet.getString("eventName"));
@@ -407,7 +410,7 @@ public class DBQuery {
                 // set other attributes as needed
                 eventList.add(event1);
             }
-            return eventList;
+            return eventList;}
 
         } catch (SQLException e) {
             e.printStackTrace();

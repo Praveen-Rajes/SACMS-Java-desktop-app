@@ -133,6 +133,7 @@ public class Addevent {
     }
 
     public void addEventSave(ActionEvent actionEvent) {
+        viewTable.setItems(eventDetails);
 
         getEventDetails();
 
@@ -156,7 +157,7 @@ public class Addevent {
         eventDetails.clear();
 
         DBQuery dbQuery = new DBQuery();
-        ArrayList<Event> eventList = dbQuery.getEventList();
+        ArrayList<Event> eventList = dbQuery.getEventList(String.valueOf(datePicker.getValue()),(String) clubChoiceBox.getValue());
 
         // Add new data to eventDetails
         if (eventList != null) {
