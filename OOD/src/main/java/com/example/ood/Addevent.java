@@ -164,6 +164,7 @@ public class Addevent {
             eventDetails.addAll(eventList);
         }
 
+
         // Refresh the table
         viewTable.refresh();
 
