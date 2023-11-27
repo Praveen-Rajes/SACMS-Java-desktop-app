@@ -8,7 +8,10 @@ public class DBQuery {
     public static void setLoggedInAdvisorId(int loggedInAdvisorId) {
         DBQuery.loggedInAdvisorId = loggedInAdvisorId;
     }
-
+    private static int loggedInStudentId;
+    public static void setLoggedInStudentId(int loggedInStudentId) {
+        DBQuery.loggedInStudentId = loggedInStudentId;
+    }
     public void addClub(Club club){
         String query1 = "INSERT INTO club(clubID, clubName, clubCategory, clubDescription, clubTheme, clubLogo, advisorID) VALUES(?,?,?,?,?,?,?)";
         String query2 = "INSERT INTO advisor_club (advisorID, clubID) VALUES(?,?)";
@@ -306,6 +309,34 @@ public class DBQuery {
         return null;
     }
 
+    public StudentRegistration getStudentById(int studentId) {
+        String query = "SELECT sl.studentID, s.studentFName, s.studentLName, s.dob, s.gender " +
+                "FROM student s " +
+                "JOIN studentlogin sl ON sl.studentID = s.studentID " +
+                "WHERE sl.studentID = ?";
+
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, studentId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                StudentRegistration student = new StudentRegistration();
+                student.setStudentId(resultSet.getInt("studentID"));
+                student.setFirstName(resultSet.getString("studentFName"));
+                student.setLastName(resultSet.getString("studentLName"));
+                student.setDateOfBirth(resultSet.getString("dob"));
+                student.setGender(resultSet.getString("gender"));
+                return student;
+            }
+            System.out.println("Data Retrieval Successful");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public AdvisorRegistration getAdvisorByLogin(int advisorId, String password) {
         String query = "SELECT * FROM advisorlogin WHERE advisorID = ? AND loginPassword = ?";
 
@@ -317,6 +348,26 @@ public class DBQuery {
 
             if (resultSet.next()) {
                 return getAdvisorById(advisorId);
+            }
+            System.out.println("Data Retrieval Successful");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public StudentRegistration getStudentByLogin(int studentId, String password) {
+        String query = "SELECT * FROM studentlogin WHERE studentID = ? AND loginPassword = ?";
+
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, studentId);
+            preparedStatement.setString(2, password);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                return getStudentById(studentId);
             }
             System.out.println("Data Retrieval Successful");
 

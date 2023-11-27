@@ -18,6 +18,8 @@ import javafx.stage.Stage;
 import org.kordamp.ikonli.javafx.FontIcon;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -75,7 +77,40 @@ public class RegistrationController {
     private ImageView studentImageField;
     @FXML
     private ImageView advisorImageField;
-
+    @FXML
+    private TextField studentLoginIdField;
+    @FXML
+    private TextField studentPasswordField;
+    public static int loggedInStudentId;
+    @FXML
+    public Label studentFNameLabel;
+    @FXML
+    public Label studentLNameLabel;
+    @FXML
+    public Label studentDOBLabel;
+    @FXML
+    public Label studentGenderLabel;
+    @FXML
+    public ImageView studentImageView;
+    @FXML
+    public Button Logout;
+    public void setHelloController (HelloController helloController){this.helloController = helloController;}
+    private HelloController helloController;
+    public static void setLoggedInStudentId(int studentId) {
+        RegistrationController.loggedInStudentId = studentId;
+    }
+    @FXML
+    private void studentlogin() throws IOException {
+        Stage stage = (Stage) Logout.getScene().getWindow();
+        // Close the stage
+        stage.close();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("student_login.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1200, 750);
+        Stage stage2 = new Stage();
+        stage2.setTitle("Hello!");
+        stage2.setScene(scene);
+        stage2.show();
+    }
 
     public void getStudentDetails(){
         int parsedStudentId = Integer.parseInt(studentIdField.getText());
@@ -234,5 +269,73 @@ public class RegistrationController {
         Stage previousStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("JoinClub.fxml"));
         previousStage.setScene(new Scene(root, 1200, 750));
+    }
+
+
+    @FXML
+    public void  switchAdvisor (ActionEvent e2) throws IOException {
+        Stage previousStage = (Stage) ((Node) e2.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("advisor_login.fxml"));
+        previousStage.setScene(new Scene(root, 1200, 750));
+    }
+    @FXML
+    public void onSignupButtonClick(ActionEvent e3) throws IOException{
+        Stage previousStage = (Stage) ((Node) e3.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("student_registration.fxml"));
+        previousStage.setScene(new Scene(root, 1200, 750));
+    }
+    public void onLoginButton2Click(ActionEvent event) throws IOException {
+        int enteredStudentId = Integer.parseInt(studentLoginIdField.getText());
+        String enteredPassword = studentPasswordField.getText();
+        System.out.println("Entered Student ID: " + enteredStudentId);
+        System.out.println("Entered Password: " + enteredPassword);
+
+        DBQuery dbQuery = new DBQuery();
+        DBQuery.setLoggedInStudentId(loggedInStudentId);
+        StudentRegistration loggedInStudent = dbQuery.getStudentByLogin(enteredStudentId, enteredPassword);
+
+        if (loggedInStudent != null) {
+            // Set the logged-in advisor ID
+            loggedInStudentId = loggedInStudent.getStudentId();
+            DBQuery.setLoggedInStudentId(loggedInStudentId);
+
+
+            // Load the student Profile FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("studentProfile.fxml"));
+            Parent root = loader.load();
+
+            // Get the RegistrationController instance
+            RegistrationController registrationController = loader.getController();
+//            registrationController.setHelloController(this);
+
+            // Set the logged-in advisor's details in the lbel
+            registrationController.studentFNameLabel.setText(loggedInStudent.getFirstName());
+            registrationController.studentLNameLabel.setText(loggedInStudent.getLastName());
+            registrationController.studentDOBLabel.setText(loggedInStudent.getDateOfBirth());
+            registrationController.studentGenderLabel.setText(loggedInStudent.getGender());
+
+            // Load and display advisor image in the Circle
+            String imagePath = "OOD/src/main/resources/studentImages/" + loggedInStudentId + ".jpg";
+            // Load the image and set it in img view
+            Image image = new Image(new FileInputStream(imagePath));
+            registrationController.studentImageView.setImage(image);
+
+            RegistrationController.setLoggedInStudentId(loggedInStudentId);
+
+
+            // Show the Club Dashboard
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root, 1200, 750));
+
+            // Call setLoggedInAdvisorId after the FXML is loaded and controller is initialized
+            RegistrationController.setLoggedInStudentId(loggedInStudentId);
+
+
+
+        } else {
+            // Handle invalid login (display an error message, etc.)
+            System.out.println("Login failed");
+        }
+
     }
 }
