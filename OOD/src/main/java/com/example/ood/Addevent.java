@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Addevent {
     @FXML
@@ -27,6 +28,14 @@ public class Addevent {
 
     @FXML
     TableView viewTable;
+
+    @FXML
+    private TableColumn<Event, String> eventid;
+
+    @FXML
+    private TableColumn<Event, String> eventname;
+    @FXML
+    private TableColumn<Event, String> clubid;
 
     @FXML
     private ChoiceBox clubChoiceBox;
@@ -46,7 +55,7 @@ public class Addevent {
     @FXML
     private Button backToMenu;
 
-
+    private ObservableList<Event> eventDetails = FXCollections.observableArrayList();
     @FXML
     private void initialize() {
         // Set spinner values dynamically
@@ -76,6 +85,18 @@ public class Addevent {
 
         // Set items to the ChoiceBox
         clubChoiceBox.setItems(observableList);
+
+        // Table View
+        // Set cell value for the table columns
+        eventid.setCellValueFactory(data -> data.getValue().eventIDProperty());
+        eventname.setCellValueFactory(data -> data.getValue().eventNameProperty());
+        clubid.setCellValueFactory(data -> data.getValue().clubProperty());
+
+        loadDataFromDatabase();
+        viewTable.setItems(eventDetails);
+        viewTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+
+        });
 
     }
 
@@ -128,5 +149,12 @@ public class Addevent {
         event.setSelectedClubName((String) clubChoiceBox.getValue());
 
 
+    }
+    private void loadDataFromDatabase() {
+        DBQuery dbQuery = new DBQuery();
+        ArrayList<Event> eventList = dbQuery.getEventList();
+        if (eventList != null) {
+            eventDetails.addAll(eventList);
+        }
     }
 }
