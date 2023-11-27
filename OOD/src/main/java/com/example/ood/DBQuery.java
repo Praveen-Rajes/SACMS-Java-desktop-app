@@ -350,6 +350,68 @@ public class DBQuery {
         }
         return null;
     }
+    public void EventInsert(Event event){
+        String query1 = "INSERT INTO events (eventID,clubID,eventName,eventLocation,eventDate,eventStartTime,eventEndTime,eventDescription) VALUES(?,?,?,?,?,?,?,?);";
+
+        Connection connection = null;
+        try {
+            connection = getConnection();
+            PreparedStatement preparedStatement1 = connection.prepareStatement(query1);
+
+
+            preparedStatement1.setString(1, event.getEventID());
+            preparedStatement1.setString(2, event.getClubId());
+            preparedStatement1.setString(3, event.getEventName());
+            preparedStatement1.setString(4, event.getEventLocation());
+            preparedStatement1.setString(5, String.valueOf(event.getSelectedDate()));
+            preparedStatement1.setString(6, event.getEstartTime());  // Verify if this is the correct way to store an image
+            preparedStatement1.setString(7, event.getEendTime());
+            preparedStatement1.setString(8, event.getEventDescription());
+
+
+
+            // Execute both queries
+            preparedStatement1.executeUpdate();
+
+
+            System.out.println("Event added successfully.");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error adding club to the database.");
+        } finally {
+            try {
+                if (connection != null && !connection.isClosed()) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("Error closing connection: " + e.getMessage());
+            }
+        }
+    }
+    public ArrayList<Event> getEventList() {
+        String query = "SELECT eventName,eventID,eventDate FROM events";
+        ArrayList<Event> eventList = new ArrayList<>();
+
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+
+            while (resultSet.next()) {
+                Event event = new Event(resultSet.getString("eventName"));
+                resultSet.getString("eventID");
+                resultSet.getString("eventDate");
+                // set other attributes as needed
+                eventList.add(event);
+            }
+            return eventList;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error retrieving club list from the database.");
+        }
+        return null;
+    }
 
 
 
