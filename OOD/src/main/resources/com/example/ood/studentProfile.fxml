@@ -105,38 +105,36 @@
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="186.0" fitWidth="191.0" layoutX="705.0" layoutY="152.0" pickOnBounds="true">
-                     <image>
-                        <Image url="@../../../images/profilePic.jpg" />
-                     </image>
-                  </ImageView>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="46.0" layoutX="67.0" layoutY="199.0" stroke="#09335b" strokeType="INSIDE" width="462.0" />
-                  <Label layoutX="58.0" layoutY="161.0" text="Personal Details">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="46.0" layoutX="67.0" layoutY="314.0" stroke="#09335b" strokeType="INSIDE" width="462.0" />
+                  <Label layoutX="58.0" layoutY="276.0" text="Personal Details">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="46.0" layoutX="67.0" layoutY="293.0" stroke="#09335b" strokeType="INSIDE" width="462.0" />
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="46.0" layoutX="67.0" layoutY="381.0" stroke="#09335b" strokeType="INSIDE" width="462.0" />
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="46.0" layoutX="67.0" layoutY="474.0" stroke="#09335b" strokeType="INSIDE" width="462.0" />
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="46.0" layoutX="67.0" layoutY="568.0" stroke="#09335b" strokeType="INSIDE" width="462.0" />
-                  <Label layoutX="82.0" layoutY="213.0" text="First Name" />
-                  <Label layoutX="77.0" layoutY="307.0" text="Last Name" />
-                  <Label layoutX="79.0" layoutY="395.0" text="DOB" />
-                  <Label layoutX="84.0" layoutY="488.0" text="Gender" />
-                  <Label layoutX="84.0" layoutY="582.0" text="Home Address" />
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="46.0" layoutX="583.0" layoutY="385.0" stroke="#09335b" strokeType="INSIDE" width="436.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="46.0" layoutX="67.0" layoutY="408.0" stroke="#09335b" strokeType="INSIDE" width="462.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="46.0" layoutX="67.0" layoutY="496.0" stroke="#09335b" strokeType="INSIDE" width="462.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="46.0" layoutX="67.0" layoutY="589.0" stroke="#09335b" strokeType="INSIDE" width="462.0" />
                   <Label layoutX="582.0" layoutY="356.0" text="New Password">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Button layoutX="908.0" layoutY="443.0" mnemonicParsing="false" text="Change Password" />
+                  <Button fx:id="changepasswordbutton" layoutX="907.0" layoutY="427.0" mnemonicParsing="false" text="Change Password" />
                   <TableView layoutX="584.0" layoutY="474.0" prefHeight="200.0" prefWidth="434.0">
                     <columns>
                       <TableColumn prefWidth="433.5999755859375" text="Clubs" />
                     </columns>
                   </TableView>
+                  <Label fx:id="studentFNameLabel" layoutX="82.0" layoutY="328.0" text="First Name" />
+                  <Label fx:id="studentLNameLabel" layoutX="77.0" layoutY="422.0" text="Last Name" />
+                  <Label fx:id="studentDOBLabel" layoutX="79.0" layoutY="510.0" text="DOB" />
+                  <Label fx:id="studentGenderLabel" layoutX="84.0" layoutY="603.0" text="Gender" />
+                  <PasswordField fx:id="newPasswordField" layoutX="582.0" layoutY="383.0" prefHeight="26.0" prefWidth="434.0" />
+                  <ImageView fx:id="studentImageView" fitHeight="186.0" fitWidth="191.0" layoutX="705.0" layoutY="152.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../../../images/profilePic.jpg" />
+                     </image>
+                  </ImageView>
                     </children></AnchorPane>
             </center>
         </BorderPane>
