@@ -114,7 +114,26 @@ public class DBQuery {
             // Handle the exception appropriately, e.g., show an error message to the user
         }
     }
+    public boolean checkClubIdExists(String clubId) {
+        String query = "SELECT COUNT(*) FROM club WHERE clubID = ?";
 
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, clubId);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    int count = resultSet.getInt(1);
+                    return count > 0;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle the exception appropriately, e.g., show an error message to the user
+        }
+
+        return false; // Default to false in case of an error
+    }
 
 
     public Club getClub() {
