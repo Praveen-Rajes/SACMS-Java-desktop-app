@@ -3,6 +3,7 @@ package com.example.ood;
 import java.time.LocalDate;
 
 public class Event {
+    private Club club;
     private String selectedClubName;
     private LocalDate selectedDate ;
     private String EventID ;
@@ -11,6 +12,14 @@ public class Event {
     private String EstartTime ;
     private String EendTime ;
     private String EventDescription;
+
+    public Event(String eventName) {
+        this.EventName=eventName;
+    }
+
+    public Club getClub() {
+        return club;
+    }
 
     public Event(String selectedClubName, LocalDate selectedDate, String eventID, String eventName, String eventLocation, String estartTime, String eendTime, String eventDescription) {
         this.selectedClubName = selectedClubName;
@@ -32,6 +41,14 @@ public class Event {
 
     public void setSelectedClubName(String selectedClubName) {
         this.selectedClubName = selectedClubName;
+    }
+    public String getClubId() {
+        if (club != null) {
+            return club.getClubID();
+        } else {
+            // Handle the case where advisor is null
+            return null; // Or throw an exception, depending on your requirements
+        }
     }
 
     public LocalDate getSelectedDate() {

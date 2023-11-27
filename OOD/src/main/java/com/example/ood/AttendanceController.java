@@ -1,21 +1,23 @@
 package com.example.ood;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
-import javafx.scene.control.cell.PropertyValueFactory;
-import java.time.LocalDate;
+import javafx.util.StringConverter;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class AttendanceController {
-
     @FXML
     public DatePicker datePicker;
     @FXML
-    public ChoiceBox<String> clubChoiceBox; // Updated to use String for the ChoiceBox
+    public ChoiceBox<Attendance> clubChoiceBox;
     @FXML
-    public ChoiceBox<String> eventChoiceBox; // Updated to use String for the ChoiceBox
+    public ChoiceBox<String> eventChoiceBox;
     @FXML
     public TextField startTime;
     @FXML
@@ -33,27 +35,48 @@ public class AttendanceController {
     @FXML
     public TableColumn attendanceColumn;
 
+    private final ObservableList<Attendance> clubDetails = FXCollections.observableArrayList();
 
-
-    private final List<String> clubIDs = new ArrayList<>();
-    private final List<String> clubNames = new ArrayList<>();
-    private String selectedClubID; // Store the selected club ID
-
-
-    private final List<Club> clubs = new ArrayList<>();
     @FXML
     private void initialize() {
-        // Populate club data
-        clubs.add(new Club("English Literature", "EL_AC", "Academic", "sssssssssssssssssssssssss", null, null));
-        clubs.add(new Club("Swimming", "SW_SP", "Sports", "sssssssssssssssssssss", null,null));
-        clubs.add(new Club("Sinhala Literature Society", "SLS_AC", "Academic", "ssssssssssssssss", null,null));
-        clubs.add(new Club("Badminton", "BA_SP", "Sports", "ddddddddddddddddd",null, null));
-        clubs.add(new Club("Japanese Language Society", "JLS_CU", "Cultural", "dddddddddddddd", null,null));
-        clubs.add(new Club("Cricket", "CR_SP", "Sports", "cccccccccccccccc", null,null));
-        clubs.add(new Club("Information Communication Technology", "ICT_TE", "Technological", "2222222222222222222", null,null));
+        DBQuery dbQuery = new DBQuery();
+        ArrayList<Attendance> attendanceList = dbQuery.getClubListForAttendance();
 
+        if (attendanceList != null) {
+            // Clear existing items in the observable list (if necessary)
+            clubDetails.clear();
 
+            // Extract club names from the Attendance objects
+            List<String> clubNames = attendanceList.stream()
+                    .map(Attendance::getClubName)
+                    .collect(Collectors.toList());
+
+            // Set items to the ChoiceBox
+            clubDetails.addAll(attendanceList);
+            clubChoiceBox.setItems(clubDetails);
+
+            // Set a cell factory to display club names in the ChoiceBox
+            clubChoiceBox.setConverter(new StringConverter<Attendance>() {
+                @Override
+                public String toString(Attendance attendance) {
+                    return attendance.getClubName();
+                }
+
+                @Override
+                public Attendance fromString(String string) {
+                    return null;
+                }
+            });
+
+            // Optionally, set a default value for the ChoiceBox
+            if (!clubDetails.isEmpty()) {
+                clubChoiceBox.setValue(clubDetails.get(0));
+            }
+
+            System.out.println(clubDetails);
+        }
     }
+
 
     @FXML
     private void onDateOrClubSelection(ActionEvent event) {
@@ -61,17 +84,11 @@ public class AttendanceController {
 
     @FXML
     private void onEventSelection(ActionEvent event) {
+        // Handle event selection
     }
+
     @FXML
     private void onSearchButtonClicked(ActionEvent event) {
 
     }
-
-
-
-
-
-
-
-
 }
