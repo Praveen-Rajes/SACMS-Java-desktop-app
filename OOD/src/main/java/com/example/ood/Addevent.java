@@ -107,6 +107,7 @@ public class Addevent {
         LocalDate selectedDate = datePicker.getValue();
         System.out.println(selectedClubName);
         System.out.println(selectedDate);
+        loadDataFromDatabase();
 
     }
 
@@ -151,10 +152,19 @@ public class Addevent {
 
     }
     private void loadDataFromDatabase() {
+        // Clear existing data
+        eventDetails.clear();
+
         DBQuery dbQuery = new DBQuery();
         ArrayList<Event> eventList = dbQuery.getEventList();
+
+        // Add new data to eventDetails
         if (eventList != null) {
             eventDetails.addAll(eventList);
         }
+
+        // Refresh the table
+        viewTable.refresh();
+
     }
 }

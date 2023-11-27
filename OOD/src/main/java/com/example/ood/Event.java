@@ -16,6 +16,9 @@ public class Event {
     private String EendTime ;
     private String EventDescription;
 
+    private String selectedClub;
+
+
     public Event(String eventName) {
         this.EventName=eventName;
     }
