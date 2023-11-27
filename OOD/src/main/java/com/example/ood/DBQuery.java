@@ -8,7 +8,10 @@ public class DBQuery {
     public static void setLoggedInAdvisorId(int loggedInAdvisorId) {
         DBQuery.loggedInAdvisorId = loggedInAdvisorId;
     }
-
+    private static int loggedInStudentId;
+    public static void setLoggedInStudentId(int loggedInStudentId) {
+        DBQuery.loggedInStudentId = loggedInStudentId;
+    }
     public void addClub(Club club){
         String query1 = "INSERT INTO club(clubID, clubName, clubCategory, clubDescription, clubTheme, clubLogo, advisorID) VALUES(?,?,?,?,?,?,?)";
         String query2 = "INSERT INTO advisor_club (advisorID, clubID) VALUES(?,?)";
@@ -306,6 +309,34 @@ public class DBQuery {
         return null;
     }
 
+    public StudentRegistration getStudentById(int studentId) {
+        String query = "SELECT sl.studentID, s.studentFName, s.studentLName, s.dob, s.gender " +
+                "FROM student s " +
+                "JOIN studentlogin sl ON sl.studentID = s.studentID " +
+                "WHERE sl.studentID = ?";
+
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, studentId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                StudentRegistration student = new StudentRegistration();
+                student.setStudentId(resultSet.getInt("studentID"));
+                student.setFirstName(resultSet.getString("studentFName"));
+                student.setLastName(resultSet.getString("studentLName"));
+                student.setDateOfBirth(resultSet.getString("dob"));
+                student.setGender(resultSet.getString("gender"));
+                return student;
+            }
+            System.out.println("Data Retrieval Successful");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public AdvisorRegistration getAdvisorByLogin(int advisorId, String password) {
         String query = "SELECT * FROM advisorlogin WHERE advisorID = ? AND loginPassword = ?";
 
@@ -317,6 +348,26 @@ public class DBQuery {
 
             if (resultSet.next()) {
                 return getAdvisorById(advisorId);
+            }
+            System.out.println("Data Retrieval Successful");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public StudentRegistration getStudentByLogin(int studentId, String password) {
+        String query = "SELECT * FROM studentlogin WHERE studentID = ? AND loginPassword = ?";
+
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, studentId);
+            preparedStatement.setString(2, password);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                return getStudentById(studentId);
             }
             System.out.println("Data Retrieval Successful");
 
@@ -351,22 +402,31 @@ public class DBQuery {
         return null;
     }
 
-    public ArrayList<Event> getClubIDList() {
-        setLoggedInAdvisorId(loggedInAdvisorId);
-        System.out.println(loggedInAdvisorId);
-        String query = "SELECT clubID FROM club WHERE advisorID = "+loggedInAdvisorId+";";
-        ArrayList<Event> EventclubIDList = new ArrayList<>();
+
+    public ArrayList<Attendance> getEventListForAttendance(String selectedDate, String selectedClub) {
+        String query = "SELECT e.eventName, e.eventStartTime, e.eventEndTime FROM events e JOIN club c ON e.clubID = c.clubID WHERE e.eventDate=? AND c.clubName = ?";
+        ArrayList<Attendance> eventList = new ArrayList<>();
 
         try (Connection connection = getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(query);
-             ResultSet resultSet = preparedStatement.executeQuery()) {
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
-            while (resultSet.next()) {
-                Event event = new Event(resultSet.getString("clubID"));
-                // set other attributes as needed
-                EventclubIDList.add(event);
+            preparedStatement.setString(1, selectedDate);
+            preparedStatement.setString(2, selectedClub);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    Attendance attendance = new Attendance(resultSet.getString("eventName"));
+                    resultSet.getString("eventStartTime");
+                    resultSet.getString("eventEndTime");
+                    // Set other attributes as needed
+                    eventList.add(attendance);
+                }
+                return eventList;
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+                System.out.println("Error retrieving event list from the database.");
             }
-            return EventclubIDList;
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -374,6 +434,8 @@ public class DBQuery {
         }
         return null;
     }
+
+
     public void EventInsert(Event event){
         String query = "SELECT clubID FROM club WHERE clubName= ?;";
         String query1 = "INSERT INTO events (eventID,clubID,eventName,eventLocation,eventDate,eventStartTime,eventEndTime,eventDescription) VALUES(?,?,?,?,?,?,?,?);";
@@ -386,17 +448,9 @@ public class DBQuery {
 
 
             preparedStatement.setString(1, event.getSelectedClubName());
-            String clubID = null;
-            // Execute both queries
 
-            try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                // Process the result set
-                if (resultSet.next()) {
-                    // Assuming your_column is a VARCHAR or TEXT column
-                    clubID = resultSet.getString("clubID");
-                    System.out.println(clubID);
-                }
-            }
+            // Execute both queries
+            String clubID = String.valueOf(preparedStatement.executeUpdate());
             preparedStatement1.setString(1, event.getEventID());
             preparedStatement1.setString(2, clubID);
             preparedStatement1.setString(3, event.getEventName());
@@ -452,10 +506,6 @@ public class DBQuery {
         }
         return null;
     }
-
-
-
-
 
     public static Connection getConnection() {
         try {

@@ -32,18 +32,7 @@ public class HelloController {
         previousStage.setScene(new Scene(root, 1200, 750));
 
     }
-    @FXML
-    public void  switchAdvisor (ActionEvent e2) throws IOException {
-        Stage previousStage = (Stage) ((Node) e2.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("advisor_login.fxml"));
-        previousStage.setScene(new Scene(root, 1200, 750));
-    }
-    @FXML
-    public void onSignupButtonClick(ActionEvent e3) throws IOException{
-        Stage previousStage = (Stage) ((Node) e3.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("student_registration.fxml"));
-        previousStage.setScene(new Scene(root, 1200, 750));
-    }
+
     @FXML
     public void onSignupButton2Click(ActionEvent e4) throws IOException{
         Stage previousStage = (Stage) ((Node) e4.getSource()).getScene().getWindow();
@@ -100,6 +89,5 @@ public class HelloController {
         }
     }
 
-    public void onLoginButton2Click(ActionEvent actionEvent) {
-    }
+
 }

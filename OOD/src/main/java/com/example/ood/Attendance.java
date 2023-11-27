@@ -8,17 +8,57 @@ public class Attendance {
     private CheckBox attendance;
     private StudentRegistration student;
     private Club club;
-    private Addevent addEvent;
     private String ClubName;
+    private Event event;
+    private String EventName;
+    private String EstartTime;
+    private String EendTime;
 
-
-
-    public Attendance(CheckBox attendance, StudentRegistration student, Club club, Addevent addEvent, String ClubName) {
+    public Attendance(CheckBox attendance, StudentRegistration student, Club club, String ClubName, Event event, String EventName, String EstartTime, String EendTime) {
         this.attendance = attendance;
         this.student = student;
         this.club = club;
-        this.addEvent = addEvent;
         this.ClubName = ClubName;
+        this.event = event;
+        this.EventName = EventName;
+        this.EstartTime = EstartTime;
+        this.EendTime = EendTime;
+    }
+
+    public String getEventName() {
+        return EventName;
+    }
+
+    public void setEventName(String eventName) {
+        EventName = eventName;
+    }
+
+    public String getEstartTime() {
+        return EstartTime;
+    }
+
+    public void setEstartTime(String estartTime) {
+        EstartTime = estartTime;
+    }
+
+    public String getEendTime() {
+        return EendTime;
+    }
+
+    public void setEendTime(String eendTime) {
+        EendTime = eendTime;
+    }
+
+    public Attendance(Event event) {
+        this.event = event;
+    }
+
+    public Event getEvent() {
+        return event;
+    }
+
+    public void setEvent(Event event) {
+        this.event = event;
     }
 
     public Attendance(String clubName) {
@@ -57,16 +97,15 @@ public class Attendance {
         this.club = club;
     }
 
-    public Addevent getAddEvent() {
-        return addEvent;
-    }
-
-    public void setAddEvent(Addevent addEvent) {
-        this.addEvent = addEvent;
-    }
-
     public ObservableValue<String> clubNameProperty() {
         return new SimpleStringProperty(ClubName);
     }
-}
 
+    public String getEventStartTime() {
+        return event.getEstartTime();
+    }
+
+    public String getEventEndTime() {
+        return event.getEendTime();
+    }
+}
