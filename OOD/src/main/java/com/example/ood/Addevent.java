@@ -108,7 +108,6 @@ public class Addevent {
         String EendTime = String.format("%02d:%02d", endHourSpinner.getValue(), endMinuteSpinner.getValue());
         String EventDescription = eventDesc.getText();
 
-
-
     }
+
 }
