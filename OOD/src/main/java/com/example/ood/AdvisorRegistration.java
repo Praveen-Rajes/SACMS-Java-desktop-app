@@ -1,6 +1,7 @@
 package com.example.ood;
 
 public class AdvisorRegistration extends com.example.ood.Person {
+    public Club club;
     private int advisorId;
     private String advisorPassword = "abc123";
     private int advisorPhone;
@@ -50,5 +51,11 @@ public class AdvisorRegistration extends com.example.ood.Person {
     @Override
     public String getPassword(){return getAdvisorPassword();}
 
+    public Club getClub() {
+        return club;
+    }
 
+    public void setClub(Club club) {
+        this.club = club;
+    }
 }
