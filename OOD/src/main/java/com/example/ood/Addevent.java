@@ -76,9 +76,9 @@ public class Addevent {
 
 
     public void viewDate(ActionEvent actionEvent) {
-        String selectedClubId = (String) clubChoiceBox.getValue();
+        String selectedClubName = (String) clubChoiceBox.getValue();
         LocalDate selectedDate = datePicker.getValue();
-        System.out.println(selectedClubId);
+        System.out.println(selectedClubName);
         System.out.println(selectedDate);
 
     }
@@ -92,6 +92,23 @@ public class Addevent {
         startMinuteSpinner.getValueFactory().setValue(0);
         endHourSpinner.getValueFactory().setValue(0);
         endMinuteSpinner.getValueFactory().setValue(0);
+
+    }
+
+    public void backToAddMenu(ActionEvent actionEvent) {
+    }
+
+    public void addEventSave(ActionEvent actionEvent) {
+        String selectedClubName = (String) clubChoiceBox.getValue();
+        LocalDate selectedDate = datePicker.getValue();
+        String EventID = eventID.getText();
+        String EventName = eventName.getText();
+        String EventLocation = eventLoc.getText();
+        String EstartTime = String.format("%02d:%02d", startHourSpinner.getValue(), startMinuteSpinner.getValue());
+        String EendTime = String.format("%02d:%02d", endHourSpinner.getValue(), endMinuteSpinner.getValue());
+        String EventDescription = eventDesc.getText();
+
+
 
     }
 }

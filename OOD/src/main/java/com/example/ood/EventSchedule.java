@@ -178,7 +178,7 @@ public class EventSchedule implements Initializable {
     public void addEvent(ActionEvent actionEvent) throws IOException {
         Stage previousStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("addevent.fxml"));
-        previousStage.setScene(new Scene(root, 900, 550));
+        previousStage.setScene(new Scene(root, 1200, 750));
 
     }
 }
