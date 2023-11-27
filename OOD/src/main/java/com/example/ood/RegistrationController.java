@@ -75,8 +75,6 @@ public class RegistrationController {
     private ImageView studentImageField;
     @FXML
     private ImageView advisorImageField;
-//    private String userImage = "";
-//    private String userImage2 = "";
 
 
     public void getStudentDetails(){
@@ -116,10 +114,12 @@ public class RegistrationController {
         a1.setGender(advisorGenderField.getText());
         a1.setAddress(advisorAddressField.getText());
         a1.setAdvisorPhone(Integer.parseInt(advisorPhoneField.getText()));
+
         // Set the image path
         String advisorId = advisorIdField.getText();
         Path destinationDirectory = Paths.get("OOD", "src", "main", "resources", "advisorImages");
         Path destinationFilePath = destinationDirectory.resolve(advisorId + ".jpg");
+
         a1.setImagePath(destinationFilePath.toString());
         DBQuery.addAdvisor(a1);
         DBQuery.addAdvisorLogin(a1);
