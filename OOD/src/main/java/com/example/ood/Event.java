@@ -17,6 +17,7 @@ public class Event {
     private String EventDescription;
 
     private String selectedClub;
+    private String clubID;
 
 
     public Event(String eventName) {
@@ -55,6 +56,13 @@ public class Event {
             // Handle the case where advisor is null
             return null; // Or throw an exception, depending on your requirements
         }
+    }
+
+    public void setClub(Club club) {
+        this.club = club;
+    }
+    public void setClubID(String clubId) {
+        this.clubID = clubID;
     }
 
     public LocalDate getSelectedDate() {

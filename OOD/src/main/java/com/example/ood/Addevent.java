@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -78,13 +79,30 @@ public class Addevent {
         endHourSpinner.setValueFactory(valueFactoryEH);
         endMinuteSpinner.setValueFactory(valueFactoryEM);
 
-        String[] items = {"ROTRACT CLUB", "IEEE", "LEO CLUB"};
+        DBQuery dbQuery = new DBQuery();
+        ArrayList<Attendance> items = dbQuery.getClubListForAttendance();
 
         // Create an ObservableList from the array
-        ObservableList<String> observableList = FXCollections.observableArrayList(items);
+        ObservableList<Attendance> observableList = FXCollections.observableArrayList(items);
 
         // Set items to the ChoiceBox
         clubChoiceBox.setItems(observableList);
+        clubChoiceBox.setConverter(new StringConverter<Attendance>() {
+            @Override
+            public String toString(Attendance attendance) {
+                return attendance.getClubName();
+            }
+
+            @Override
+            public Attendance fromString(String string) {
+                return null;
+            }
+        });
+        if (!observableList.isEmpty()) {
+            clubChoiceBox.setValue(observableList.get(0));
+        }
+
+        System.out.println(observableList);
 
         // Table View
         // Set cell value for the table columns
@@ -103,7 +121,7 @@ public class Addevent {
 
 
     public void viewDate(ActionEvent actionEvent) {
-        String selectedClubName = (String) clubChoiceBox.getValue();
+        String selectedClubName = String.valueOf(clubChoiceBox.getValue());
         LocalDate selectedDate = datePicker.getValue();
         System.out.println(selectedClubName);
         System.out.println(selectedDate);
@@ -148,7 +166,9 @@ public class Addevent {
         event.setEendTime(String.format("%02d:%02d", endHourSpinner.getValue(), endMinuteSpinner.getValue()));
         event.setEventDescription(eventDesc.getText());
         event.setSelectedDate(datePicker.getValue());
-        event.setSelectedClubName((String) clubChoiceBox.getValue());
+        event.setSelectedClubName(String.valueOf(clubChoiceBox.getValue()));
+        DBQuery dbQuery = new DBQuery();
+        dbQuery.EventInsert(event);
 
 
     }
@@ -157,7 +177,7 @@ public class Addevent {
         eventDetails.clear();
 
         DBQuery dbQuery = new DBQuery();
-        ArrayList<Event> eventList = dbQuery.getEventList(String.valueOf(datePicker.getValue()),(String) clubChoiceBox.getValue());
+        ArrayList<Event> eventList = dbQuery.getEventList(String.valueOf(datePicker.getValue()), String.valueOf(clubChoiceBox.getValue()));
 
         // Add new data to eventDetails
         if (eventList != null) {

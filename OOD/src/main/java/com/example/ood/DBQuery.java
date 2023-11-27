@@ -351,26 +351,28 @@ public class DBQuery {
         return null;
     }
     public void EventInsert(Event event){
+        String query = "SELECT clubID FROM club WHERE clubName= ?;";
         String query1 = "INSERT INTO events (eventID,clubID,eventName,eventLocation,eventDate,eventStartTime,eventEndTime,eventDescription) VALUES(?,?,?,?,?,?,?,?);";
 
         Connection connection = null;
         try {
             connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
             PreparedStatement preparedStatement1 = connection.prepareStatement(query1);
 
 
+            preparedStatement.setString(1, event.getSelectedClubName());
+
+            // Execute both queries
+            String clubID = String.valueOf(preparedStatement.executeUpdate());
             preparedStatement1.setString(1, event.getEventID());
-            preparedStatement1.setString(2, event.getClubId());
+            preparedStatement1.setString(2, clubID);
             preparedStatement1.setString(3, event.getEventName());
             preparedStatement1.setString(4, event.getEventLocation());
             preparedStatement1.setString(5, String.valueOf(event.getSelectedDate()));
             preparedStatement1.setString(6, event.getEstartTime());  // Verify if this is the correct way to store an image
             preparedStatement1.setString(7, event.getEendTime());
             preparedStatement1.setString(8, event.getEventDescription());
-
-
-
-            // Execute both queries
             preparedStatement1.executeUpdate();
 
 
@@ -378,7 +380,7 @@ public class DBQuery {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("Error adding club to the database.");
+            System.out.println("Error adding event to the database."+e.getMessage());
         } finally {
             try {
                 if (connection != null && !connection.isClosed()) {

@@ -183,7 +183,7 @@ public class EventSchedule implements Initializable {
             stage.setTitle("Club Details");
             stage.setScene(scene);
 
-            stage.showAndWait();
+            stage.show();
 
         } catch (IOException e) {
             e.printStackTrace();
