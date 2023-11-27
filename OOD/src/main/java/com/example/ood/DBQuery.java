@@ -350,6 +350,30 @@ public class DBQuery {
         }
         return null;
     }
+
+    public ArrayList<Event> getClubIDList() {
+        setLoggedInAdvisorId(loggedInAdvisorId);
+        System.out.println(loggedInAdvisorId);
+        String query = "SELECT clubID FROM club WHERE advisorID = "+loggedInAdvisorId+";";
+        ArrayList<Event> EventclubIDList = new ArrayList<>();
+
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+
+            while (resultSet.next()) {
+                Event event = new Event(resultSet.getString("clubID"));
+                // set other attributes as needed
+                EventclubIDList.add(event);
+            }
+            return EventclubIDList;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error retrieving club list from the database.");
+        }
+        return null;
+    }
     public void EventInsert(Event event){
         String query = "SELECT clubID FROM club WHERE clubName= ?;";
         String query1 = "INSERT INTO events (eventID,clubID,eventName,eventLocation,eventDate,eventStartTime,eventEndTime,eventDescription) VALUES(?,?,?,?,?,?,?,?);";
@@ -362,9 +386,17 @@ public class DBQuery {
 
 
             preparedStatement.setString(1, event.getSelectedClubName());
-
+            String clubID = null;
             // Execute both queries
-            String clubID = String.valueOf(preparedStatement.executeUpdate());
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                // Process the result set
+                if (resultSet.next()) {
+                    // Assuming your_column is a VARCHAR or TEXT column
+                    clubID = resultSet.getString("clubID");
+                    System.out.println(clubID);
+                }
+            }
             preparedStatement1.setString(1, event.getEventID());
             preparedStatement1.setString(2, clubID);
             preparedStatement1.setString(3, event.getEventName());
@@ -420,6 +452,8 @@ public class DBQuery {
         }
         return null;
     }
+
+
 
 
 

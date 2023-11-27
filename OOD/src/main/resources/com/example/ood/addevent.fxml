@@ -21,11 +21,11 @@
       <DatePicker fx:id="datePicker" layoutX="211.0" layoutY="200.0" prefHeight="25.0" prefWidth="200.0" />
       <TableView fx:id="viewTable" layoutX="11.0" layoutY="252.0" prefHeight="412.0" prefWidth="868.0">
          <columns>
-            <TableColumn fx:id="eventid" prefWidth="261.0" text="EVENT_ID" />
-            <TableColumn fx:id="eventname" prefWidth="306.0" text="EVENT_NAME" />
-            <TableColumn fx:id="clubid" minWidth="0.0" prefWidth="300.0" text="CLUB_ID" />
+            <TableColumn prefWidth="261.0" text="EVENT_ID" />
+            <TableColumn prefWidth="306.0" text="EVENT_NAME" />
+            <TableColumn minWidth="0.0" prefWidth="300.0" text="CLUB_ID" />
          </columns></TableView>
-      <Button layoutX="603.0" layoutY="200.0" mnemonicParsing="false" onAction="#viewDate" text="VIEW DATE" />
+      <Button layoutX="616.0" layoutY="200.0" mnemonicParsing="false" onAction="#viewDate" text="VIEW DATE" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="412.0" layoutX="889.0" layoutY="252.0" stroke="BLACK" strokeType="INSIDE" width="294.0" />
       <ChoiceBox fx:id="clubChoiceBox" layoutX="443.0" layoutY="200.0" prefWidth="150.0" />
       <TextArea fx:id="eventDesc" layoutX="910.0" layoutY="346.0" prefHeight="85.0" prefWidth="258.0" promptText="Event Description ...." />
@@ -67,6 +67,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Text>
+      <TextField fx:id="ClubIDField" layoutX="708.0" layoutY="200.0" />
       
       
    </children>
