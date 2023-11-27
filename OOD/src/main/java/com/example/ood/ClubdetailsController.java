@@ -148,6 +148,12 @@ public class ClubdetailsController {
             // You may want to show a message to the user or take other actions
             return;
         }
+        if (description.length() > 1000) {
+            System.out.println("Description exceeds 1000 characters.");
+            alert.setText("Description should be less than 1000 characters.");
+            // You may want to show a message to the user or take other actions
+            return;
+        }
 
         Club club = new Club(clubName, clubID, category, description, theme, selectedImage, loggedInAdvisorId);
 
