@@ -176,7 +176,7 @@ public class DBQuery {
             preparedStatement2.setString(1, guardianDetails.getGuardianName());
             preparedStatement2.setInt(2, guardianDetails.getGuardianPhone());
             preparedStatement2.setString(3, guardianDetails.getGuardianEmail());
-            preparedStatement2.setInt(4, student.getStudentId());
+            preparedStatement2.setInt(4, guardianDetails.getStudentID());
 
             preparedStatement1.executeUpdate();
             preparedStatement2.executeUpdate();

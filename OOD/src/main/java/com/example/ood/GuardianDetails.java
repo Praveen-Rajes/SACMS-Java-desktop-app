@@ -1,18 +1,32 @@
 package com.example.ood;
 
 public class GuardianDetails {
-
+    private int studentID;
     private String guardianName;
     private int guardianPhone;
     private String guardianEmail;
 
-    public GuardianDetails(String guardianName, int guardianPhone, String guardianEmail) {
-        this.guardianName = guardianName;
-        this.guardianPhone = guardianPhone;
-        this.guardianEmail = guardianEmail;
+//    public GuardianDetails(String guardianName, int guardianPhone, String guardianEmail) {
+//        this.guardianName = guardianName;
+//        this.guardianPhone = guardianPhone;
+//        this.guardianEmail = guardianEmail;
+//    }
+
+    public GuardianDetails(int studentID,String guardianName,int guardianPhone,String guardianEmail){
+        this.studentID = studentID;
+        this.guardianName=guardianName;
+        this.guardianPhone=guardianPhone;
+        this.guardianEmail=guardianEmail;
+    }
+    public GuardianDetails() {}
+
+    public int getStudentID() {
+        return studentID;
     }
 
-    public GuardianDetails() {}
+    public void setStudentID(int studentID) {
+        this.studentID = studentID;
+    }
 
     public String getGuardianName() {
         return guardianName;

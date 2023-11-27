@@ -39,7 +39,7 @@ public class StudentRegistration extends com.example.ood.Person {
 
     public StudentRegistration(int studentId,String guardianName,int guardianPhone,String guardianEmail){
         this.studentId=studentId;
-        guardian = new GuardianDetails(guardianName,guardianPhone,guardianEmail);
+        guardian = new GuardianDetails(studentId,guardianName,guardianPhone,guardianEmail);
     }
 
     public GuardianDetails getGuardian() {

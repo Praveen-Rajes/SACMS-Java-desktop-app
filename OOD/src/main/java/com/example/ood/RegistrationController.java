@@ -80,23 +80,30 @@ public class RegistrationController {
 
 
     public void getStudentDetails(){
+        int parsedStudentId = Integer.parseInt(studentIdField.getText());
+
         GuardianDetails g1 = new GuardianDetails();
+        g1.setStudentID(parsedStudentId);
         g1.setGuardianName(studentGuardianNameField.getText());
         g1.setGuardianPhone(Integer.parseInt(studentGuardianPhoneField.getText()));
         g1.setGuardianEmail(studentGuardianEmailField.getText());
+
         StudentRegistration s1 = new StudentRegistration();
-        s1.setStudentId(Integer.parseInt(studentIdField.getText()));
+        s1.setStudentId(parsedStudentId);
         s1.setFirstName(studentFNameField.getText());
         s1.setLastName(studentLNameField.getText());
         s1.setDateOfBirth(studentDOBField.getText());
         s1.setGender(studentGenderField.getText());
         s1.setAddress(studentAddressField.getText());
         s1.setStudentGradeClass(studentGradeClassField.getText());
+
         // Set the image path
         String studentId = studentIdField.getText();
         Path destinationDirectory = Paths.get("OOD", "src", "main", "resources", "studentImages");
         Path destinationFilePath = destinationDirectory.resolve(studentId + ".jpg");
         s1.setImagePath(destinationFilePath.toString());
+
+        s1.setGuardian(g1);
         DBQuery.addStudent(s1);
         DBQuery.addStudentLogin(s1);
     }
