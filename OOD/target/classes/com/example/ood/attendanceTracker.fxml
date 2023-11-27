@@ -15,9 +15,9 @@
    <left>
       <AnchorPane prefHeight="700.0" prefWidth="404.0" style="-fx-background-color: white; -fx-border-color: #0598ff; -fx-border-width: 0px 3px 0px 0px;" BorderPane.alignment="CENTER">
          <children>
-            <DatePicker fx:id="datePicker" layoutX="191.0" layoutY="206.0" maxHeight="40.0" maxWidth="181.0" onAction="#onDateOrClubSelection" prefHeight="40.0" prefWidth="181.0" />
-            <ChoiceBox fx:id="clubChoiceBox" layoutX="191.0" layoutY="274.0" onAction="#onDateOrClubSelection" prefHeight="26.0" prefWidth="175.0" />
-            <ChoiceBox fx:id="eventChoiceBox" layoutX="191.0" layoutY="348.0" onAction="#onEventSelection" prefHeight="26.0" prefWidth="175.0" />
+            <DatePicker fx:id="datePicker" layoutX="191.0" layoutY="206.0" maxHeight="40.0" maxWidth="181.0"  prefHeight="40.0" prefWidth="181.0" />
+            <ChoiceBox fx:id="clubChoiceBox" layoutX="191.0" layoutY="274.0"  prefHeight="26.0" prefWidth="175.0" />
+            <ChoiceBox fx:id="eventChoiceBox" layoutX="191.0" layoutY="348.0"  prefHeight="26.0" prefWidth="175.0" />
             <TextField fx:id="startTime" layoutX="191.0" layoutY="420.0" />
             <TextField fx:id="endTime" layoutX="192.0" layoutY="505.0" />
             <Button fx:id="update" layoutX="255.0" layoutY="608.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="77.0" style="-fx-background-color: #0598ff;" text="Update">
@@ -25,7 +25,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="search" layoutX="59.0" layoutY="608.0" mnemonicParsing="false" onAction="#onSearchButtonClicked" prefHeight="35.0" prefWidth="77.0" style="-fx-background-color: #0598ff;" text="Search">
+            <Button fx:id="search" layoutX="59.0" layoutY="608.0" mnemonicParsing="false"  prefHeight="35.0" prefWidth="77.0" style="-fx-background-color: #0598ff;" text="Search">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>

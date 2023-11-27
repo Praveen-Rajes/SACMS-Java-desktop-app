@@ -17,7 +17,7 @@ public class AttendanceController {
     @FXML
     public ChoiceBox<Attendance> clubChoiceBox;
     @FXML
-    public ChoiceBox<String> eventChoiceBox;
+    public ChoiceBox<Attendance> eventChoiceBox;
     @FXML
     public TextField startTime;
     @FXML
@@ -34,8 +34,13 @@ public class AttendanceController {
     public TableColumn studentNameColumn;
     @FXML
     public TableColumn attendanceColumn;
+    private String selectedDate;
+    private String selectedClub;
+
 
     private final ObservableList<Attendance> clubDetails = FXCollections.observableArrayList();
+
+    private final ObservableList<Attendance> eventDetails = FXCollections.observableArrayList();
 
     @FXML
     private void initialize() {
@@ -73,22 +78,43 @@ public class AttendanceController {
                 clubChoiceBox.setValue(clubDetails.get(0));
             }
 
-            System.out.println(clubDetails);
+            // Add a change listener to the DatePicker
+            datePicker.valueProperty().addListener((observable, oldValue, newValue) -> {
+                if (newValue != null) {
+                    selectedDate = newValue.toString();
+                    System.out.println("Selected Date: " + selectedDate);
+                }
+            });
+
+            // Add a change listener to the clubChoiceBox
+            clubChoiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+                if (newValue != null) {
+                    selectedClub = newValue.getClubName();
+                    System.out.println("Selected Club: " + selectedClub);
+                } else {
+                    System.out.println("Null");
+                }
+            });
         }
-    }
 
+        DBQuery dbQueryForEvents = new DBQuery();
+        ArrayList<Attendance> eventList = dbQueryForEvents.getEventListForAttendance(selectedDate, selectedClub);
 
-    @FXML
-    private void onDateOrClubSelection(ActionEvent event) {
-    }
+        if (eventList != null) {
+            // Clear existing items in the observable list (if necessary)
+            eventDetails.clear();
 
-    @FXML
-    private void onEventSelection(ActionEvent event) {
-        // Handle event selection
-    }
+            // Extract club names from the Attendance objects
+            List<String> eventNames = attendanceList.stream()
+                    .map(Attendance::getClubName)
+                    .collect(Collectors.toList());
 
-    @FXML
-    private void onSearchButtonClicked(ActionEvent event) {
+            // Set items to the ChoiceBox
+            eventDetails.addAll(attendanceList);
+            eventChoiceBox.setItems(eventDetails);
 
+            System.out.println(eventDetails);
+
+        }
     }
 }
