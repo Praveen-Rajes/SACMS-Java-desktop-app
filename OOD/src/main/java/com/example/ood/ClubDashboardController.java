@@ -28,11 +28,12 @@ public class ClubDashboardController implements Initializable {
     @FXML
     private Button attendance;
     @FXML
+    private Button event;
+    @FXML
     private Button logout;
     @FXML
     private AnchorPane contentArea;
-    @FXML
-    private AnchorPane slider;
+
 
     private ClubHomeController homeController;
     private HelloController helloController;
@@ -53,6 +54,10 @@ public class ClubDashboardController implements Initializable {
     @FXML
     private void showClubPart() {
         loadFXML("ClubHome.fxml");
+    }
+    @FXML
+    private void showEventPart() {
+        loadFXML("EventSchedule.fxml");
     }
 
 
@@ -103,6 +108,9 @@ public class ClubDashboardController implements Initializable {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+        });
+        event.setOnMouseClicked(event -> {
+            showEventPart();
         });
     }
 

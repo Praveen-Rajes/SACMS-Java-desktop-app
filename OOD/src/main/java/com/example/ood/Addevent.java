@@ -4,8 +4,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.time.LocalDate;
 
 public class Addevent {
@@ -39,6 +43,8 @@ public class Addevent {
 
     @FXML
     private TextField eventName;
+    @FXML
+    private Button backToMenu;
 
 
     @FXML
@@ -95,7 +101,18 @@ public class Addevent {
 
     }
 
-    public void backToAddMenu(ActionEvent actionEvent) {
+    public void backToAddMenu(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("clubdashboard.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1200, 750);
+        Stage stage = new Stage();
+        stage.setTitle("Club Dashboard");
+        stage.setScene(scene);
+        Stage currentstage = (Stage) backToMenu.getScene().getWindow();
+
+        // Close the stage
+        currentstage.close();
+        stage.show();
+
     }
 
     public void addEventSave(ActionEvent actionEvent) {

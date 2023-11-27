@@ -390,7 +390,7 @@ public class DBQuery {
         }
     }
     public ArrayList<Event> getEventList() {
-        String query = "SELECT eventName,eventID,eventDate FROM events";
+        String query = "SELECT e.clubID, e.eventName, e.eventID FROM events e JOIN club c ON e.clubID = c.clubID WHERE c.clubName = ?";
         ArrayList<Event> eventList = new ArrayList<>();
 
         try (Connection connection = getConnection();
