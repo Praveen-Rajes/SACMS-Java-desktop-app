@@ -100,4 +100,6 @@ public class HelloController {
         }
     }
 
+    public void onLoginButton2Click(ActionEvent actionEvent) {
+    }
 }
