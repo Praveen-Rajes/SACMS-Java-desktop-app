@@ -390,7 +390,7 @@ public class DBQuery {
         }
     }
     public ArrayList<Event> getEventList() {
-        String query = "SELECT e.clubID, e.eventName, e.eventID FROM events e JOIN club c ON e.clubID = c.clubID WHERE c.clubName = ?";
+        String query = "SELECT e.clubID, e.eventName, e.eventID FROM events e JOIN club c ON e.clubID = c.clubID WHERE e.eventDate=? & c.clubName = ?";
         ArrayList<Event> eventList = new ArrayList<>();
 
         try (Connection connection = getConnection();
@@ -400,7 +400,7 @@ public class DBQuery {
             while (resultSet.next()) {
                 Event event = new Event(resultSet.getString("eventName"));
                 resultSet.getString("eventID");
-                resultSet.getString("eventDate");
+                resultSet.getString("clubID");
                 // set other attributes as needed
                 eventList.add(event);
             }
