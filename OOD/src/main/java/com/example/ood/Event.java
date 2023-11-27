@@ -1,5 +1,8 @@
 package com.example.ood;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
+
 import java.time.LocalDate;
 
 public class Event {
@@ -12,6 +15,9 @@ public class Event {
     private String EstartTime ;
     private String EendTime ;
     private String EventDescription;
+
+    private String selectedClub;
+
 
     public Event(String eventName) {
         this.EventName=eventName;
@@ -105,5 +111,17 @@ public class Event {
 
     public void setEventDescription(String eventDescription) {
         EventDescription = eventDescription;
+    }
+
+    public ObservableValue<String> eventIDProperty() {
+        return new SimpleStringProperty(EventID);
+    }
+
+    public ObservableValue<String> eventNameProperty() {
+        return new SimpleStringProperty(EventName);
+    }
+
+    public ObservableValue<String> clubProperty() {
+        return new SimpleStringProperty();
     }
 }
