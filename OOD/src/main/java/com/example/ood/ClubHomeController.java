@@ -51,10 +51,43 @@ public class ClubHomeController {
         // Bind the table view to the observable list
         loadDataFromDatabase();
         tableView.setItems(clubDetails);
+        tableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                openClubProfile(newValue);
+            }
+        });
     }
+    private void openClubProfile(Club selectedClub) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ClubProfile.fxml"));
+            Parent root = fxmlLoader.load();
+
+            ClubProfileController clubProfileController = fxmlLoader.getController();
+            clubProfileController.setHomeController(this); // Set a reference to HomeController
+            clubProfileController.setClubDetails(selectedClub); // Pass the selected club details
+
+            Stage stage = new Stage();
+            stage.setTitle("Club Profile");
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void removeClub(Club club) {
+        clubDetails.remove(club);
+
+    }
+
 
     public void addClubDetail(Club club) {
         clubDetails.add(club);
+    }
+    public ObservableList<Club>  getClubDetails() {
+        // Implement this method to return the list of club details
+        return clubDetails;
     }
 
     @FXML
@@ -82,13 +115,5 @@ public class ClubHomeController {
             clubDetails.addAll(clubList);
         }
     }
-
-
-
-
-
-
-
-
 
 }
