@@ -99,15 +99,22 @@ public class Addevent {
     }
 
     public void addEventSave(ActionEvent actionEvent) {
-        String selectedClubName = (String) clubChoiceBox.getValue();
-        LocalDate selectedDate = datePicker.getValue();
-        String EventID = eventID.getText();
-        String EventName = eventName.getText();
-        String EventLocation = eventLoc.getText();
-        String EstartTime = String.format("%02d:%02d", startHourSpinner.getValue(), startMinuteSpinner.getValue());
-        String EendTime = String.format("%02d:%02d", endHourSpinner.getValue(), endMinuteSpinner.getValue());
-        String EventDescription = eventDesc.getText();
+
+        getEventDetails();
 
     }
 
+    public void getEventDetails(){
+        Event event = new Event();
+        event.setEventID(eventID.getText());
+        event.setEventName(eventName.getText());
+        event.setEventLocation(eventLoc.getText());
+        event.setEstartTime(String.format("%02d:%02d", startHourSpinner.getValue(), startMinuteSpinner.getValue()));
+        event.setEendTime(String.format("%02d:%02d", endHourSpinner.getValue(), endMinuteSpinner.getValue()));
+        event.setEventDescription(eventDesc.getText());
+        event.setSelectedDate(datePicker.getValue());
+        event.setSelectedClubName((String) clubChoiceBox.getValue());
+
+
+    }
 }

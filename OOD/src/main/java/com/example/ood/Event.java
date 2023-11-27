@@ -23,6 +23,9 @@ public class Event {
         EventDescription = eventDescription;
     }
 
+    public Event() {
+    }
+
     public String getSelectedClubName() {
         return selectedClubName;
     }
