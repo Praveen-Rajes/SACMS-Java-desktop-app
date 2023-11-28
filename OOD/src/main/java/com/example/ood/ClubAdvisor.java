@@ -1,21 +1,21 @@
 package com.example.ood;
 
-public class AdvisorRegistration extends com.example.ood.Person {
+public class ClubAdvisor extends com.example.ood.Person {
     public Club club;
     private int advisorId;
     private String advisorPassword = "abc123";
     private int advisorPhone;
 
-    public AdvisorRegistration(int advisorId,String firstName,String lastName,String dateOfBirth,String gender,String address,int advisorPhone,String advisorPassword,String imagePath){
+    public ClubAdvisor(int advisorId, String firstName, String lastName, String dateOfBirth, String gender, String address, int advisorPhone, String advisorPassword, String imagePath){
         super(firstName,lastName,dateOfBirth,gender,address,imagePath);
         this.advisorId=advisorId;
         this.advisorPassword = advisorPassword;
         this.advisorPhone=advisorPhone;
     }
 
-    public AdvisorRegistration() {}
+    public ClubAdvisor() {}
 
-    public AdvisorRegistration(int advisorID) {
+    public ClubAdvisor(int advisorID) {
         this.advisorId =advisorID;
     }
 

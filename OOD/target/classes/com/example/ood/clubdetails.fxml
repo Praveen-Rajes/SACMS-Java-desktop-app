@@ -10,19 +10,19 @@
    <right>
       <AnchorPane prefHeight="700.0" prefWidth="662.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="clubNameTextField" layoutX="386.0" layoutY="206.0" prefHeight="28.0" prefWidth="300.0" promptText="Club Name" style="-fx-background-color: transparent; -fx-border-color: #0A4969; -fx-border-width: 0px 0px 2px 0px;" />
-            <Button fx:id="continueButton" layoutX="498.0" layoutY="614.0" mnemonicParsing="false" onAction="#onOkButtonClick" prefHeight="37.0" prefWidth="74.0" style="-fx-background-color: #0A4969;" text="Continue" textFill="WHITE" />
+            <TextField fx:id="clubNameTextField" layoutX="386.0" layoutY="224.0" prefHeight="28.0" prefWidth="300.0" promptText="Club Name" style="-fx-background-color: transparent; -fx-border-color: #0A4969; -fx-border-width: 0px 0px 2px 0px;" />
+            <Button fx:id="continueButton" layoutX="498.0" layoutY="632.0" mnemonicParsing="false" onAction="#onOkButtonClick" prefHeight="37.0" prefWidth="74.0" style="-fx-background-color: #0A4969;" text="Continue" textFill="WHITE" />
             <Text fill="#0a4969" layoutX="456.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Club Details">
                <font>
                   <Font size="30.0" />
                </font>
             </Text>
             <FontIcon iconColor="#0a4969" iconLiteral="fas-house-user" iconSize="60" layoutX="501.0" layoutY="113.0" />
-            <ChoiceBox fx:id="categoryChoiceBox" layoutX="386.0" layoutY="259.0" prefHeight="28.0" prefWidth="300.0" style="-fx-background-color: transparent; -fx-border-color: #0A4969; -fx-border-width: 0px 0px 2px 0px;" value="Select a Category" />
-            <TextArea fx:id="descriptionTextArea" layoutX="386.0" layoutY="330.0" prefHeight="100.0" prefWidth="300.0" promptText="Club Depscription" style="-fx-background-color: transparent; -fx-border-color: #0A4969; -fx-border-width: 0px 0px 2px 0px;" />
-            <TextField fx:id="clubIDField" editable="false" layoutX="386.0" layoutY="534.0" prefHeight="28.0" prefWidth="300.0" promptText="Club ID" style="-fx-background-color: transparent; -fx-border-color: #0A4969; -fx-border-width: 0px 0px 2px 0px;" />
-            <ColorPicker fx:id="ThemeField" layoutX="386.0" layoutY="474.0" prefHeight="26.0" prefWidth="300.0" promptText="Select Club Theme" style="-fx-background-color: transparent; -fx-border-color: #0A4969; -fx-border-width: 0px 0px 2px 0px;" />
-            <Text fill="#b1a4a4" layoutX="393.0" layoutY="471.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Club Theme" />
+            <ChoiceBox fx:id="categoryChoiceBox" layoutX="386.0" layoutY="277.0" prefHeight="28.0" prefWidth="300.0" style="-fx-background-color: transparent; -fx-border-color: #0A4969; -fx-border-width: 0px 0px 2px 0px;" value="Select a Category" />
+            <TextArea fx:id="descriptionTextArea" layoutX="386.0" layoutY="348.0" prefHeight="100.0" prefWidth="300.0" promptText="Club Depscription" style="-fx-background-color: transparent; -fx-border-color: #0A4969; -fx-border-width: 0px 0px 2px 0px;" />
+            <TextField fx:id="clubIDField" editable="false" layoutX="386.0" layoutY="552.0" prefHeight="28.0" prefWidth="300.0" promptText="Club ID" style="-fx-background-color: transparent; -fx-border-color: #0A4969; -fx-border-width: 0px 0px 2px 0px;" />
+            <ColorPicker fx:id="ThemeField" layoutX="386.0" layoutY="492.0" prefHeight="26.0" prefWidth="300.0" promptText="Select Club Theme" style="-fx-background-color: transparent; -fx-border-color: #0A4969; -fx-border-width: 0px 0px 2px 0px;" />
+            <Text fill="#b1a4a4" layoutX="393.0" layoutY="489.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Club Theme" />
             <AnchorPane layoutX="-367.0" prefHeight="750.0" prefWidth="487.0" style="-fx-background-color: #0A4969;">
                <children>
                   <Pane layoutX="109.0" layoutY="147.0" prefHeight="277.0" prefWidth="284.0" style="-fx-background-color: transparent; -fx-border-color: #ffffff; -fx-border-style: dotted; -fx-border-width: 2px 2px 2px 2px;">
@@ -56,6 +56,11 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
+            <Label fx:id="alert" layoutX="376.0" layoutY="173.0" prefHeight="34.0" prefWidth="320.0" textAlignment="CENTER" textFill="RED">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </right>

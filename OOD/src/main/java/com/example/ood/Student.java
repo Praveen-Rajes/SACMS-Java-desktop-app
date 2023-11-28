@@ -2,20 +2,20 @@ package com.example.ood;
 
 import java.util.ArrayList;
 
-public class StudentRegistration extends com.example.ood.Person {
+public class Student extends com.example.ood.Person {
     private int studentId;
     private String studentPassword = "abc123";
     private String studentGradeClass;
     private GuardianDetails guardian;
     private ArrayList<Club> clublist = new ArrayList<>();
 
-    public StudentRegistration(int studentId,String firstName,String lastName,String dateOfBirth,String gender,String address,String studentGradeClass,String studentPassword,String imagePath){
+    public Student(int studentId, String firstName, String lastName, String dateOfBirth, String gender, String address, String studentGradeClass, String studentPassword, String imagePath){
         super(firstName,lastName,dateOfBirth,gender,address,imagePath);
         this.studentId=studentId;
         this.studentPassword=studentPassword;
         this.studentGradeClass=studentGradeClass;
     }
-    public StudentRegistration(int studentId,ArrayList<Club> clublist){
+    public Student(int studentId, ArrayList<Club> clublist){
         this.studentId =studentId;
         this.clublist = clublist;
     }
@@ -32,12 +32,12 @@ public class StudentRegistration extends com.example.ood.Person {
         clublist.remove(c);
     }
 
-    public StudentRegistration() {
+    public Student() {
         super();
         this.guardian = new GuardianDetails();
     }
 
-    public StudentRegistration(int studentId,String guardianName,int guardianPhone,String guardianEmail){
+    public Student(int studentId, String guardianName, int guardianPhone, String guardianEmail){
         this.studentId=studentId;
         guardian = new GuardianDetails(studentId,guardianName,guardianPhone,guardianEmail);
     }

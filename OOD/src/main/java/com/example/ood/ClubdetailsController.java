@@ -20,6 +20,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.Random;
 
 public class ClubdetailsController {
 
@@ -41,6 +42,8 @@ public class ClubdetailsController {
     private Button continueButton;
     @FXML
     private Button backButton;
+    @FXML
+    private Label alert;
     private Image selectedImage;
     private static int loggedInAdvisorId;
     private ClubHomeController homeController;
@@ -84,10 +87,12 @@ public class ClubdetailsController {
             // Generate the club ID and display it in the clubIDField
             String generatedClubID = generateClubID(clubName, category);
             clubIDField.setText(generatedClubID);
+
         } else {
 
             clubIDField.setText("Enter Club Name and Category to generate a club ID");
         }
+
     }
 
 
@@ -130,11 +135,27 @@ public class ClubdetailsController {
         String category = categoryChoiceBox.getValue();
         String description = descriptionTextArea.getText();
         Color theme = ThemeField.getValue();
-
-
         String clubID = clubIDField.getText();
 
-        Club club = new Club(clubName, clubID, category, description, theme,selectedImage, loggedInAdvisorId);
+        // Check if the clubId already exists in the database
+        if (isClubIdExists(clubID)) {
+            Random random = new Random();
+            System.out.println("Club ID already exists in the database.");
+            alert.setText("Club ID changed! Press Continue.");
+            String currentclubid = clubIDField.getText();
+            int randomInRange = random.nextInt(100); // Example: generates a random number between 0 and 99
+            clubIDField.setText(randomInRange+"_"+currentclubid);
+            // You may want to show a message to the user or take other actions
+            return;
+        }
+        if (description.length() > 1000) {
+            System.out.println("Description exceeds 1000 characters.");
+            alert.setText("Description should be less than 1000 characters.");
+            // You may want to show a message to the user or take other actions
+            return;
+        }
+
+        Club club = new Club(clubName, clubID, category, description, theme, selectedImage, loggedInAdvisorId);
 
         if (selectedImage != null) {
             club.setLogoImage(selectedImage);
@@ -144,6 +165,17 @@ public class ClubdetailsController {
         dbQuery.addClub(club);
         homeController.addClubDetail(club);
 
+        Stage stage = (Stage) continueButton.getScene().getWindow();
+
+        // Close the stage
+        stage.close();
+    }
+    private boolean isClubIdExists(String clubID) {
+        // Implement your logic to check if the clubId exists in the database
+        // You may need to query the database or use some other method based on your DB implementation
+        // For demonstration purposes, assuming a method `checkClubIdExists` in DBQuery class
+        DBQuery dbQuery = new DBQuery();
+        return dbQuery.checkClubIdExists(clubID);
     }
 
 

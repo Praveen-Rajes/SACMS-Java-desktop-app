@@ -114,7 +114,26 @@ public class DBQuery {
             // Handle the exception appropriately, e.g., show an error message to the user
         }
     }
+    public boolean checkClubIdExists(String clubId) {
+        String query = "SELECT COUNT(*) FROM club WHERE clubID = ?";
 
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, clubId);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    int count = resultSet.getInt(1);
+                    return count > 0;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle the exception appropriately, e.g., show an error message to the user
+        }
+
+        return false; // Default to false in case of an error
+    }
 
 
     public Club getClub() {
@@ -154,7 +173,7 @@ public class DBQuery {
         return null;
     }
 
-    public static void addStudent(StudentRegistration student){
+    public static void addStudent(Student student){
         String query1 = "INSERT INTO student(studentID, studentFName, studentLName, dob, gender, address, gradeClass) VALUES(?,?,?,?,?,?,?)";
         String query2 = "INSERT INTO guardian (gaurdianName, phoneNo, email, studentID) VALUES(?,?,?,?)";
 
@@ -195,7 +214,7 @@ public class DBQuery {
             }
         }
     }
-    public static void addAdvisor(AdvisorRegistration advisor){
+    public static void addAdvisor(ClubAdvisor advisor){
         String query1 = "INSERT INTO clubadvisor(advisorID, advisorFirstName, advisorLastName, advisorDOB, advisorGender, advisorAddress, advisorPhone) VALUES(?,?,?,?,?,?,?)";
 
 
@@ -228,7 +247,7 @@ public class DBQuery {
             }
         }
     }
-    public static void addStudentLogin(StudentRegistration student) {
+    public static void addStudentLogin(Student student) {
         String query1 = "INSERT INTO studentlogin(studentId, loginPassword) VALUES(?, ?)";
 
         Connection connection = null;
@@ -238,7 +257,7 @@ public class DBQuery {
 
             preparedStatement1.setInt(1, student.getStudentId());
 
-            // Assuming you have a method getPassword() in StudentRegistration class
+            // Assuming you have a method getPassword() in Student class
             preparedStatement1.setString(2, student.getPassword());
 
             preparedStatement1.executeUpdate();
@@ -256,7 +275,7 @@ public class DBQuery {
             }
         }
     }
-    public static void addAdvisorLogin(AdvisorRegistration advisor) {
+    public static void addAdvisorLogin(ClubAdvisor advisor) {
         String query1 = "INSERT INTO advisorlogin(advisorId, loginPassword) VALUES(?, ?)";
 
         Connection connection = null;
@@ -266,7 +285,7 @@ public class DBQuery {
 
             preparedStatement1.setInt(1, advisor.getAdvisorId());
 
-            // Assuming you have a method getPassword() in StudentRegistration class
+            // Assuming you have a method getPassword() in Student class
             preparedStatement1.setString(2, advisor.getPassword());
 
             preparedStatement1.executeUpdate();
@@ -284,7 +303,7 @@ public class DBQuery {
             }
         }
     }
-    public AdvisorRegistration getAdvisorById(int advisorId) {
+    public ClubAdvisor getAdvisorById(int advisorId) {
         String query = "SELECT al.advisorID, a.advisorFirstName, a.advisorLastName " +
                 "FROM clubadvisor a " +
                 "JOIN advisorlogin al ON al.advisorID = a.advisorID " +
@@ -296,7 +315,7 @@ public class DBQuery {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
-                AdvisorRegistration advisor = new AdvisorRegistration(resultSet.getInt("advisorID"));
+                ClubAdvisor advisor = new ClubAdvisor(resultSet.getInt("advisorID"));
                 advisor.setFirstName(resultSet.getString("advisorFirstName"));
                 advisor.setLastName(resultSet.getString("advisorLastName"));
                 return advisor;
@@ -309,7 +328,7 @@ public class DBQuery {
         return null;
     }
 
-    public StudentRegistration getStudentById(int studentId) {
+    public Student getStudentById(int studentId) {
         String query = "SELECT sl.studentID, s.studentFName, s.studentLName, s.dob, s.gender " +
                 "FROM student s " +
                 "JOIN studentlogin sl ON sl.studentID = s.studentID " +
@@ -321,7 +340,7 @@ public class DBQuery {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
-                StudentRegistration student = new StudentRegistration();
+                Student student = new Student();
                 student.setStudentId(resultSet.getInt("studentID"));
                 student.setFirstName(resultSet.getString("studentFName"));
                 student.setLastName(resultSet.getString("studentLName"));
@@ -337,7 +356,7 @@ public class DBQuery {
         return null;
     }
 
-    public AdvisorRegistration getAdvisorByLogin(int advisorId, String password) {
+    public ClubAdvisor getAdvisorByLogin(int advisorId, String password) {
         String query = "SELECT * FROM advisorlogin WHERE advisorID = ? AND loginPassword = ?";
 
         try (Connection connection = getConnection();
@@ -357,7 +376,7 @@ public class DBQuery {
         return null;
     }
 
-    public StudentRegistration getStudentByLogin(int studentId, String password) {
+    public Student getStudentByLogin(int studentId, String password) {
         String query = "SELECT * FROM studentlogin WHERE studentID = ? AND loginPassword = ?";
 
         try (Connection connection = getConnection();

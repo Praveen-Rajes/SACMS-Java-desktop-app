@@ -1,13 +1,12 @@
 package com.example.ood;
 
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
 public class Club {
-    private AdvisorRegistration advisor;
+    private ClubAdvisor advisor;
     private String name;
     private String category;
     private String description;
@@ -18,7 +17,7 @@ public class Club {
     private int advisorId;
 
 
-    public AdvisorRegistration getAdvisor() {
+    public ClubAdvisor getAdvisor() {
         return advisor;
     }
 
@@ -30,7 +29,7 @@ public class Club {
         this.description = description;
         this.theme = theme;
         this.logoImage = logoImage;
-        this.advisor = new AdvisorRegistration(advisorId);
+        this.advisor = new ClubAdvisor(advisorId);
     }
 
 
@@ -72,7 +71,7 @@ public class Club {
     }
 
 
-    public void setAdvisor(AdvisorRegistration advisor) {
+    public void setAdvisor(ClubAdvisor advisor) {
         this.advisor = advisor;
     }
 
