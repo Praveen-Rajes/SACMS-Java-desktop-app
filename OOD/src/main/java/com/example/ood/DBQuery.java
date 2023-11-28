@@ -421,6 +421,43 @@ public class DBQuery {
         }
         return null;
     }
+    public ArrayList<Attendance> getEventListForAttendance(String clubName) {
+        String query = "SELECT e.eventName, e.eventStartTime, e.eventEndTime FROM events AS e JOIN club AS c ON e.clubID = c.clubID WHERE clubName=?;";
+        ArrayList<Attendance> eventDataList = new ArrayList<>();
+
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setString(1, clubName);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    // Create an Attendance object and set its properties
+                    Attendance attendance = new Attendance(
+                            clubName,
+                            resultSet.getString("eventName"),
+                            resultSet.getString("eventStartTime"),
+                            resultSet.getString("eventEndTime"),
+                            null, // You may need to adjust this depending on your use case
+                            null  // You may need to adjust this depending on your use case
+                    );
+                    // Add the Attendance object to the list
+                    eventDataList.add(attendance);
+                }
+                return eventDataList;
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+                System.out.println("Error retrieving event list from the database.");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error retrieving club list from the database.");
+        }
+        return null;
+    }
+
     public ArrayList<String> getClubIDListForAttendance() {
         setLoggedInAdvisorId(loggedInAdvisorId);
         System.out.println(loggedInAdvisorId);
@@ -445,40 +482,6 @@ public class DBQuery {
         }
         return null;
     }
-
-
-    public ArrayList<Attendance> getEventListForAttendance(String selectedDate, String selectedClub) {
-        String query = "SELECT e.eventName, e.eventStartTime, e.eventEndTime FROM events e JOIN club c ON e.clubID = c.clubID WHERE e.eventDate=? AND c.clubName = ?";
-        ArrayList<Attendance> eventList = new ArrayList<>();
-
-        try (Connection connection = getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-
-            preparedStatement.setString(1, selectedDate);
-            preparedStatement.setString(2, selectedClub);
-
-            try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                while (resultSet.next()) {
-                    Attendance attendance = new Attendance(resultSet.getString("eventName"));
-                    resultSet.getString("eventStartTime");
-                    resultSet.getString("eventEndTime");
-                    // Set other attributes as needed
-                    eventList.add(attendance);
-                }
-                return eventList;
-
-            } catch (SQLException e) {
-                e.printStackTrace();
-                System.out.println("Error retrieving event list from the database.");
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.out.println("Error retrieving club list from the database.");
-        }
-        return null;
-    }
-
 
     public void EventInsert(Event event){
 
@@ -531,18 +534,18 @@ public class DBQuery {
         try (Connection connection = getConnection();
 
              PreparedStatement preparedStatement = connection.prepareStatement(query)){
-             preparedStatement.setString(1, date);
-             preparedStatement.setString(2, clubname);
+            preparedStatement.setString(1, date);
+            preparedStatement.setString(2, clubname);
             try(ResultSet resultSet = preparedStatement.executeQuery()) {
 
-            while (resultSet.next()) {
-                Event event1 = new Event(resultSet.getString("eventName"));
-                resultSet.getString("eventID");
-                resultSet.getString("clubID");
-                // set other attributes as needed
-                eventList.add(event1);
-            }
-            return eventList;}
+                while (resultSet.next()) {
+                    Event event1 = new Event(resultSet.getString("eventName"));
+                    resultSet.getString("eventID");
+                    resultSet.getString("clubID");
+                    // set other attributes as needed
+                    eventList.add(event1);
+                }
+                return eventList;}
 
         } catch (SQLException e) {
             e.printStackTrace();

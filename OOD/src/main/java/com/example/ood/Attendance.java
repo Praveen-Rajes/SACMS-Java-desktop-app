@@ -4,53 +4,42 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.CheckBox;
 
-public class Attendance {
-    private CheckBox attendance;
-    private Student student;
-    private Club club;
-    private String ClubName;
+public class Attendance{
+    private String clubName;
+    private String eventName;
+    private String startTime;
+    private String endTime;
+    private String studentId;
+    private String studentName;
     private Event event;
-    private String EventName;
-    private String EstartTime;
-    private String EendTime;
+    private Student student;
 
-    public Attendance(CheckBox attendance, Student student, Club club, String ClubName, Event event, String EventName, String EstartTime, String EendTime) {
-        this.attendance = attendance;
-        this.student = student;
-        this.club = club;
-        this.ClubName = ClubName;
+    public Attendance(String clubName, String eventName, String startTime, String endTime, String studentId, String studentName, Event event, Student student) {
+        this.clubName = clubName;
+        this.eventName = eventName;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.studentId = studentId;
+        this.studentName = studentName;
         this.event = event;
-        this.EventName = EventName;
-        this.EstartTime = EstartTime;
-        this.EendTime = EendTime;
+        this.student = student;
     }
 
-    public String getEventName() {
-        return EventName;
-    }
-
-    public void setEventName(String eventName) {
-        EventName = eventName;
-    }
-
-    public String getEstartTime() {
-        return EstartTime;
-    }
-
-    public void setEstartTime(String estartTime) {
-        EstartTime = estartTime;
-    }
-
-    public String getEendTime() {
-        return EendTime;
-    }
-
-    public void setEendTime(String eendTime) {
-        EendTime = eendTime;
+    public Attendance(String clubName, String eventName, String startTime, String endTime, String studentId, String studentName) {
+        this.clubName = clubName;
+        this.eventName = eventName;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.studentId = studentId;
+        this.studentName = studentName;
     }
 
     public Attendance(Event event) {
         this.event = event;
+    }
+
+    public Attendance(Student student) {
+        this.student = student;
     }
 
     public Event getEvent() {
@@ -61,26 +50,6 @@ public class Attendance {
         this.event = event;
     }
 
-    public Attendance(String clubName) {
-        ClubName = clubName;
-    }
-
-    public String getClubName() {
-        return ClubName;
-    }
-
-    public void setClubName(String clubName) {
-        ClubName = clubName;
-    }
-
-    public CheckBox getAttendance() {
-        return attendance;
-    }
-
-    public void setAttendance(CheckBox attendance) {
-        this.attendance = attendance;
-    }
-
     public Student getStudent() {
         return student;
     }
@@ -89,23 +58,66 @@ public class Attendance {
         this.student = student;
     }
 
-    public Club getClub() {
-        return club;
+    public Attendance(String clubName) {
+        this.clubName = clubName;
     }
 
-    public void setClub(Club club) {
-        this.club = club;
+    public String getClubName() {
+        return clubName;
     }
 
-    public ObservableValue<String> clubNameProperty() {
-        return new SimpleStringProperty(ClubName);
+    public void setClubName(String clubName) {
+        this.clubName = clubName;
     }
 
-    public String getEventStartTime() {
-        return event.getEstartTime();
+    public String getEventName() {
+        return eventName;
     }
 
-    public String getEventEndTime() {
-        return event.getEendTime();
+    public void setEventName(String eventName) {
+        this.eventName = eventName;
+    }
+
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
+
+    public String getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
+    }
+
+    public String getStudentName() {
+        return studentName;
+    }
+
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
+    }
+    public ObservableValue<String> eventNameProperty() {
+        return new SimpleStringProperty(eventName);
+    }
+
+    public ObservableValue<String> startTimeProperty() {
+        return new SimpleStringProperty(startTime);
+    }
+
+    public ObservableValue<String> endTimeProperty() {
+        return new SimpleStringProperty(endTime);
     }
 }

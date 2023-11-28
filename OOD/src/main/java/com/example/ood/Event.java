@@ -149,4 +149,3 @@ public class Event {
         return new SimpleStringProperty();
     }
 }
-
