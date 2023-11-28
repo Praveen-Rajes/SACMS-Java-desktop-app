@@ -6,15 +6,16 @@ import javafx.beans.value.ObservableValue;
 import java.time.LocalDate;
 
 public class Event {
-    private Club club;
+
     private String selectedClubName;
-    private LocalDate selectedDate ;
+    private String selectedDate ;
     private String EventID ;
     private String EventName ;
     private String EventLocation ;
     private String EstartTime ;
     private String EendTime ;
     private String EventDescription;
+    private String clubId;
 
     private String selectedClub;
     private String clubID;
@@ -24,19 +25,31 @@ public class Event {
         this.EventName=eventName;
     }
 
-    public Club getClub() {
-        return club;
-    }
+
+
+
 
     public Event(String selectedClubName, LocalDate selectedDate, String eventID, String eventName, String eventLocation, String estartTime, String eendTime, String eventDescription) {
         this.selectedClubName = selectedClubName;
-        this.selectedDate = selectedDate;
+        this.selectedDate = String.valueOf(selectedDate);
+        this.EventID = eventID;
+        this.EventName = eventName;
+        this.EventLocation = eventLocation;
+        this.EstartTime = estartTime;
+        this.EendTime = eendTime;
+        this.EventDescription = eventDescription;
+    }
+
+    public Event( String eventID, String eventName, String eventLocation,String selectedDate, String estartTime, String eendTime, String eventDescription, String clubID) {
+
         EventID = eventID;
         EventName = eventName;
         EventLocation = eventLocation;
+        this.selectedDate = String.valueOf(selectedDate);
         EstartTime = estartTime;
         EendTime = eendTime;
         EventDescription = eventDescription;
+        this.clubID = clubID;
     }
 
     public Event() {
@@ -49,28 +62,23 @@ public class Event {
     public void setSelectedClubName(String selectedClubName) {
         this.selectedClubName = selectedClubName;
     }
+
+
     public String getClubId() {
-        if (club != null) {
-            return club.getClubID();
-        } else {
-            // Handle the case where advisor is null
-            return null; // Or throw an exception, depending on your requirements
-        }
+
+        return clubId;
     }
 
-    public void setClub(Club club) {
-        this.club = club;
-    }
     public void setClubID(String clubId) {
         this.clubID = clubID;
     }
 
-    public LocalDate getSelectedDate() {
+    public String getSelectedDate() {
         return selectedDate;
     }
 
     public void setSelectedDate(LocalDate selectedDate) {
-        this.selectedDate = selectedDate;
+        this.selectedDate = String.valueOf(selectedDate);
     }
 
     public String getEventID() {
@@ -119,6 +127,14 @@ public class Event {
 
     public void setEventDescription(String eventDescription) {
         EventDescription = eventDescription;
+    }
+
+    public void setClubId(String clubId) {
+        this.clubId = clubId;
+    }
+
+    public String getClubID() {
+        return clubID;
     }
 
     public ObservableValue<String> eventIDProperty() {
