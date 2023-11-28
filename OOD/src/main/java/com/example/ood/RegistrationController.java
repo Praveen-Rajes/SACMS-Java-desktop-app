@@ -6,9 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -24,13 +22,18 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class RegistrationController {
 
-//    @FXML
-//    private Button submitButton;
-//    @FXML
-//    private Button submitButton2;
     @FXML
     private TextField studentIdField;
     @FXML
@@ -45,12 +48,14 @@ public class RegistrationController {
     private TextField studentAddressField;
     @FXML
     private TextField studentGradeClassField;
+
     @FXML
     private TextField studentGuardianNameField;
     @FXML
     private TextField studentGuardianPhoneField;
     @FXML
     private TextField studentGuardianEmailField;
+
     @FXML
     private TextField advisorIdField;
     @FXML
@@ -65,11 +70,11 @@ public class RegistrationController {
     private TextField advisorAddressField;
     @FXML
     private TextField advisorPhoneField;
+
     @FXML
     private Button selectimagebutton;
     @FXML
     private Button selectimagebutton2;
-
     private Image studentImage;
     private Image advisorImage;
     @FXML
@@ -81,6 +86,7 @@ public class RegistrationController {
     @FXML
     private TextField studentPasswordField;
     public static int loggedInStudentId;
+
     @FXML
     public Label studentIdLabel;
     @FXML
@@ -93,26 +99,33 @@ public class RegistrationController {
     public Label studentGenderLabel;
     @FXML
     public ImageView studentImageView;
+
     @FXML
-    public Button Logout;
+    public  TableView<Club> allclubtableview;
+    @FXML
+    private TableColumn<Club, String> clubIDColumn;
+    @FXML
+    private TableColumn<Club, String> clubNameColumn;
+    @FXML
+    private TableColumn<Club, String> clubCategoryColumn;
+    @FXML
+    private TableColumn<Club, String> clubDescriptionColumn;
+    private ObservableList<Club> clubList = FXCollections.observableArrayList();
+
     public void setHelloController (HelloController helloController){this.helloController = helloController;}
     private HelloController helloController;
     public static void setLoggedInStudentId(int studentId) {
         RegistrationController.loggedInStudentId = studentId;
     }
-    @FXML
-    private void studentlogin() throws IOException {
-        Stage stage = (Stage) Logout.getScene().getWindow();
-        // Close the stage
-        stage.close();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("StudentLogin.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1200, 750);
-        Stage stage2 = new Stage();
-        stage2.setTitle("Hello!");
-        stage2.setScene(scene);
-        stage2.show();
-    }
 
+    public void getAllClubsList() {
+        clubIDColumn.setCellValueFactory(cellData -> cellData.getValue().clubIDProperty());
+        clubNameColumn.setCellValueFactory(cellData -> cellData.getValue().clubNameProperty());
+        clubCategoryColumn.setCellValueFactory(cellData -> cellData.getValue().categoryProperty());
+        clubDescriptionColumn.setCellValueFactory(cellData -> cellData.getValue().descriptionProperty());
+
+        getDataFromClubTable();
+    }
     public void getStudentDetails(){
         int parsedStudentId = Integer.parseInt(studentIdField.getText());
 
@@ -131,7 +144,7 @@ public class RegistrationController {
         s1.setAddress(studentAddressField.getText());
         s1.setStudentGradeClass(studentGradeClassField.getText());
 
-        // Set the image path
+        // Set the imge path
         String studentId = studentIdField.getText();
         Path destinationDirectory = Paths.get("OOD", "src", "main", "resources", "studentImages");
         Path destinationFilePath = destinationDirectory.resolve(studentId + ".jpg");
@@ -159,33 +172,31 @@ public class RegistrationController {
         a1.setImagePath(destinationFilePath.toString());
         DBQuery.addAdvisor(a1);
         DBQuery.addAdvisorLogin(a1);
-
     }
+
     @FXML
     protected void onSubmitButtonClick(ActionEvent e2)throws IOException {
         getStudentDetails();
         Stage previousStage = (Stage) ((Node) e2.getSource()).getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("StudentLogin.fxml"));
         previousStage.setScene(new Scene(root, 1200, 750));
-
     }
+
     @FXML
     protected void onSubmitButton2Click(ActionEvent e)throws IOException {
         getAdvisorDetails();
         Stage previousStage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("AdvisorLogin.fxml"));
         previousStage.setScene(new Scene(root, 1200, 750));
-
-
     }
 
-    @FXML
-    protected void onStudentIdFill(){
-//        Student s1 = new Student();
-//        int studentId = Integer.parseInt(studentIdField.getText());
-//        s1.setStudentId(studentId);
-//        System.out.println(s1.getStudentId());
-    }
+//    @FXML
+//    protected void onStudentIdFill(){
+////        Student s1 = new Student();
+////        int studentId = Integer.parseInt(studentIdField.getText());
+////        s1.setStudentId(studentId);
+////        System.out.println(s1.getStudentId());
+//    }
 
     @FXML
     protected void onSelectImageButtonClick(){
@@ -222,6 +233,7 @@ public class RegistrationController {
             System.err.println("Selected file is null or does not exist.");
         }
     }
+
     @FXML
     protected void onSelectImageButton2Click(){
         FileChooser fileChooser = new FileChooser();
@@ -258,6 +270,7 @@ public class RegistrationController {
         }
 
     }
+
     private void removeText() {
         Pane imagePane = (Pane) studentImageField.getParent();
         imagePane.getChildren().removeIf(node -> node instanceof FontIcon || node instanceof Text);
@@ -266,21 +279,13 @@ public class RegistrationController {
         Pane imagePane = (Pane) advisorImageField.getParent();
         imagePane.getChildren().removeIf(node -> node instanceof FontIcon || node instanceof Text);
     }
+
     @FXML
     protected void onLogoutButtonClick(ActionEvent e2)throws IOException {
         Stage previousStage = (Stage) ((Node) e2.getSource()).getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("StudentLogin.fxml"));
         previousStage.setScene(new Scene(root, 1200, 750));
     }
-
-
-    @FXML
-    protected void onClubButttonClick(ActionEvent actionEvent) throws IOException{
-        Stage previousStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("JoinClub.fxml"));
-        previousStage.setScene(new Scene(root, 1200, 750));
-    }
-
 
     @FXML
     public void  switchAdvisor (ActionEvent e2) throws IOException {
@@ -316,7 +321,6 @@ public class RegistrationController {
 
             // Get the RegistrationController instance
             RegistrationController registrationController = loader.getController();
-//            registrationController.setHelloController(this);
 
             // Set the logged-in advisor's details in the lbel
             registrationController.studentIdLabel.setText(String.valueOf(loggedInStudent.getId()));
@@ -340,13 +344,31 @@ public class RegistrationController {
 
             // Call setLoggedInAdvisorId after the FXML is loaded and controller is initialized
             RegistrationController.setLoggedInStudentId(loggedInStudentId);
-
-
-
         } else {
             // Handle invalid login (display an error message, etc.)
             System.out.println("Login failed");
         }
-
     }
+
+    public void getDataFromClubTable() {
+        String query = "SELECT clubID, clubName, clubCategory, clubDescription FROM club";
+        try (Connection connection =DBQuery.getConnection()) {
+            try (PreparedStatement preparedStatement = connection.prepareStatement(query);
+                 ResultSet resultSet = preparedStatement.executeQuery()) {
+
+                while (resultSet.next()) {
+                    Club club = new Club(resultSet.getString("clubID"),resultSet.getString("clubName"),resultSet.getString("clubCategory"),resultSet.getString("clubDescription"));
+                    clubList.add(club);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        allclubtableview.setItems(clubList);
+    }
+
+    public void onShowClubsButtonClick(ActionEvent actionEvent) {
+        getAllClubsList();
+    }
+
 }

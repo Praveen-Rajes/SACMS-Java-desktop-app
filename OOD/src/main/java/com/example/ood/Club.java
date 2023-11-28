@@ -1,6 +1,7 @@
 package com.example.ood;
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
@@ -15,6 +16,14 @@ public class Club {
     private Image logoImage;
     private static String imagePath;
     private int advisorId;
+
+    public Club(String clubID, String name, String category, String description) {
+        this.clubID= String.valueOf(new SimpleStringProperty(clubID));
+        this.name= String.valueOf(new SimpleStringProperty(name));
+        this.category= String.valueOf(new SimpleStringProperty(category));
+        this.description= String.valueOf(new SimpleStringProperty(description));
+    }
+
 
 
     public ClubAdvisor getAdvisor() {
@@ -134,7 +143,9 @@ public class Club {
     public ObservableValue<String> categoryProperty() {
         return new SimpleStringProperty(category);
     }
-
+    public ObservableValue<String> descriptionProperty(){
+        return new SimpleStringProperty(description);
+    }
 
     public String getImagePath() {
         return imagePath;

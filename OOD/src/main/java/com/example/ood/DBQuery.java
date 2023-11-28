@@ -2,7 +2,6 @@ package com.example.ood;
 import java.sql.*;
 import java.util.ArrayList;
 
-
 public class DBQuery {
     private static int loggedInAdvisorId;
     public static void setLoggedInAdvisorId(int loggedInAdvisorId) {
@@ -12,6 +11,8 @@ public class DBQuery {
     public static void setLoggedInStudentId(int loggedInStudentId) {
         DBQuery.loggedInStudentId = loggedInStudentId;
     }
+
+
     public void addClub(Club club){
         String query1 = "INSERT INTO club(clubID, clubName, clubCategory, clubDescription, clubTheme, clubLogo, advisorID) VALUES(?,?,?,?,?,?,?)";
         String query2 = "INSERT INTO advisor_club (advisorID, clubID) VALUES(?,?)";
