@@ -14,7 +14,7 @@
    <children>
       <Pane prefHeight="50.0" prefWidth="750.0" style="-fx-background-color: #0A4969;">
          <children>
-            <Button fx:id="closeButton" onAction="#onCloseButtonClick" layoutX="708.0" layoutY="11.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="26.0" style="-fx-background-color: transparent;" text="Button">
+            <Button fx:id="closeButton" layoutX="708.0" layoutY="11.0" mnemonicParsing="false" onAction="#onCloseButtonClick" prefHeight="28.0" prefWidth="26.0" style="-fx-background-color: transparent;" text="Button">
                <graphic>
                   <FontIcon iconColor="WHITE" iconLiteral="fas-times" iconSize="20" textAlignment="CENTER" />
                </graphic>
@@ -37,5 +37,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
+      <Button fx:id="updateButton" layoutX="638.0" layoutY="64.0" mnemonicParsing="false" onAction="#onUpdateButtonClick" prefHeight="26.0" prefWidth="75.0" text="Update" />
+      <Button fx:id="saveButton" layoutX="536.0" layoutY="65.0" mnemonicParsing="false" onAction="#onSaveButtonClick" prefHeight="26.0" prefWidth="66.0" text="Save" />
    </children>
 </AnchorPane>

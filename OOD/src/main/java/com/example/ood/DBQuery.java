@@ -138,43 +138,46 @@ public class DBQuery {
     }
 
 
-    public Club getClub() {
-        String query = "SELECT c.clubID, c.clubName, c.clubCategory, c.clubDescription, c.clubTheme, c.clubLogo, ac.advisorID" +
-                "FROM club c" +
-                "JOIN advisor_club ac ON c.clubID = ac.clubID" +
-                "WHERE c.clubID = ?";
-
-
+    public void updateClub(Club club) {
         Connection connection = null;
-        try {
-            connection = getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
-                Club club = new Club(resultSet.getString("clubID"));
-                resultSet.getString("clubName");
-                resultSet.getString("clubDescription");
-                resultSet.getString("clubCategory");
-                resultSet.getString("clubLogo");
-                resultSet.getString("clubTheme");
-                resultSet.getInt("advisorID");
-                return club;
-            }
+        PreparedStatement preparedStatement = null;
 
+        try {
+            // Establish a database connection (you need to implement getConnection method)
+            connection = getConnection();
+
+            // Define the SQL query to update club details
+            String updateQuery = "UPDATE club SET clubName=?, clubCategory=?, clubDescription=? WHERE clubID=?";
+
+            // Create a prepared statement
+            preparedStatement = connection.prepareStatement(updateQuery);
+
+            // Set the parameters
+            preparedStatement.setString(1, club.getName());
+            preparedStatement.setString(2, club.getCategory());
+            preparedStatement.setString(3, club.getDescription());
+            preparedStatement.setString(4, club.getClubID());
+
+            // Execute the update
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("Error!");
+            e.printStackTrace();
+            // Handle exceptions appropriately
         } finally {
+            // Close the resources
             try {
-                if (connection != null && !connection.isClosed()) {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+                if (connection != null) {
                     connection.close();
                 }
             } catch (SQLException e) {
-                System.out.println("Error closing connection" + e.getMessage());
+                e.printStackTrace();
+                // Handle exceptions appropriately
             }
         }
-        return null;
     }
-
     public static void addStudent(Student student){
         String query1 = "INSERT INTO student(studentID, studentFName, studentLName, dob, gender, address, gradeClass) VALUES(?,?,?,?,?,?,?)";
         String query2 = "INSERT INTO guardian (gaurdianName, phoneNo, email, studentID) VALUES(?,?,?,?)";

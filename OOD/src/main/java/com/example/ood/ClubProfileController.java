@@ -39,6 +39,10 @@ public class ClubProfileController {
     private TextField clubIDField;
     @FXML
     private Button removeClubButton;
+    @FXML
+    private Button updateButton;
+    @FXML
+    private Button saveButton;
 
 
 
@@ -60,6 +64,7 @@ public class ClubProfileController {
         String imagePath = "OOD/src/main/resources/logoImages/" + club.getClubID() + ".jpg";
         Image image = new Image(new FileInputStream(imagePath));
         clubImageView.setImage(image);
+        disableEditing(false);
     }
     @FXML
     private void OnRemoveButtonClick() throws FileNotFoundException {
@@ -92,7 +97,46 @@ public class ClubProfileController {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }
+    @FXML
+    private void onUpdateButtonClick() {
+        // Enable editing of fields
+        enableEditing(true);
+    }
 
+    @FXML
+    private void onSaveButtonClick() throws FileNotFoundException {
+        // Disable editing of fields
+        enableEditing(false);
+
+        // Update club details
+        selectedClub.setName(clubNameField.getText());
+        selectedClub.setCategory(categoryField.getText());
+        selectedClub.setDescription(descriptionArea.getText());
+
+        // Update in HomeController table
+
+        // Update in the database
+        DBQuery dbQuery = new DBQuery();
+        dbQuery.updateClub(selectedClub);
+
+        // Optionally, update the image if changed
+        // (You may want to implement a mechanism to update the image in the database as well)
+
+
+    }
+
+    // ... (existing code)
+
+    private void enableEditing(boolean enable) {
+        clubNameField.setEditable(enable);
+        categoryField.setEditable(enable);
+        descriptionArea.setEditable(enable);
+    }
+    private void disableEditing(boolean disable) {
+        clubNameField.setEditable(disable);
+        categoryField.setEditable(disable);
+        descriptionArea.setEditable(disable);
+    }
     public void setHomeController(ClubHomeController homeController) {
         this.homeController = homeController;
     }
