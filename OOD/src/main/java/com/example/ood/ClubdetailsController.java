@@ -175,6 +175,7 @@ public class ClubdetailsController {
             return false;
         }
 
+
         if (category == null || category.trim().isEmpty()) {
             alert.setText("Please select a valid category.");
             return false;
