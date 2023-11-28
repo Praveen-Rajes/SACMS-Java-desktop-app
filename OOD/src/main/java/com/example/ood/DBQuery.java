@@ -401,6 +401,30 @@ public class DBQuery {
         }
         return null;
     }
+    public ArrayList<String> getClubIDListForAttendance() {
+        setLoggedInAdvisorId(loggedInAdvisorId);
+        System.out.println(loggedInAdvisorId);
+        setLoggedInAdvisorId(loggedInAdvisorId);
+        String query = "SELECT clubID FROM club WHERE advisorID = "+loggedInAdvisorId+";";
+        ArrayList<String> itemsList = new ArrayList<>();
+
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+
+            while (resultSet.next()) {
+                // Assuming the result is a String, modify accordingly based on your database schema
+                String clubID = resultSet.getString("clubID");
+                itemsList.add(clubID);
+            }
+            return itemsList;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error retrieving club list from the database.");
+        }
+        return null;
+    }
 
 
     public ArrayList<Attendance> getEventListForAttendance(String selectedDate, String selectedClub) {
@@ -437,22 +461,22 @@ public class DBQuery {
 
 
     public void EventInsert(Event event){
-        String query = "SELECT clubID FROM club WHERE clubName= ?;";
+
         String query1 = "INSERT INTO events (eventID,clubID,eventName,eventLocation,eventDate,eventStartTime,eventEndTime,eventDescription) VALUES(?,?,?,?,?,?,?,?);";
 
         Connection connection = null;
         try {
             connection = getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
+
             PreparedStatement preparedStatement1 = connection.prepareStatement(query1);
 
 
-            preparedStatement.setString(1, event.getSelectedClubName());
+
 
             // Execute both queries
-            String clubID = String.valueOf(preparedStatement.executeUpdate());
+
             preparedStatement1.setString(1, event.getEventID());
-            preparedStatement1.setString(2, clubID);
+            preparedStatement1.setString(2, event.getClubId());
             preparedStatement1.setString(3, event.getEventName());
             preparedStatement1.setString(4, event.getEventLocation());
             preparedStatement1.setString(5, String.valueOf(event.getSelectedDate()));
