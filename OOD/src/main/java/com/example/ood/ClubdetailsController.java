@@ -20,6 +20,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.time.LocalDate;
 import java.util.Random;
 
 public class ClubdetailsController {
@@ -131,44 +132,29 @@ public class ClubdetailsController {
 
 
     public void onOkButtonClick() {
-        String clubName = clubNameTextField.getText();
-        String category = categoryChoiceBox.getValue();
-        String description = descriptionTextArea.getText();
-        Color theme = ThemeField.getValue();
-        String clubID = clubIDField.getText();
+        if(validateInput()) {
+            String clubName = clubNameTextField.getText().trim();
+            String category = categoryChoiceBox.getValue().trim();
+            String description = descriptionTextArea.getText().trim();
+            Color theme = ThemeField.getValue();
+            String clubID = clubIDField.getText().trim();
 
-        // Check if the clubId already exists in the database
-        if (isClubIdExists(clubID)) {
-            Random random = new Random();
-            System.out.println("Club ID already exists in the database.");
-            alert.setText("Club ID changed! Press Continue.");
-            String currentclubid = clubIDField.getText();
-            int randomInRange = random.nextInt(100); // Example: generates a random number between 0 and 99
-            clubIDField.setText(randomInRange+"_"+currentclubid);
-            // You may want to show a message to the user or take other actions
-            return;
+
+            Club club = new Club(clubName, clubID, category, description, theme, selectedImage, loggedInAdvisorId);
+
+            if (selectedImage != null) {
+                club.setLogoImage(selectedImage);
+            }
+
+            DBQuery dbQuery = new DBQuery();
+            dbQuery.addClub(club);
+            homeController.addClubDetail(club);
+
+            Stage stage = (Stage) continueButton.getScene().getWindow();
+
+            // Close the stage
+            stage.close();
         }
-        if (description.length() > 1000) {
-            System.out.println("Description exceeds 1000 characters.");
-            alert.setText("Description should be less than 1000 characters.");
-            // You may want to show a message to the user or take other actions
-            return;
-        }
-
-        Club club = new Club(clubName, clubID, category, description, theme, selectedImage, loggedInAdvisorId);
-
-        if (selectedImage != null) {
-            club.setLogoImage(selectedImage);
-        }
-
-        DBQuery dbQuery = new DBQuery();
-        dbQuery.addClub(club);
-        homeController.addClubDetail(club);
-
-        Stage stage = (Stage) continueButton.getScene().getWindow();
-
-        // Close the stage
-        stage.close();
     }
     private boolean isClubIdExists(String clubID) {
         // Implement your logic to check if the clubId exists in the database
@@ -177,7 +163,53 @@ public class ClubdetailsController {
         DBQuery dbQuery = new DBQuery();
         return dbQuery.checkClubIdExists(clubID);
     }
+    private boolean validateInput() {
+        String clubName = clubNameTextField.getText().trim();
+        String category = categoryChoiceBox.getValue().trim();
+        String description = descriptionTextArea.getText().trim();
+        String clubID = clubIDField.getText().trim();
 
+        // Add your validation logic here
+        if (clubName == null || clubName.trim().isEmpty()) {
+            alert.setText("Please enter a valid club name.");
+            return false;
+        }
+
+        if (category == null || category.trim().isEmpty()) {
+            alert.setText("Please select a valid category.");
+            return false;
+        }
+        if(emptyFields(clubName,category,description,clubID)){
+            alert.setText("Please fill required fields");
+            return false;
+        }
+
+        if (description.length() > 1000) {
+            alert.setText("Description should be less than 1000 characters.");
+            return false;
+        }
+        // Check if the clubId already exists in the database
+        if (isClubIdExists(clubID)) {
+            Random random = new Random();
+            System.out.println("Club ID already exists in the database.");
+            alert.setText("Club ID changed! Press Continue.");
+            String currentclubid = clubIDField.getText();
+            int randomInRange = random.nextInt(100); // Example: generates a random number between 0 and 99
+            clubIDField.setText(randomInRange + "_" + currentclubid);
+            // You may want to show a message to the user or take other actions
+            return false;
+        }
+
+        // Add more validation as needed
+
+        return true;
+    }
+    public static boolean emptyFields(String clubName, String category, String description, String  clubID){
+        return (clubID.isEmpty() ||
+                category.isEmpty() ||
+                description.isEmpty() ||
+                clubName.isEmpty());
+    }
 
     public void onUploadButtonClick() {
         FileChooser fileChooser = new FileChooser();
@@ -262,6 +294,7 @@ public class ClubdetailsController {
         }
         event.consume();
     }
+
 
 
     private void removeText() {
