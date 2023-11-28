@@ -23,11 +23,11 @@
             <TableColumn fx:id="endTimeColumn" prefWidth="156.00006103515625" text="End Time" />
          </columns>
       </TableView>
-      <TableView layoutX="59.0" layoutY="390.0" prefHeight="282.0" prefWidth="924.0">
+      <TableView fx:id="studentTableView" layoutX="59.0" layoutY="390.0" prefHeight="282.0" prefWidth="924.0">
          <columns>
-            <TableColumn prefWidth="92.00002670288086" text="Student ID" />
-            <TableColumn prefWidth="567.1999664306641" text="Name" />
-            <TableColumn prefWidth="263.20001220703125" text="Attendance" />
+            <TableColumn fx:id="studentIDColumn" prefWidth="92.00002670288086" text="Student ID" />
+            <TableColumn fx:id="studentNameColumn" prefWidth="567.1999664306641" text="Name" />
+            <TableColumn fx:id="attendanceColumn" prefWidth="263.20001220703125" text="Attendance" />
          </columns>
       </TableView>
       <ChoiceBox fx:id="clubChoiceBox" layoutX="663.0" layoutY="117.0" prefHeight="35.0" prefWidth="210.0" />
