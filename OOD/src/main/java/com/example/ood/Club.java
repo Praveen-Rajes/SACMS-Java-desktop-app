@@ -1,7 +1,6 @@
 package com.example.ood;
 
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
@@ -23,6 +22,7 @@ public class Club {
         this.category= String.valueOf(new SimpleStringProperty(category));
         this.description= String.valueOf(new SimpleStringProperty(description));
     }
+
 
 
 

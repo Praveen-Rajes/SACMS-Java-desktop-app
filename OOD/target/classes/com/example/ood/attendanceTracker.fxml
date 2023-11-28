@@ -2,79 +2,35 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1051.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ood.AttendanceController">
-   <left>
-      <AnchorPane prefHeight="700.0" prefWidth="404.0" style="-fx-background-color: white; -fx-border-color: #0598ff; -fx-border-width: 0px 3px 0px 0px;" BorderPane.alignment="CENTER">
-         <children>
-            <DatePicker fx:id="datePicker" layoutX="191.0" layoutY="206.0" maxHeight="40.0" maxWidth="181.0"  prefHeight="40.0" prefWidth="181.0" />
-            <ChoiceBox fx:id="clubChoiceBox" layoutX="191.0" layoutY="274.0"  prefHeight="26.0" prefWidth="175.0" />
-            <ChoiceBox fx:id="eventChoiceBox" layoutX="191.0" layoutY="348.0"  prefHeight="26.0" prefWidth="175.0" />
-            <TextField fx:id="startTime" layoutX="191.0" layoutY="420.0" />
-            <TextField fx:id="endTime" layoutX="192.0" layoutY="505.0" />
-            <Button fx:id="update" layoutX="255.0" layoutY="608.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="77.0" style="-fx-background-color: #0598ff;" text="Update">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Button>
-            <Button fx:id="search" layoutX="59.0" layoutY="608.0" mnemonicParsing="false"  prefHeight="35.0" prefWidth="77.0" style="-fx-background-color: #0598ff;" text="Search">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Button>
-            <Label layoutX="29.0" layoutY="208.0" text="Date" textFill="#5098ff">
-               <font>
-                  <Font name="Segoe UI Black" size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="27.0" layoutY="276.0" text="Club Name" textFill="#5098ff">
-               <font>
-                  <Font name="Segoe UI Black" size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="28.0" layoutY="344.0" prefHeight="27.0" prefWidth="110.0" text="Event Name" textFill="#5098ff">
-               <font>
-                  <Font name="Segoe UI Black" size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="28.0" layoutY="420.0" text="Start Time" textFill="#5098ff">
-               <font>
-                  <Font name="Segoe UI Black" size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="28.0" layoutY="505.0" text="End Time" textFill="#5098ff">
-               <font>
-                  <Font name="Segoe UI Black" size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="25.0" layoutY="90.0" text="Attendance Tracker" textFill="#0598ff">
-               <font>
-                  <Font name="System Bold" size="36.0" />
-               </font>
-            </Label>
 
-         </children>
-      </AnchorPane>
-   </left>
-   <right>
-      <AnchorPane prefHeight="750.0" prefWidth="706.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
-         <children>
-            <TableView fx:id="studentTableView" layoutX="11.0" layoutY="165.0" prefHeight="376.0" prefWidth="624.0">
-              <columns>
-                <TableColumn fx:id="studentIDColumn" prefWidth="180.0" text="Student ID" />
-                <TableColumn fx:id="studentNameColumn" prefWidth="263.0" text="Student Name" />
-                 <TableColumn fx:id="attendanceColumn" prefWidth="180.0" text="Attendance" />
-              </columns>
-            </TableView>
-         </children>
-      </AnchorPane>
-   </right>
-</BorderPane>
+<AnchorPane prefHeight="700.0" prefWidth="1051.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ood.AttendanceController">
+   <children>
+      <Label layoutX="415.0" layoutY="60.0" text="Attendance Tracker">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <TableView fx:id="eventTableView" layoutX="59.0" layoutY="160.0" prefHeight="190.0" prefWidth="924.0">
+         <columns>
+            <TableColumn fx:id="eventNameColumn" prefWidth="593.6000213623047" text="Event Name " />
+            <TableColumn fx:id="startTimeColumn" prefWidth="167.199951171875" text="Start Time " />
+            <TableColumn fx:id="endTimeColumn" prefWidth="156.00006103515625" text="End Time" />
+         </columns>
+      </TableView>
+      <TableView layoutX="59.0" layoutY="390.0" prefHeight="282.0" prefWidth="924.0">
+         <columns>
+            <TableColumn prefWidth="92.00002670288086" text="Student ID" />
+            <TableColumn prefWidth="567.1999664306641" text="Name" />
+            <TableColumn prefWidth="263.20001220703125" text="Attendance" />
+         </columns>
+      </TableView>
+      <ChoiceBox fx:id="clubChoiceBox" layoutX="663.0" layoutY="117.0" prefHeight="35.0" prefWidth="210.0" />
+      <Button fx:id="submitButton"  onAction="#OnActionSubmitClick" layoutX="899.0" layoutY="117.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="70.0" text="Button" />
+   </children>
+</AnchorPane>

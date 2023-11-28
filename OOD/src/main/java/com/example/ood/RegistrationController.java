@@ -26,11 +26,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
+import static com.example.ood.DBQuery.getConnection;
 
 public class RegistrationController {
 
@@ -112,19 +116,99 @@ public class RegistrationController {
     private TableColumn<Club, String> clubDescriptionColumn;
     private ObservableList<Club> clubList = FXCollections.observableArrayList();
 
+    @FXML
+    private TableView<Club> studentclubtableview;
+    @FXML
+    private TableColumn<Club, String> iDColumn;
+    @FXML
+    private TableColumn<Club, String> nameColumn;
+    private ObservableList<Club> studentClubList = FXCollections.observableArrayList();
+
+    @FXML
+    private ChoiceBox<String> joinclubchoicebox;
+
+    @FXML
+    private ChoiceBox<String> leaveclubchoicebox;
+
+
     public void setHelloController (HelloController helloController){this.helloController = helloController;}
     private HelloController helloController;
+
+    private void populateChoiceBox() {
+        // Connect to your database (replace the placeholders with your database details)
+        try (Connection connection = getConnection()) {
+            // SQL query to fetch data from your database table
+            String query = "SELECT c.clubID FROM club c";
+
+            // Create a PreparedStatement
+            try (PreparedStatement preparedStatement = connection.prepareStatement(query);
+                 ResultSet resultSet = preparedStatement.executeQuery()) {
+
+                // Create an ObservableList to hold the items for the ChoiceBox
+                ObservableList<String> items = FXCollections.observableArrayList();
+
+                // Iterate through the result set and add each value to the ObservableList
+                while (resultSet.next()) {
+                    String value = resultSet.getString("clubID");
+                    items.add(value);
+                }
+
+                // Set the items in the ChoiceBox
+                joinclubchoicebox.setItems(items);
+                leaveclubchoicebox.setItems(items);
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     public static void setLoggedInStudentId(int studentId) {
         RegistrationController.loggedInStudentId = studentId;
     }
 
     public void getAllClubsList() {
-        clubIDColumn.setCellValueFactory(cellData -> cellData.getValue().clubIDProperty());
-        clubNameColumn.setCellValueFactory(cellData -> cellData.getValue().clubNameProperty());
-        clubCategoryColumn.setCellValueFactory(cellData -> cellData.getValue().categoryProperty());
-        clubDescriptionColumn.setCellValueFactory(cellData -> cellData.getValue().descriptionProperty());
+        allclubtableview.getColumns().clear();
 
-        getDataFromClubTable();
+        // Define columns
+        TableColumn<Club, String> clubIDColumn = new TableColumn<>("Club ID");
+        clubIDColumn.setCellValueFactory(data -> data.getValue().clubIDProperty());
+
+        TableColumn<Club, String> clubNameColumn = new TableColumn<>("Club Name");
+        clubNameColumn.setCellValueFactory(data -> data.getValue().clubNameProperty());
+
+        TableColumn<Club, String> clubCategoryColumn = new TableColumn<>("Category");
+        clubCategoryColumn.setCellValueFactory(data -> data.getValue().categoryProperty());
+
+        TableColumn<Club, String> clubDescriptionColumn = new TableColumn<>("Description");
+        clubDescriptionColumn.setCellValueFactory(data -> data.getValue().descriptionProperty());
+
+        // Add columns to tableview
+        allclubtableview.getColumns().addAll(clubIDColumn, clubNameColumn, clubCategoryColumn, clubDescriptionColumn);
+
+        // Get club data and set it in the tableview
+        List<Club> allClubs = getDataFromClubTable();
+        ObservableList<Club> clubObservableList = FXCollections.observableArrayList(allClubs);
+        allclubtableview.setItems(clubObservableList);
+
+        // Set listener (if needed)
+        allclubtableview.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            // Handle selection change if needed
+        });
+    }
+
+    public void getStudentClubList(){
+        studentclubtableview.getColumns().clear();
+        TableColumn<Club, String> iDColumn = new TableColumn<>("Club ID");
+        iDColumn.setCellValueFactory(data -> data.getValue().clubIDProperty());
+        TableColumn<Club, String> nameColumn = new TableColumn<>("Club Name");
+        nameColumn.setCellValueFactory(data -> data.getValue().clubNameProperty());
+        studentclubtableview.getColumns().addAll(iDColumn,nameColumn);
+        getClubsFromDatabase();
+        studentclubtableview.setItems(studentClubList);
+        studentclubtableview.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) ->{} );
     }
     public void getStudentDetails(){
         int parsedStudentId = Integer.parseInt(studentIdField.getText());
@@ -350,25 +434,144 @@ public class RegistrationController {
         }
     }
 
-    public void getDataFromClubTable() {
-        String query = "SELECT clubID, clubName, clubCategory, clubDescription FROM club";
-        try (Connection connection =DBQuery.getConnection()) {
-            try (PreparedStatement preparedStatement = connection.prepareStatement(query);
-                 ResultSet resultSet = preparedStatement.executeQuery()) {
+    public List<Club> getDataFromClubTable() {
+        List<Club> clubList = new ArrayList<>();
 
-                while (resultSet.next()) {
-                    Club club = new Club(resultSet.getString("clubID"),resultSet.getString("clubName"),resultSet.getString("clubCategory"),resultSet.getString("clubDescription"));
-                    clubList.add(club);
+        String query = "SELECT c.clubID, c.clubName, c.clubCategory, c.clubDescription FROM club c";
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+
+            while (resultSet.next()) {
+                Club club = new Club(
+                        resultSet.getString("clubID"),
+                        resultSet.getString("clubName"),
+                        resultSet.getString("clubCategory"),
+                        resultSet.getString("clubDescription")
+                );
+                clubList.add(club);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return clubList;
+    }
+
+    private void getClubsFromDatabase() {
+        String query = "SELECT c.clubID, c.clubName FROM club c JOIN student_club sc ON c.clubID = sc.clubID WHERE sc.studentID = ?";
+        try (Connection connection = getConnection()) {
+            try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                preparedStatement.setInt(1, loggedInStudentId);
+
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    while (resultSet.next()) {
+                        Club club = new Club(resultSet.getString("clubID"), resultSet.getString("clubName"));
+                        studentClubList.add(club);
+                    }
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        allclubtableview.setItems(clubList);
     }
 
-    public void onShowClubsButtonClick(ActionEvent actionEvent) {
+        public void onShowClubsButtonClick(ActionEvent actionEvent) {
+        populateChoiceBox();
         getAllClubsList();
+        }
+    public void onRefreshClubsButtonClick(ActionEvent event){
+        studentclubtableview.getColumns().clear();
+        getStudentClubList();
     }
 
+    public void joinClub(){
+        System.out.println(loggedInStudentId);
+        String selectedClubID = joinclubchoicebox.getValue();  // Assuming you want to get the selected club name
+
+// First, check if a record already exists
+        String checkQuery = "SELECT * FROM student_club WHERE studentID = ? AND clubID = ?";
+
+        try (Connection connection = getConnection();
+             PreparedStatement checkStatement = connection.prepareStatement(checkQuery)) {
+
+            checkStatement.setInt(1, loggedInStudentId);
+            checkStatement.setString(2,selectedClubID );
+
+            try (ResultSet resultSet = checkStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    // The record already exists, you may choose to handle this case
+                    System.out.println("Record already exists");
+                } else {
+                    // The record doesn't exist, proceed with the insertion
+                    String insertQuery = "INSERT INTO student_club (studentID, clubID) VALUES (?,?)";
+
+                    try (PreparedStatement insertStatement = connection.prepareStatement(insertQuery)) {
+                        insertStatement.setInt(1, loggedInStudentId);
+                        insertStatement.setString(2, selectedClubID);
+
+                        int rowsAffected = insertStatement.executeUpdate();
+
+                        if (rowsAffected > 0) {
+                            System.out.println("Record inserted successfully");
+                        } else {
+                            System.out.println("Failed to insert record");
+                        }
+                    }
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void leaveClub() {
+        System.out.println(loggedInStudentId);
+        String selectedClubID = leaveclubchoicebox.getValue();  // Assuming you want to get the selected club name
+
+        // First, check if a record exists
+        String checkQuery = "SELECT * FROM student_club WHERE studentID = ? AND clubID = ?";
+
+        try (Connection connection = getConnection();
+             PreparedStatement checkStatement = connection.prepareStatement(checkQuery)) {
+
+            checkStatement.setInt(1, loggedInStudentId);
+            checkStatement.setString(2, selectedClubID);
+
+            try (ResultSet resultSet = checkStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    // The record exists, proceed with deletion
+                    String deleteQuery = "DELETE FROM student_club WHERE studentID = ? AND clubID = ?";
+
+                    try (PreparedStatement deleteStatement = connection.prepareStatement(deleteQuery)) {
+                        deleteStatement.setInt(1, loggedInStudentId);
+                        deleteStatement.setString(2, selectedClubID);
+
+                        int rowsAffected = deleteStatement.executeUpdate();
+
+                        if (rowsAffected > 0) {
+                            System.out.println("Record deleted successfully");
+                        } else {
+                            System.out.println("Failed to delete record");
+                        }
+                    }
+                } else {
+                    // The record doesn't exist, you may choose to handle this case
+                    System.out.println("Record does not exist");
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public void onJoinClubButtonClick(ActionEvent actionEvent) {
+        joinClub();
+    }
+
+    public void onLeaveClubButtonClick(ActionEvent actionEvent) {
+        leaveClub();
+    }
 }

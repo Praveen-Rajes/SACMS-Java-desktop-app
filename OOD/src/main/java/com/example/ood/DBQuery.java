@@ -80,6 +80,7 @@ public class DBQuery {
         }
         return null;
     }
+
     public void removeClub(Club club) {
         String deleteAdvisorClubQuery = "DELETE FROM advisor_club WHERE clubID = ?";
         String deleteClubQuery = "DELETE FROM club WHERE clubID = ?";
@@ -553,6 +554,8 @@ public class DBQuery {
         }
         return null;
     }
+
+
 
     public static Connection getConnection() {
         try {
