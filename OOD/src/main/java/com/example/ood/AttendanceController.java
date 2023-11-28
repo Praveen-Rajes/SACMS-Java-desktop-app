@@ -26,6 +26,14 @@ public class AttendanceController {
     @FXML
     private TableColumn<Attendance, String> endTimeColumn;
     @FXML
+    private TableView<Attendance> studentTableView;
+    @FXML
+    private TableColumn<Attendance, String> studentIDColumn;
+    @FXML
+    private TableColumn<Attendance, String> studentNameColumn;
+    @FXML
+    private TableColumn<Attendance, String> attendanceColumn;
+    @FXML
     private Button submitButton;
 
     private String selectedClub;
@@ -44,12 +52,7 @@ public class AttendanceController {
             // Clear existing items in the observable list (if necessary)
             clubDetails.clear();
 
-            // Extract club names from the Attendance objects
-            List<String> clubNames = attendanceList.stream()
-                    .map(Attendance::getClubName)
-                    .collect(Collectors.toList());
-
-            // Set items to the ChoiceBox
+            // Set items to the ObservableList
             clubDetails.addAll(attendanceList);
             clubChoiceBox.setItems(clubDetails);
 
@@ -62,6 +65,7 @@ public class AttendanceController {
 
                 @Override
                 public Attendance fromString(String string) {
+                    // You might need to implement this if needed
                     return null;
                 }
             });
@@ -83,7 +87,6 @@ public class AttendanceController {
         }
     }
 
-
     @FXML
     public void OnActionSubmitClick() {
         if (selectedClub != null) {
@@ -95,11 +98,34 @@ public class AttendanceController {
             eventTableView.getItems().clear();
 
             // Populate the TableView with event details
-            if (eventList != null) {
+            if (eventList != null && !eventList.isEmpty()) {
                 eventTableView.getItems().addAll(eventList);
+            } else {
+                System.out.println("No events found for the selected club.");
             }
         } else {
             System.out.println("No club selected.");
+        }
+
+        // Load student details when the submit button is clicked
+        loadStudentName();
+    }
+
+
+    public void loadStudentName() {
+        // Assuming you want to load student details into studentTableView
+        studentIDColumn.setCellValueFactory(data -> data.getValue().studentIDProperty());
+        studentNameColumn.setCellValueFactory(data -> data.getValue().studentFNameProperty());
+
+        DBQuery dbQuery = new DBQuery();
+        ArrayList<Attendance> studentList = dbQuery.getStudentListForAttendance(selectedClub); // Modify this method accordingly
+
+        // Clear existing items in the TableView
+        studentTableView.getItems().clear();
+
+        // Populate the TableView with student details
+        if (studentList != null) {
+            studentTableView.getItems().addAll(studentList);
         }
     }
 }

@@ -458,6 +458,38 @@ public class DBQuery {
         }
         return null;
     }
+    public ArrayList<Attendance> getStudentListForAttendance(String clubName) {
+        String query = "SELECT s.studentID, s.studentFName FROM student s LEFT JOIN student_club sc ON s.studentID = sc.studentID RIGHT JOIN club c ON sc.clubID = c.clubID WHERE c.clubName = ?;";
+        ArrayList<Attendance> studentDataList = new ArrayList<>();
+
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setString(1, clubName);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    // Create an Attendance object and set its properties
+                    Attendance attendance = new Attendance(
+                            clubName,
+                            resultSet.getString("studentID"),
+                            resultSet.getString("studentFName"));
+                    // Add the Attendance object to the list
+                    studentDataList.add(attendance);
+                }
+                return studentDataList;
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+                System.out.println("Error retrieving event list from the database.");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error retrieving club list from the database.");
+        }
+        return null;
+    }
 
     public ArrayList<String> getClubIDListForAttendance() {
         setLoggedInAdvisorId(loggedInAdvisorId);

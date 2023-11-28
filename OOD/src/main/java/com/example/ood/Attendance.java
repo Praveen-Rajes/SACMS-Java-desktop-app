@@ -10,7 +10,7 @@ public class Attendance{
     private String startTime;
     private String endTime;
     private String studentId;
-    private String studentName;
+    private String studentFName;
     private Event event;
     private Student student;
 
@@ -20,18 +20,18 @@ public class Attendance{
         this.startTime = startTime;
         this.endTime = endTime;
         this.studentId = studentId;
-        this.studentName = studentName;
+        this.studentFName = studentName;
         this.event = event;
         this.student = student;
     }
 
-    public Attendance(String clubName, String eventName, String startTime, String endTime, String studentId, String studentName) {
+    public Attendance(String clubName, String eventName, String startTime, String endTime, String studentId, String studentFName) {
         this.clubName = clubName;
         this.eventName = eventName;
         this.startTime = startTime;
         this.endTime = endTime;
         this.studentId = studentId;
-        this.studentName = studentName;
+        this.studentFName = studentFName;
     }
 
     public Attendance(Event event) {
@@ -40,6 +40,12 @@ public class Attendance{
 
     public Attendance(Student student) {
         this.student = student;
+    }
+
+    public Attendance(String clubName, String studentID, String studentFName) {
+        this.clubName = clubName;
+        this.studentId = studentID;
+        this.studentFName = studentFName;
     }
 
     public Event getEvent() {
@@ -103,11 +109,11 @@ public class Attendance{
     }
 
     public String getStudentName() {
-        return studentName;
+        return studentFName;
     }
 
     public void setStudentName(String studentName) {
-        this.studentName = studentName;
+        this.studentFName = studentName;
     }
     public ObservableValue<String> eventNameProperty() {
         return new SimpleStringProperty(eventName);
@@ -119,5 +125,12 @@ public class Attendance{
 
     public ObservableValue<String> endTimeProperty() {
         return new SimpleStringProperty(endTime);
+    }
+    public ObservableValue<String> studentIDProperty() {
+        return new SimpleStringProperty(studentId);
+    }
+
+    public ObservableValue<String> studentFNameProperty() {
+        return new SimpleStringProperty(studentFName);
     }
 }
