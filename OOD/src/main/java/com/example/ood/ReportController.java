@@ -2,10 +2,15 @@ package com.example.ood;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
+
+import java.util.ArrayList;
 
 public class ReportController {
     @FXML
     private Label reportClubID;
+    @FXML
+    private Label reportevent;
 
     @FXML
     private Label reportClubName;
@@ -35,4 +40,16 @@ public class ReportController {
         reportClubName.setText(clubName);
         reportAdvisor.setText(loggedInAdvisorName);
     }
+    public void setEventDetails() {
+        DBQuery dbQuery = new DBQuery();
+        ArrayList<Event> eventList = dbQuery.getEventNameList(reportClubID.getText());
+
+        StringBuilder eventsText = new StringBuilder();
+        for (Event event : eventList) {
+            eventsText.append(event.getEventName()).append("\n");
+        }
+
+        reportevent.setText(eventsText.toString());
+    }
+
 }

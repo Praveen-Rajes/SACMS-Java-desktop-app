@@ -587,6 +587,33 @@ public class DBQuery {
         }
         return null;
     }
+    public ArrayList<Event> getEventNameList(String clubID) {
+        String query = "SELECT eventName FROM events WHERE clubName=?";
+
+
+        ArrayList<Event> eventNameList = new ArrayList<>();
+
+
+        try (Connection connection = getConnection();
+
+             PreparedStatement preparedStatement = connection.prepareStatement(query)){
+            preparedStatement.setString(1, clubID);
+            try(ResultSet resultSet = preparedStatement.executeQuery()) {
+
+                while (resultSet.next()) {
+                    Event event1 = new Event(resultSet.getString("eventName"));
+
+                    // set other attributes as needed
+                    eventNameList.add(event1);
+                }
+                return eventNameList;}
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error retrieving club list from the database.");
+        }
+        return null;
+    }
 
 
     public static Connection getConnection() {

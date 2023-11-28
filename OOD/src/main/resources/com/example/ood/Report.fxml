@@ -35,9 +35,9 @@
          </font>
       </Label>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="430.0" layoutX="58.0" layoutY="226.0" stroke="#2d7ca1" strokeType="INSIDE" strokeWidth="2.0" width="325.0" />
-      <Pane layoutX="68.0" layoutY="233.0" prefHeight="415.0" prefWidth="307.0">
+      <Pane  layoutX="68.0" layoutY="233.0" prefHeight="415.0" prefWidth="307.0">
          <children>
-            <Label layoutX="123.0" layoutY="14.0" prefHeight="35.0" prefWidth="62.0" text="Events">
+            <Label fx:id="reportevent" layoutX="123.0" layoutY="14.0" prefHeight="35.0" prefWidth="62.0" text="Events">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
