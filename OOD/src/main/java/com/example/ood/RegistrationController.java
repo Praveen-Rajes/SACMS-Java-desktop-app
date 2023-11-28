@@ -82,6 +82,8 @@ public class RegistrationController {
     private TextField studentPasswordField;
     public static int loggedInStudentId;
     @FXML
+    public Label studentIdLabel;
+    @FXML
     public Label studentFNameLabel;
     @FXML
     public Label studentLNameLabel;
@@ -160,12 +162,21 @@ public class RegistrationController {
 
     }
     @FXML
-    protected void onSubmitButtonClick(){
+    protected void onSubmitButtonClick(ActionEvent e2)throws IOException {
         getStudentDetails();
+        Stage previousStage = (Stage) ((Node) e2.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("StudentLogin.fxml"));
+        previousStage.setScene(new Scene(root, 1200, 750));
+
     }
     @FXML
-    protected void onSubmitButton2Click(){
+    protected void onSubmitButton2Click(ActionEvent e)throws IOException {
         getAdvisorDetails();
+        Stage previousStage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("AdvisorLogin.fxml"));
+        previousStage.setScene(new Scene(root, 1200, 750));
+
+
     }
 
     @FXML
@@ -308,6 +319,7 @@ public class RegistrationController {
 //            registrationController.setHelloController(this);
 
             // Set the logged-in advisor's details in the lbel
+            registrationController.studentIdLabel.setText(String.valueOf(loggedInStudent.getId()));
             registrationController.studentFNameLabel.setText(loggedInStudent.getFirstName());
             registrationController.studentLNameLabel.setText(loggedInStudent.getLastName());
             registrationController.studentDOBLabel.setText(loggedInStudent.getDateOfBirth());
