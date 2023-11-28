@@ -65,6 +65,7 @@ public class Event {
 
 
     public String getClubId() {
+
         return clubId;
     }
 
