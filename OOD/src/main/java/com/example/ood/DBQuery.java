@@ -55,8 +55,6 @@ public class DBQuery {
     }
     public ArrayList<Club> getClubList() {
         setLoggedInAdvisorId(loggedInAdvisorId);
-        System.out.println(loggedInAdvisorId);
-        setLoggedInAdvisorId(loggedInAdvisorId);
         String query = "SELECT * FROM club WHERE advisorID = "+loggedInAdvisorId+";";
         ArrayList<Club> clubList = new ArrayList<>();
 
@@ -589,7 +587,6 @@ public class DBQuery {
         }
         return null;
     }
-
 
 
     public static Connection getConnection() {

@@ -1,6 +1,9 @@
 package com.example.ood;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -15,6 +18,7 @@ import javafx.stage.StageStyle;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -32,18 +36,25 @@ public class ClubProfileController {
     private TextField clubNameField;
     @FXML
     private TextField categoryField;
-
     @FXML
     private TextArea descriptionArea;
     @FXML
     private TextField clubIDField;
+    @FXML
+    private Label clubID;
+    @FXML
+    private Label clubName;
+
+    @FXML
+    private Label advisor;
     @FXML
     private Button removeClubButton;
     @FXML
     private Button updateButton;
     @FXML
     private Button saveButton;
-
+    @FXML
+    private Button generateButton;
 
 
 
@@ -140,4 +151,30 @@ public class ClubProfileController {
     public void setHomeController(ClubHomeController homeController) {
         this.homeController = homeController;
     }
+    // ClubProfileController.java
+
+    @FXML
+    private void onGenerateButtonClick() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Report.fxml"));
+            Parent root = fxmlLoader.load();
+            ReportController reportController = fxmlLoader.getController();
+
+            // Set values in the ReportController
+            reportController.setReportDetails(
+                    selectedClub.getClubID(),
+                    selectedClub.getName(),
+                    String.valueOf(selectedClub.getAdvisorId())
+            );
+
+            Stage stage = new Stage();
+            stage.setTitle("Report");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }

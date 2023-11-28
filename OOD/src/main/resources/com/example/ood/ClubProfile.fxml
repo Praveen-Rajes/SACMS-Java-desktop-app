@@ -32,7 +32,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <Button layoutX="75.0" layoutY="410.0" mnemonicParsing="false" style="-fx-background-color: #0A4969;" text="Generate Report" textFill="WHITE">
+      <Button fx:id="generateButton" onAction="#onGenerateButtonClick" layoutX="75.0" layoutY="410.0" mnemonicParsing="false" style="-fx-background-color: #0A4969;" text="Generate Report" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>

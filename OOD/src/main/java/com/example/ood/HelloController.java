@@ -23,6 +23,8 @@ public class HelloController {
     @FXML
     private TextField advisorPasswordField;
     public int loggedInAdvisorId;
+    public String loggedInAdvisorFName;
+    public String loggedInAdvisorLName;
 
 
     @FXML
@@ -51,6 +53,9 @@ public class HelloController {
         if (loggedInAdvisor != null) {
             // Set the logged-in advisor ID
             loggedInAdvisorId = loggedInAdvisor.getAdvisorId();
+            loggedInAdvisorFName =loggedInAdvisor.getFirstName();
+            loggedInAdvisorLName =loggedInAdvisor.getLastName();
+
             dbQuery.setLoggedInAdvisorId(loggedInAdvisorId);
 
 
@@ -80,6 +85,7 @@ public class HelloController {
 
             // Call setLoggedInAdvisorId after the FXML is loaded and controller is initialized
             dashboardController.setLoggedInAdvisorId(loggedInAdvisorId);
+            ReportController.setLoggedInAdvisorName(loggedInAdvisorFName,loggedInAdvisorLName);
 
 
 
