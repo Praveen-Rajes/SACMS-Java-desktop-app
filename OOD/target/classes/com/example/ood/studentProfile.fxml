@@ -49,7 +49,7 @@
                     <children>
                         <VBox layoutX="72.0" layoutY="70.0" prefHeight="630.0" prefWidth="163.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
                             <children>
-                                <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="176.0" style="-fx-background-color: transparent;" styleClass="sidebarItem" stylesheets="@dashboard.css" text="Events" textFill="WHITE">
+                                <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#onEventButtonClick" prefHeight="30.0" prefWidth="176.0" style="-fx-background-color: transparent;" styleClass="sidebarItem" stylesheets="@dashboard.css" text="Events" textFill="WHITE">
                                     <font>
                                         <Font name="System Bold" size="15.0" />
                                     </font>

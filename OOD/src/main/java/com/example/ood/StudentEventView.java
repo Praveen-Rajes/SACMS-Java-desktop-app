@@ -2,14 +2,20 @@ package com.example.ood;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.ZonedDateTime;
 import java.util.*;
@@ -168,5 +174,10 @@ public class StudentEventView implements Initializable {
     }
 
 
+    public void onBackButtonClick(ActionEvent e2) throws IOException {
+        Stage previousStage = (Stage) ((Node) e2.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("StudentProfile.fxml"));
+        previousStage.setScene(new Scene(root, 1200, 750));
 
+    }
 }

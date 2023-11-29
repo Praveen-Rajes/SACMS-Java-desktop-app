@@ -756,4 +756,10 @@ public class RegistrationController {
         Parent root = FXMLLoader.load(getClass().getResource("AdvisorLogin.fxml"));
         previousStage.setScene(new Scene(root, 1200, 750));
     }
+
+    public void onEventButtonClick(ActionEvent actionEvent) throws IOException{
+        Stage previousStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("student_Eventview.fxml"));
+        previousStage.setScene(new Scene(root, 1200, 750));
+    }
 }

@@ -7,15 +7,15 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1051.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ood.StudentEventView">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1051.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ood.StudentEventView">
    <children>
       <AnchorPane layoutX="105.0" layoutY="16.0" prefHeight="663.0" prefWidth="841.0">
          <children>
             <HBox alignment="CENTER" prefHeight="44.0" prefWidth="841.0" spacing="5.0" style="-fx-border-color: black;">
                <children>
-                  <Button mnemonicParsing="false" onAction="#backOneMonth" text="&lt;" />
+                  <Button disable="true" mnemonicParsing="false" onAction="#backOneMonth" text="&lt;" />
                   <Text fx:id="year" strokeType="OUTSIDE" strokeWidth="0.0" text="####">
                      <font>
                         <Font size="22.0" />
@@ -26,7 +26,7 @@
                         <Font size="22.0" />
                      </font>
                   </Text>
-                  <Button mnemonicParsing="false" onAction="#forwardOneMonth" text="&gt;" />
+                  <Button disable="true" mnemonicParsing="false" onAction="#forwardOneMonth" text="&gt;" />
                </children>
             </HBox>
             <HBox alignment="CENTER" layoutY="44.0" prefHeight="44.0" prefWidth="841.0" spacing="88.75" style="-fx-border-color: black;">
@@ -43,8 +43,16 @@
                   <Insets right="9.0" />
                </padding>
             </HBox>
-            <FlowPane fx:id="calendar" hgap="10.0" layoutY="88.0" prefHeight="581.0" prefWidth="841.0" style="-fx-border-color: black;" vgap="5.0" />
+            <FlowPane fx:id="calendar" hgap="10.0" layoutY="88.0" prefHeight="582.0" prefWidth="822.0" style="-fx-border-color: black;" vgap="5.0" />
          </children>
       </AnchorPane>
+      <Button fx:id="Back" alignment="BASELINE_LEFT" layoutX="5.0" layoutY="261.0" mnemonicParsing="false" onAction="#onBackButtonClick" prefHeight="31.0" prefWidth="99.0" style="-fx-background-color: #032d4d;" styleClass="sidebarItem" stylesheets="@dashboard.css" text="Go Back" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <graphic>
+            <FontIcon iconColor="WHITE" iconLiteral="fltfal-arrow-left-28" iconSize="15" />
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>
