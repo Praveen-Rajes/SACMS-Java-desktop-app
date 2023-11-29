@@ -12,6 +12,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Addevent {
+
     @FXML
     private Spinner<Integer> startHourSpinner;
 
@@ -25,15 +26,7 @@ public class Addevent {
     private Spinner<Integer> endMinuteSpinner;
 
     @FXML
-    private  TableView<Event> viewTable;
-
-    @FXML
-    private TableColumn<Event, String> eventid;
-
-    @FXML
-    private TableColumn<Event, String> eventname;
-    @FXML
-    private TableColumn<Event, String> clubid;
+    private TextArea Events;
 
     @FXML
     private ChoiceBox clubChoiceBox;
@@ -103,31 +96,12 @@ public class Addevent {
                 return null;
             }
         });
-//        ClubID.setConverter(new StringConverter<Attendance>() {
-//            @Override
-//            public String toString(Attendance attendance) {
-//                return attendance.getClubName();
-//            }
-//
-//            @Override
-//            public Attendance fromString(String string) {
-//                return null;
-//            }
-//        });
-//        if (!observableList1.isEmpty()) {
-//            ClubID.setValue(observableList1.get(0));
-//        }
+
         if (!observableList.isEmpty()) {
             clubChoiceBox.setValue(observableList.get(0));
         }
 
         System.out.println(observableList);
-
-        // Table View
-        // Set cell value for the table columns
-
-
-
 
     }
 
@@ -137,7 +111,7 @@ public class Addevent {
         String hi = String.valueOf(( (ClubID.getValue())));
         System.out.println(hi);
         LocalDate selectedDate = datePicker.getValue();
-        //System.out.println(selectedClubName);
+
         System.out.println(selectedDate);
         loadDataFromDatabase();
 
@@ -150,16 +124,26 @@ public class Addevent {
                 System.out.println(i);
             }
         }
-        eventid.setCellValueFactory(data -> data.getValue().eventIDProperty());
-        eventname.setCellValueFactory(data -> data.getValue().eventNameProperty());
-        clubid.setCellValueFactory(data -> data.getValue().clubProperty());
+
         loadDataFromDatabase();
-        viewTable.setItems(eventDetails);
-        viewTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+         selectedDate = datePicker.getValue();
+        String selectedClubID = String.valueOf(ClubID.getValue());
 
-        });
+        // Perform the database query to retrieve event details
 
+        ArrayList<Event> eventList = dbQuery.getEventList(String.valueOf(selectedDate), selectedClubID);
 
+        // Clear existing data in the TextArea
+        Events.clear();
+
+        // Iterate through the eventList and append details to the TextArea
+        for (Event event : eventList) {
+            String eventDetails = "Event ID: " + event.getEventID() +
+                    ", Event Name: " + event.getEventName() +
+                    ", Club ID: " + event.getClubId() + "\n";
+            System.out.println(eventDetails+ "ROJA");
+            Events.appendText(eventDetails);
+        }
 
     }
 
@@ -178,33 +162,18 @@ public class Addevent {
     public void backToAddMenu(ActionEvent actionEvent) {
         Stage currentstage = (Stage) backToMenu.getScene().getWindow();
 
-        // Close the stage
         currentstage.close();
-
 
     }
 
-
     public void addEventSave(ActionEvent actionEvent) {
-        viewTable.setItems(eventDetails);
+
         getEventDetails();
 
     }
 
     public void getEventDetails(){
 
-
-
-//        String eventid =eventID.getText();
-//        String clubid = String.valueOf(( (ClubID.getValue())));
-//        String eventname = eventName.getText();
-//        String eventDate = String.valueOf((datePicker.getValue()));
-//        String eventStartTime = (String.format("%02d:%02d", startHourSpinner.getValue(), startMinuteSpinner.getValue()));
-//        String eventEndTime = (String.format("%02d:%02d", endHourSpinner.getValue(), endMinuteSpinner.getValue()));
-//        String eventlocation = eventLoc.getText();
-//        String eventdesc = eventDesc.getText();
-//
-//        Event event = new Event(eventid, clubid,eventname,eventDate,eventStartTime,eventEndTime,eventlocation,eventdesc);
         Event event = new Event();
         String clubid = String.valueOf(( (ClubID.getValue())));
         event.setEventID(eventID.getText());
@@ -237,10 +206,6 @@ public class Addevent {
         if (eventList != null) {
             eventDetails.addAll(eventList);
         }
-
-
-        // Refresh the table
-        viewTable.refresh();
 
     }
 

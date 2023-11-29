@@ -163,20 +163,9 @@ public class EventSchedule implements Initializable {
         List<CalendarActivity> calendarActivities = new ArrayList<>();
         DBQuery dbQuery = new DBQuery();
         String[][] eventDataArray = dbQuery.retrieveAllEventData();
-
         int year = dateFocus.getYear();
-        int month = dateFocus.getMonth().getValue();
-        int eyear;
-        int emonth;
-        int day;
-        int Hour;
-        int min;
 
-//        Random random = new Random();
-//        for (int i = 0; i < 50; i++) {
-//            ZonedDateTime time = ZonedDateTime.of(year, month, random.nextInt(27)+1, 16,0,0,0,dateFocus.getZone());
-//            calendarActivities.add(new CalendarActivity(time, "Hans", 111111));
-//        }
+
         if (eventDataArray != null) {
             for (String[] row : eventDataArray) {
                 for (String value : row) {
@@ -185,31 +174,7 @@ public class EventSchedule implements Initializable {
                 System.out.println();
             }
         }
-//        for (String[] row : eventDataArray) {
-//            eyear = Integer.parseInt(row[4].substring(0, 4));
-//            emonth = Integer.parseInt(row[4].substring(5, 7));
-//            day = Integer.parseInt(row[4].substring(8, 10));
-//            Hour = Integer.parseInt(row[5].substring(0, 2));
-//            min =  Integer.parseInt(row[5].substring(2, 4));
-//            //System.out.println(day);
-//            //System.out.println(min);
-//
-//
-//
-//        }
-//        for (String[] row : eventDataArray) {
-//            eyear = Integer.parseInt(row[4].substring(0, 4));
-//            emonth = Integer.parseInt(row[4].substring(5, 7));
-//            day = Integer.parseInt(row[4].substring(8, 10));
-//            Hour = Integer.parseInt(row[5].substring(0, 2));
-//            min =  Integer.parseInt(row[5].substring(2, 4));
-//
-//            ZonedDateTime time = ZonedDateTime.of(eyear, emonth, day, 00, 0, 0, 0, dateFocus.getZone());
-//            String clientName = row[1]; // Assuming the client name is in the second column, adjust accordingly
-//            String eventID = row[0]; // Assuming the event ID is in the first column, adjust accordingly
-//
-//            calendarActivities.add(new CalendarActivity(time, clientName, eventID));
-//        }
+
         String EventID = "";
         String EventName = "";
         int date;
@@ -225,8 +190,7 @@ public class EventSchedule implements Initializable {
             evmonth = Integer.parseInt((row[4].substring(5, 7)));
             EventName = (row[2]);
             EventID = (row[0]);
-            System.out.println( "d" +date);
-            System.out.println(evmonth);
+
 
 
 
