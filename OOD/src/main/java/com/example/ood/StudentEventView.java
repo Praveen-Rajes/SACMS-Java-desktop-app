@@ -150,6 +150,7 @@ public class StudentEventView implements Initializable {
 
     private Map<Integer, List<CalendarActivity>> getCalendarActivitiesMonth(ZonedDateTime dateFocus) {
         List<CalendarActivity> calendarActivities = new ArrayList<>();
+
         int year = dateFocus.getYear();
         int month = dateFocus.getMonth().getValue();
 
@@ -158,8 +159,10 @@ public class StudentEventView implements Initializable {
 //            ZonedDateTime time = ZonedDateTime.of(year, month, random.nextInt(27)+1, 16,0,0,0,dateFocus.getZone());
 //            calendarActivities.add(new CalendarActivity(time, "Hans", 111111));
 //        }
+        String EventID = "1100";
+
         ZonedDateTime time = ZonedDateTime.of(year, month, 27, 00,0,0,0,dateFocus.getZone());
-        calendarActivities.add(new CalendarActivity(time, "Hans", 111111));
+        calendarActivities.add(new CalendarActivity(time, "Hans"+" " +EventID, EventID));
 
         return createCalendarMap(calendarActivities);
     }

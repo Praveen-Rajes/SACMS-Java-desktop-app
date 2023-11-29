@@ -632,4 +632,46 @@ public class DBQuery {
         return null;
 
     }
+
+    public String[][] retrieveAllEventData() {
+        String query = "SELECT * FROM events";
+
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+
+            // Get the metadata to determine the number of columns
+            ResultSetMetaData metaData = resultSet.getMetaData();
+            int columnCount = metaData.getColumnCount();
+
+            // Get the number of rows in the result set
+            int rowCount = 0;
+            while (resultSet.next()) {
+                rowCount++;
+            }
+
+            // Move the cursor back to the beginning
+            resultSet.beforeFirst();
+
+            // Create a two-dimensional array to store the data
+            String[][] eventDataArray = new String[rowCount][columnCount];
+
+            int index = 0;
+            while (resultSet.next()) {
+                for (int i = 1; i <= columnCount; i++) {
+                    eventDataArray[index][i - 1] = resultSet.getString(i);
+                }
+                index++;
+            }
+
+            // Now eventDataArray contains the retrieved data
+            return eventDataArray;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error retrieving event data from the database.");
+        }
+        return null;
+    }
+
 }

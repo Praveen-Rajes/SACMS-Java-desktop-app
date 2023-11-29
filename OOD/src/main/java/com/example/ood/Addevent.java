@@ -25,15 +25,15 @@ public class Addevent {
     private Spinner<Integer> endMinuteSpinner;
 
     @FXML
-    TableView viewTable;
+    private  TableView<Event> viewTable;
 
-//    @FXML
-//    private TableColumn<Event, String> eventid;
-//
-//    @FXML
-//    private TableColumn<Event, String> eventname;
-//    @FXML
-//    private TableColumn<Event, String> clubid;
+    @FXML
+    private TableColumn<Event, String> eventid;
+
+    @FXML
+    private TableColumn<Event, String> eventname;
+    @FXML
+    private TableColumn<Event, String> clubid;
 
     @FXML
     private ChoiceBox clubChoiceBox;

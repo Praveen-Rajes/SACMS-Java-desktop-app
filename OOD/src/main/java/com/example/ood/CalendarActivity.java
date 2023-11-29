@@ -5,9 +5,9 @@ import java.time.ZonedDateTime;
 public class CalendarActivity {
     private ZonedDateTime date;
     private String clientName;
-    private Integer serviceNo;
+    private String serviceNo;
 
-    public CalendarActivity(ZonedDateTime date, String clientName, Integer serviceNo) {
+    public CalendarActivity(ZonedDateTime date, String clientName, String serviceNo) {
         this.date = date;
         this.clientName = clientName;
         this.serviceNo = serviceNo;
@@ -29,11 +29,11 @@ public class CalendarActivity {
         this.clientName = clientName;
     }
 
-    public Integer getServiceNo() {
+    public String getServiceNo() {
         return serviceNo;
     }
 
-    public void setServiceNo(Integer serviceNo) {
+    public void setServiceNo(String serviceNo) {
         this.serviceNo = serviceNo;
     }
 
