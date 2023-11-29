@@ -112,6 +112,7 @@ public class ClubProfileController {
     private void onUpdateButtonClick() {
         // Enable editing of fields
         enableEditing(true);
+
     }
 
     @FXML
