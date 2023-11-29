@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ood.ReportController">
+<AnchorPane prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: white;" stylesheets="@report.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ood.ReportController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="650.0" layoutX="27.0" layoutY="25.0" stroke="#0a4969" strokeType="INSIDE" strokeWidth="3.0" width="1147.0" />
       <Label layoutX="479.0" layoutY="105.0" prefHeight="54.0" prefWidth="242.0" text="Monthly Report" textFill="#2d7ca1">
@@ -50,7 +50,7 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="430.0" layoutX="431.0" layoutY="226.0" stroke="#2d7ca1" strokeType="INSIDE" strokeWidth="2.0" width="325.0" />
       <Pane layoutX="440.0" layoutY="233.0" prefHeight="415.0" prefWidth="307.0">
          <children>
-            <Label layoutX="103.0" layoutY="21.0" text="Student List">
+            <Label fx:id="reportstudentlist" layoutX="103.0" layoutY="21.0" text="Student List">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -61,7 +61,7 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="430.0" layoutX="810.0" layoutY="224.0" stroke="#2d7ca1" strokeType="INSIDE" strokeWidth="2.0" width="325.0" />
       <Pane layoutX="819.0" layoutY="233.0" prefHeight="415.0" prefWidth="307.0">
          <children>
-            <Label layoutX="105.0" layoutY="14.0" text="Attendance">
+            <Label fx:id="reportattendance" layoutX="105.0" layoutY="14.0" text="Attendance">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>

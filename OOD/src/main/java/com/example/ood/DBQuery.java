@@ -614,6 +614,38 @@ public class DBQuery {
         }
         return null;
     }
+    public static void addAttendance(Attendance attendance){
+        String query1 = "INSERT INTO attendance(studentID,studentName, clubName, eventName, attendance) VALUES(?,?,?,?,?)";
+
+
+        Connection connection = null;
+        try{
+            connection = getConnection();
+            PreparedStatement preparedStatement1 = connection.prepareStatement(query1);
+
+
+            preparedStatement1.setInt(1, Integer.valueOf(attendance.getStudentId()));
+            preparedStatement1.setString(2, attendance.getStudentName());
+            preparedStatement1.setString(3, attendance.getClubName());
+            preparedStatement1.setString(4, attendance.getEventName());
+            preparedStatement1.setString(5, attendance.getAttendance());
+
+
+            preparedStatement1.executeUpdate();
+            System.out.println("Data Inserted to Attendance table");
+
+        }catch (SQLException e){
+            System.out.println("Error!"+e.getMessage());
+        }finally {
+            try {
+                if(connection != null && !connection.isClosed()){
+                    connection.close();
+                }
+            }catch (SQLException e){
+                System.out.println("Error closing connection"+e.getMessage());
+            }
+        }
+    }
 
 
     public static Connection getConnection() {

@@ -64,6 +64,14 @@ public class ClubProfileController {
     private Club selectedClub;
 
 
+    public void setHomeController(ClubHomeController homeController) {
+        this.homeController = homeController;
+    }
+
+
+
+
+
     public void setClubDetails(Club club) throws FileNotFoundException {
         selectedClub = club;
 
@@ -111,8 +119,17 @@ public class ClubProfileController {
     }
     @FXML
     private void onUpdateButtonClick() {
-        // Enable editing of fields
-        enableEditing(true);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText(null);
+        alert.setContentText("Do you wish to continue?");
+        alert.showAndWait();
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            enableEditing(true);
+
+        }
 
     }
 
@@ -126,18 +143,16 @@ public class ClubProfileController {
         selectedClub.setCategory(categoryField.getText());
         selectedClub.setDescription(descriptionArea.getText());
 
-        // Update in HomeController table
+
 
         // Update in the database
         DBQuery dbQuery = new DBQuery();
         dbQuery.updateClub(selectedClub);
+        homeController.updateTable();
 
-        // Optionally, update the image if changed
-        // (You may want to implement a mechanism to update the image in the database as well)
-
-
+        Stage stage = (Stage) saveButton.getScene().getWindow();
+        stage.close();
     }
-
     // ... (existing code)
 
     private void enableEditing(boolean enable) {
@@ -150,9 +165,8 @@ public class ClubProfileController {
         categoryField.setEditable(disable);
         descriptionArea.setEditable(disable);
     }
-    public void setHomeController(ClubHomeController homeController) {
-        this.homeController = homeController;
-    }
+
+
     // ClubProfileController.java
 
     @FXML
@@ -177,6 +191,7 @@ public class ClubProfileController {
             e.printStackTrace();
         }
     }
+
 
 
 }

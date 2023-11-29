@@ -35,9 +35,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import static com.example.ood.DBQuery.getConnection;
-//import static jdk.internal.agent.Agent.getText;
 
 public class RegistrationController {
+    @FXML
+    private Label errormsg;
 
     @FXML
     private TextField studentIdField;
@@ -127,7 +128,6 @@ public class RegistrationController {
 
     @FXML
     private ChoiceBox<String> joinclubchoicebox;
-
     @FXML
     private ChoiceBox<String> leaveclubchoicebox;
 
@@ -256,123 +256,283 @@ public class RegistrationController {
         String advisorId = advisorIdField.getText();
         Path destinationDirectory = Paths.get("OOD", "src", "main", "resources", "advisorImages");
         Path destinationFilePath = destinationDirectory.resolve(advisorId + ".jpg");
-
         a1.setImagePath(destinationFilePath.toString());
         DBQuery.addAdvisor(a1);
         DBQuery.addAdvisorLogin(a1);
     }
 
-//    @FXML
-//    private TextField studentIdField;
-//    @FXML
-//    private TextField studentFNameField;
-//    @FXML
-//    private TextField studentLNameField;
     @FXML
-    private void validateLogin(ActionEvent e){
+    private void validateLogin() {
         String sID = studentIdField.getText();
         String fName = studentFNameField.getText();
         String lName = studentLNameField.getText();
+        String dob = studentDOBField.getValue().toString();
+        String gName = studentGuardianNameField.getText();
+        String gPhone = studentGuardianPhoneField.getText();
+        String gEmail = studentGuardianEmailField.getText();
 
+        try {
+            // Check if student with the same ID already exists in the database
+            PreparedStatement preparedStatement = getConnection().prepareStatement("SELECT * FROM student WHERE studentID = ?");
+            preparedStatement.setString(1, sID);
+            ResultSet resultSet = preparedStatement.executeQuery();
 
+            // Check if any rows were returned
+            if (resultSet.next()) {
+                studentIdField.setStyle("-fx-border-color: red;-fx-border-width: 2px");
+                errormsg.setText("Error: Student with ID " + sID + " already exists!");
+                return; // Exit the method if the student already exists
+            } else {
+                studentIdField.setStyle("-fx-border-color: white");
+            }
+
+            // Close the ResultSet and PreparedStatement
+            resultSet.close();
+            preparedStatement.close();
+        } catch (SQLException ex) {
+            // Handle any potential SQLException
+            ex.printStackTrace();
+        }
+        if(!isValidID(sID)){
+            studentIdField.setStyle("-fx-border-color: red;-fx-border-width: 2px");
+            errormsg.setText("Error: Please enter a valid Id");
+        }else {
+            studentIdField.setStyle("-fx-border-color: white");}
+        if (!isValidName(fName)) {
+            studentFNameField.setStyle("-fx-border-color: red;-fx-border-width: 2px");
+            errormsg.setText("Error: First Name should contain only letters.");
+            return;
+        } else {
+            studentFNameField.setStyle("-fx-border-color: white");
+        }
+
+        if (!isValidName(lName)) {
+            studentLNameField.setStyle("-fx-border-color: red;-fx-border-width: 2px");
+            errormsg.setText("Error: Last Name should contain only letters.");
+            return;
+        } else {
+            studentLNameField.setStyle("-fx-border-color: white");
+        }
+
+        if (!isValidName(gName)) {
+            studentGuardianNameField.setStyle("-fx-border-color: red;-fx-border-width: 2px");
+            errormsg.setText("Error: Guardian Name should contain only letters.");
+            return;
+        } else {
+            studentGuardianNameField.setStyle("-fx-border-color: white");
+        }
+
+        if (!isValidPhone(gPhone)) {
+            studentGuardianPhoneField.setStyle("-fx-border-color: red;-fx-border-width: 2px");
+            errormsg.setText("Error: Guardian phone should contain only 10 integers.");
+            return;
+        } else {
+            studentGuardianPhoneField.setStyle("-fx-border-color: white");
+        }
+
+        if (!isValidEmail(gEmail)) {
+            studentGuardianEmailField.setStyle("-fx-border-color: red;-fx-border-width: 2px");
+            errormsg.setText("Error: Invalid email format.");
+            return;
+        } else {
+            studentGuardianEmailField.setStyle("-fx-border-color: white");
+        }
+        if (isValidID(sID) && isValidName(fName) && isValidName(lName) &&
+                isValidName(gName) && isValidPhone(gPhone) && isValidEmail(gEmail)) {
+            errormsg.setText(""); // Clear the error message
+            status = 1;
+        }
+    }
+    @FXML
+    private void validateLogin2() {
+        String aID = advisorIdField.getText();
+        String fName = advisorFNameField.getText();
+        String lName = advisorLNameField.getText();
+        String aPhone = advisorPhoneField.getText();
+
+        try {
+            // Check if student with the same ID already exists in the database
+            PreparedStatement preparedStatement = getConnection().prepareStatement("SELECT * FROM advisor WHERE advisorID = ?");
+            preparedStatement.setString(1, aID);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            // Check if any rows were returned
+            if (resultSet.next()) {
+                advisorIdField.setStyle("-fx-border-color: red;-fx-border-width: 2px");
+                errormsg.setText("Error: Student with ID " + aID + " already exists!");
+                return; // Exit the method if the student already exists
+            } else {
+                advisorIdField.setStyle("-fx-border-color: white");
+            }
+
+            // Close the ResultSet and PreparedStatement
+            resultSet.close();
+            preparedStatement.close();
+        } catch (SQLException ex) {
+            // Handle any potential SQLException
+            ex.printStackTrace();
+        }
+        if(!isValidID(aID)){
+            advisorIdField.setStyle("-fx-border-color: red;-fx-border-width: 2px");
+            errormsg.setText("Error: Please enter a valid Id");
+        }else {
+            advisorIdField.setStyle("-fx-border-color: white");}
+        if (!isValidName(fName)) {
+            advisorFNameField.setStyle("-fx-border-color: red;-fx-border-width: 2px");
+            errormsg.setText("Error: First Name should contain only letters.");
+            return;
+        } else {
+            advisorFNameField.setStyle("-fx-border-color: white");
+        }
+
+        if (!isValidName(lName)) {
+            advisorLNameField.setStyle("-fx-border-color: red;-fx-border-width: 2px");
+            errormsg.setText("Error: Last Name should contain only letters.");
+            return;
+        } else {
+            advisorLNameField.setStyle("-fx-border-color: white");
+        }
+
+        if (!isValidPhone(aPhone)) {
+            advisorPhoneField.setStyle("-fx-border-color: red;-fx-border-width: 2px");
+            errormsg.setText("Error: Guardian phone should contain only 10 integers.");
+            return;
+        } else {
+            advisorPhoneField.setStyle("-fx-border-color: white");
+        }
+        // If all validations pass, proceed to get advisor details
+//        getAdvisorDetails();
+        if (isValidID(aID) && isValidName(fName) && isValidName(lName) && isValidPhone(aPhone)) {
+            errormsg.setText(""); // Clear the error message
+            status = 1;
+        }
+
+    }
+
+    private boolean isValidName(String name) {
+        // Use a regular expression to check if the name contains only letters
+        return name.matches("[a-zA-Z]+");
+    }
+    private boolean isValidPhone(String phone) {
+        // Check if the phone contains only digits and has a length of 10
+        return phone.matches("\\d{10}");
+    }
+    private boolean isValidID(String id) {
+        // Check if the ID contains only digits and has a length of 4
+        return id.matches("\\d{4}");
+    }
+    private boolean isValidEmail(String gEmail) {
+        return gEmail.matches("^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$");
+    }
+
+    private int status = 0;
+    @FXML
+    public void onValidateButtonClick(){
+        validateLogin();
+    }
+    @FXML
+    public void onValidateButton2Click(){
+        validateLogin2();
     }
     @FXML
     protected void onSubmitButtonClick(ActionEvent e2)throws IOException {
-        getStudentDetails();
-        Stage previousStage = (Stage) ((Node) e2.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("StudentLogin.fxml"));
-        previousStage.setScene(new Scene(root, 1200, 750));
+        if(status == 1){
+            getStudentDetails();
+            Stage previousStage = (Stage) ((Node) e2.getSource()).getScene().getWindow();
+            Parent root = FXMLLoader.load(getClass().getResource("StudentLogin.fxml"));
+            previousStage.setScene(new Scene(root, 1200, 750));
+        } else{errormsg.setText("Please validate input before clicking submit button");}
     }
 
     @FXML
     protected void onSubmitButton2Click(ActionEvent e)throws IOException {
-        getAdvisorDetails();
-        Stage previousStage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("AdvisorLogin.fxml"));
-        previousStage.setScene(new Scene(root, 1200, 750));
+        if(status == 1){
+            getAdvisorDetails();
+            Stage previousStage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+            Parent root = FXMLLoader.load(getClass().getResource("AdvisorLogin.fxml"));
+            previousStage.setScene(new Scene(root, 1200, 750));
+        }else{errormsg.setText("Please validate input before clicking submit button");}
     }
 
-//    @FXML
-//    protected void onStudentIdFill(){
-////        Student s1 = new Student();
-////        int studentId = Integer.parseInt(studentIdField.getText());
-////        s1.setStudentId(studentId);
-////        System.out.println(s1.getStudentId());
-//    }
 
     @FXML
-    protected void onSelectImageButtonClick(){
+    protected void onSelectImageButtonClick() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg"));
         Stage stage = (Stage) selectimagebutton.getScene().getWindow();
         File file = fileChooser.showOpenDialog(stage);
 
         if (file != null && file.exists()) {
-            studentImage = new Image(file.toURI().toString());
-            studentImageField.setImage(studentImage);
             String studentId = studentIdField.getText();
+            if (isValidID(studentId)) {
+                errormsg.setText("");
+                studentImage = new Image(file.toURI().toString());
+                studentImageField.setImage(studentImage);
 
-            // Corrected the destinationFilePath creation
-            Path destinationDirectory = Paths.get("OOD", "src", "main", "resources", "studentImages");
-            Path destinationFilePath = destinationDirectory.resolve(studentId + ".jpg");
+                // Corrected the destinationFilePath creation
+                Path destinationDirectory = Paths.get("OOD", "src", "main", "resources", "studentImages");
+                Path destinationFilePath = destinationDirectory.resolve(studentId + ".jpg");
 
-            try {
-                // Create the directory if it doesn't exist
-                if (!Files.exists(destinationDirectory)) {
-                    Files.createDirectories(destinationDirectory);
+                try {
+                    // Create the directory if it doesn't exist
+                    if (!Files.exists(destinationDirectory)) {
+                        Files.createDirectories(destinationDirectory);
+                    }
+
+                    // Copy the file to the destination
+                    Files.copy(file.toPath(), destinationFilePath, StandardCopyOption.REPLACE_EXISTING);
+                    System.out.println("File copied to: " + destinationFilePath);
+                    removeText();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    // Handle the exception appropriately, e.g., show an error message to the user
                 }
-
-                // Copy the file to the destination
-                Files.copy(file.toPath(), destinationFilePath, StandardCopyOption.REPLACE_EXISTING);
-                System.out.println("File copied to: " + destinationFilePath);
-                removeText();
-            } catch (IOException e) {
-                e.printStackTrace();
-                // Handle the exception appropriately, e.g., show an error message to the user
+            } else {
+                errormsg.setText("Invalid studentId");
             }
-
         } else {
             System.err.println("Selected file is null or does not exist.");
         }
     }
-
     @FXML
-    protected void onSelectImageButton2Click(){
+    protected void onSelectImageButton2Click() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg"));
         Stage stage = (Stage) selectimagebutton2.getScene().getWindow();
         File file = fileChooser.showOpenDialog(stage);
 
         if (file != null && file.exists()) {
-            advisorImage = new Image(file.toURI().toString());
-            advisorImageField.setImage(advisorImage);
             String advisorId = advisorIdField.getText();
+            if (isValidID(advisorId)) {
+                errormsg.setText("");
+                advisorImage = new Image(file.toURI().toString());
+                advisorImageField.setImage(advisorImage);
 
-            // Corrected the destinationFilePath creation
-            Path destinationDirectory = Paths.get("OOD", "src", "main", "resources", "advisorImages");
-            Path destinationFilePath = destinationDirectory.resolve(advisorId + ".jpg");
+                // Corrected the destinationFilePath creation
+                Path destinationDirectory = Paths.get("OOD", "src", "main", "resources", "advisorImages");
+                Path destinationFilePath = destinationDirectory.resolve(advisorId + ".jpg");
 
-            try {
-                // Create the directory if it doesn't exist
-                if (!Files.exists(destinationDirectory)) {
-                    Files.createDirectories(destinationDirectory);
+                try {
+                    // Create the directory if it doesn't exist
+                    if (!Files.exists(destinationDirectory)) {
+                        Files.createDirectories(destinationDirectory);
+                    }
+
+                    // Copy the file to the destination
+                    Files.copy(file.toPath(), destinationFilePath, StandardCopyOption.REPLACE_EXISTING);
+                    System.out.println("File copied to: " + destinationFilePath);
+                    removeText2();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    // Handle the exception appropriately, e.g., show an error message to the user
                 }
-
-                // Copy the file to the destination
-                Files.copy(file.toPath(), destinationFilePath, StandardCopyOption.REPLACE_EXISTING);
-                System.out.println("File copied to: " + destinationFilePath);
-                removeText2();
-            } catch (IOException e) {
-                e.printStackTrace();
-                // Handle the exception appropriately, e.g., show an error message to the user
+            } else {
+                errormsg.setText("Invalid advisorId");
             }
-
         } else {
             System.err.println("Selected file is null or does not exist.");
         }
-
     }
-
     private void removeText() {
         Pane imagePane = (Pane) studentImageField.getParent();
         imagePane.getChildren().removeIf(node -> node instanceof FontIcon || node instanceof Text);
@@ -380,13 +540,6 @@ public class RegistrationController {
     private void removeText2() {
         Pane imagePane = (Pane) advisorImageField.getParent();
         imagePane.getChildren().removeIf(node -> node instanceof FontIcon || node instanceof Text);
-    }
-
-    @FXML
-    protected void onLogoutButtonClick(ActionEvent e2)throws IOException {
-        Stage previousStage = (Stage) ((Node) e2.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("StudentLogin.fxml"));
-        previousStage.setScene(new Scene(root, 1200, 750));
     }
 
     @FXML
@@ -476,7 +629,6 @@ public class RegistrationController {
 
         return clubList;
     }
-
     private void getClubsFromDatabase() {
         String query = "SELECT c.clubID, c.clubName FROM club c JOIN student_club sc ON c.clubID = sc.clubID WHERE sc.studentID = ?";
         try (Connection connection = getConnection()) {
@@ -494,11 +646,10 @@ public class RegistrationController {
             e.printStackTrace();
         }
     }
-
-        public void onShowClubsButtonClick(ActionEvent actionEvent) {
+    public void onShowClubsButtonClick(ActionEvent actionEvent) {
         populateChoiceBox();
         getAllClubsList();
-        }
+    }
     public void onRefreshClubsButtonClick(ActionEvent event){
         studentclubtableview.getColumns().clear();
         getStudentClubList();
@@ -591,5 +742,18 @@ public class RegistrationController {
 
     public void onLeaveClubButtonClick(ActionEvent actionEvent) {
         leaveClub();
+    }
+
+    @FXML
+    protected void onLogoutButtonClick(ActionEvent e2)throws IOException {
+        Stage previousStage = (Stage) ((Node) e2.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("StudentLogin.fxml"));
+        previousStage.setScene(new Scene(root, 1200, 750));
+    }
+    @FXML
+    public void onLogoutButton2Click(ActionEvent e2)throws IOException {
+        Stage previousStage = (Stage) ((Node) e2.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("AdvisorLogin.fxml"));
+        previousStage.setScene(new Scene(root, 1200, 750));
     }
 }

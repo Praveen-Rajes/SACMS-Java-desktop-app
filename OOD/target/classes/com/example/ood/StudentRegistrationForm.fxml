@@ -66,10 +66,10 @@
                 <AnchorPane fx:id="contentArea" prefHeight="700.0" prefWidth="1051.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
                     <children>
                         <Pane layoutX="73.0" layoutY="197.0" prefHeight="306.0" prefWidth="311.0" style="-fx-border-color: #032d4d; -fx-border-radius: 16;">
-                     <children>
-                        <FontIcon iconLiteral="fltfmz-person-add-24" iconSize="200" layoutX="35.0" layoutY="243.0" opacity="0.5" text="" textAlignment="CENTER" wrappingWidth="240.79999542236328" />
-                        <ImageView fx:id="studentImageField" fitHeight="283.0" fitWidth="289.0" layoutX="11.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" />
-                     </children></Pane>
+                            <children>
+                                <FontIcon iconLiteral="fltfmz-person-add-24" iconSize="200" layoutX="35.0" layoutY="243.0" opacity="0.5" text="" textAlignment="CENTER" wrappingWidth="240.79999542236328" />
+                                <ImageView fx:id="studentImageField" fitHeight="283.0" fitWidth="289.0" layoutX="11.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" />
+                            </children></Pane>
                         <Pane layoutX="521.0" layoutY="75.0" prefHeight="411.0" prefWidth="452.0" style="-fx-border-color: #032d4d; -fx-border-radius: 16;">
                             <children>
                                 <TextField fx:id="studentIdField" layoutX="72.0" layoutY="26.0" prefHeight="26.0" prefWidth="307.0" />
@@ -82,15 +82,15 @@
                                 <TextField fx:id="studentLNameField" layoutX="72.0" layoutY="135.0" prefHeight="26.0" prefWidth="307.0" />
                                 <TextField fx:id="studentAddressField" layoutX="73.0" layoutY="296.0" prefHeight="26.0" prefWidth="307.0" />
                                 <TextField fx:id="studentGradeClassField" layoutX="73.0" layoutY="347.0" prefHeight="26.0" prefWidth="307.0" />
-                        <Label layoutX="83.0" layoutY="17.0" style="-fx-background-color: white;" text="Student ID" />
-                        <Label layoutX="83.0" layoutY="71.0" style="-fx-background-color: white;" text="First Name" />
-                        <Label layoutX="83.0" layoutY="127.0" style="-fx-background-color: white;" text="Last Name" />
-                        <Label layoutX="83.0" layoutY="288.0" style="-fx-background-color: white;" text="Home Address" />
-                        <Label layoutX="83.0" layoutY="339.0" style="-fx-background-color: white;" text="Grade and Class" />
-                        <DatePicker fx:id="studentDOBField" layoutX="73.0" layoutY="193.0" prefHeight="25.0" prefWidth="306.0" />
-                        <Label layoutX="88.0" layoutY="185.0" style="-fx-background-color: white;" text="Date of Birth" />
-                        <TextField fx:id="studentGenderField" layoutX="72.0" layoutY="238.0" prefHeight="25.0" prefWidth="307.0" />
-                        <Label layoutX="83.0" layoutY="233.0" style="-fx-background-color: white;" text="Gender" />
+                                <Label layoutX="83.0" layoutY="17.0" style="-fx-background-color: white;" text="Student ID" />
+                                <Label layoutX="83.0" layoutY="71.0" style="-fx-background-color: white;" text="First Name" />
+                                <Label layoutX="83.0" layoutY="127.0" style="-fx-background-color: white;" text="Last Name" />
+                                <Label layoutX="83.0" layoutY="288.0" style="-fx-background-color: white;" text="Home Address" />
+                                <Label layoutX="83.0" layoutY="339.0" style="-fx-background-color: white;" text="Grade and Class" />
+                                <DatePicker fx:id="studentDOBField" layoutX="73.0" layoutY="193.0" prefHeight="25.0" prefWidth="306.0" />
+                                <Label layoutX="88.0" layoutY="185.0" style="-fx-background-color: white;" text="Date of Birth" />
+                                <TextField fx:id="studentGenderField" layoutX="72.0" layoutY="238.0" prefHeight="25.0" prefWidth="307.0" />
+                                <Label layoutX="83.0" layoutY="233.0" style="-fx-background-color: white;" text="Gender" />
                             </children>
                         </Pane>
                         <Label alignment="TOP_CENTER" layoutX="294.0" layoutY="14.0" prefHeight="18.0" prefWidth="363.0" text="Student Registration Form" textAlignment="CENTER" textFill="#032d4d">
@@ -98,7 +98,7 @@
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </Label>
-                        <Button fx:id="submitButton" layoutX="186.0" layoutY="547.0" mnemonicParsing="false" onAction="#onSubmitButtonClick" style="-fx-background-color: #032d4d;" text="Submit" textFill="#e3e5e7">
+                        <Button fx:id="validateButton" layoutX="128.0" layoutY="521.0" mnemonicParsing="false" onAction="#onValidateButtonClick" style="-fx-background-color: #ADDFFF;" text="Validate Information" textFill="#010b15">
                             <font>
                                 <Font name="System Bold" size="18.0" />
                             </font>
@@ -113,12 +113,18 @@
                                     </font>
                                 </Label>
                                 <TextField fx:id="studentGuardianEmailField" layoutX="79.0" layoutY="121.0" prefHeight="25.0" prefWidth="307.0" />
-                        <Label layoutX="90.0" layoutY="18.0" style="-fx-background-color: white;" text="Guardian Name" />
-                        <Label layoutX="90.0" layoutY="65.0" style="-fx-background-color: white;" text="Phone Number" />
-                        <Label layoutX="90.0" layoutY="112.0" style="-fx-background-color: white;" text="Email" />
+                                <Label layoutX="90.0" layoutY="18.0" style="-fx-background-color: white;" text="Guardian Name" />
+                                <Label layoutX="90.0" layoutY="65.0" style="-fx-background-color: white;" text="Phone Number" />
+                                <Label layoutX="90.0" layoutY="112.0" style="-fx-background-color: white;" text="Email" />
                             </children>
                         </Pane>
                         <Button fx:id="selectimagebutton" layoutX="392.0" layoutY="473.0" mnemonicParsing="false" onAction="#onSelectImageButtonClick" text="Select Image" />
+                        <Button fx:id="submitButton1" layoutX="186.0" layoutY="620.0" mnemonicParsing="false" onAction="#onSubmitButtonClick" style="-fx-background-color: #032d4d;" text="Submit" textFill="#e3e5e7">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
+                        </Button>
+                        <Label fx:id="errormsg" layoutX="73.0" layoutY="102.0" prefHeight="68.0" prefWidth="306.0" textFill="RED" />
                     </children></AnchorPane>
             </center>
         </BorderPane>
