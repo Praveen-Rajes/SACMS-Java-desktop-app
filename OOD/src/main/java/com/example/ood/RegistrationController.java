@@ -35,6 +35,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import static com.example.ood.DBQuery.getConnection;
+//import static jdk.internal.agent.Agent.getText;
 
 public class RegistrationController {
 
@@ -45,7 +46,7 @@ public class RegistrationController {
     @FXML
     private TextField studentLNameField;
     @FXML
-    private TextField studentDOBField;
+    private DatePicker studentDOBField;
     @FXML
     private TextField studentGenderField;
     @FXML
@@ -170,6 +171,7 @@ public class RegistrationController {
     }
 
     public void getAllClubsList() {
+        allclubtableview.refresh();
         allclubtableview.getColumns().clear();
 
         // Define columns
@@ -200,6 +202,8 @@ public class RegistrationController {
     }
 
     public void getStudentClubList(){
+        studentClubList.clear();
+        studentclubtableview.refresh();
         studentclubtableview.getColumns().clear();
         TableColumn<Club, String> iDColumn = new TableColumn<>("Club ID");
         iDColumn.setCellValueFactory(data -> data.getValue().clubIDProperty());
@@ -223,7 +227,7 @@ public class RegistrationController {
         s1.setStudentId(parsedStudentId);
         s1.setFirstName(studentFNameField.getText());
         s1.setLastName(studentLNameField.getText());
-        s1.setDateOfBirth(studentDOBField.getText());
+        s1.setDateOfBirth(studentDOBField.getValue().toString());
         s1.setGender(studentGenderField.getText());
         s1.setAddress(studentAddressField.getText());
         s1.setStudentGradeClass(studentGradeClassField.getText());
@@ -258,6 +262,20 @@ public class RegistrationController {
         DBQuery.addAdvisorLogin(a1);
     }
 
+//    @FXML
+//    private TextField studentIdField;
+//    @FXML
+//    private TextField studentFNameField;
+//    @FXML
+//    private TextField studentLNameField;
+    @FXML
+    private void validateLogin(ActionEvent e){
+        String sID = studentIdField.getText();
+        String fName = studentFNameField.getText();
+        String lName = studentLNameField.getText();
+
+
+    }
     @FXML
     protected void onSubmitButtonClick(ActionEvent e2)throws IOException {
         getStudentDetails();
