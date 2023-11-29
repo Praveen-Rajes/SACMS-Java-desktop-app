@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.util.StringConverter;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class AttendanceController {
     @FXML
@@ -166,6 +167,17 @@ public class AttendanceController {
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(content);
-        alert.showAndWait();
+
+        // Add event handler for OK button
+        ButtonType okButton = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
+        alert.getButtonTypes().setAll(okButton);
+
+        // Show the alert and wait for user response
+        alert.showAndWait().ifPresent(result -> {
+            if (result == okButton) {
+                eventTableView.getItems().clear();
+                studentTableView.getItems().clear();
+            }
+        });
     }
 }
