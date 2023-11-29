@@ -127,7 +127,7 @@ public class EventSchedule implements Initializable {
                 });
                 break;
             }
-            Text text = new Text(calendarActivities.get(k).getClientName() + ", " + calendarActivities.get(k).getDate().toLocalTime());
+            Text text = new Text( "( "+calendarActivities.get(k).getClientName() + ") " );
             calendarActivityBox.getChildren().add(text);
             text.setOnMouseClicked(mouseEvent -> {
                 //On Text clicked
@@ -168,7 +168,7 @@ public class EventSchedule implements Initializable {
         int month = dateFocus.getMonth().getValue();
         int eyear;
         int emonth;
-        int day ;
+        int day;
         int Hour;
         int min;
 
@@ -197,14 +197,46 @@ public class EventSchedule implements Initializable {
 //
 //
 //        }
-        String EventID = "1100";
+//        for (String[] row : eventDataArray) {
+//            eyear = Integer.parseInt(row[4].substring(0, 4));
+//            emonth = Integer.parseInt(row[4].substring(5, 7));
+//            day = Integer.parseInt(row[4].substring(8, 10));
+//            Hour = Integer.parseInt(row[5].substring(0, 2));
+//            min =  Integer.parseInt(row[5].substring(2, 4));
+//
+//            ZonedDateTime time = ZonedDateTime.of(eyear, emonth, day, 00, 0, 0, 0, dateFocus.getZone());
+//            String clientName = row[1]; // Assuming the client name is in the second column, adjust accordingly
+//            String eventID = row[0]; // Assuming the event ID is in the first column, adjust accordingly
+//
+//            calendarActivities.add(new CalendarActivity(time, clientName, eventID));
+//        }
+        String EventID = "";
+        String EventName = "";
+        int date;
+        int evmonth;
+        int evyear;
 
 
-        ZonedDateTime time = ZonedDateTime.of(year, month, 27, 00, 0, 0, 0, dateFocus.getZone());
-        calendarActivities.add(new CalendarActivity(time, "Hans" , EventID));
 
-        return createCalendarMap(calendarActivities);
-    }
+//
+//
+        for (String[] row : eventDataArray) {
+            date = Integer.parseInt(row[4].substring(8, 10));
+            evmonth = Integer.parseInt((row[4].substring(5, 7)));
+            EventName = (row[2]);
+            EventID = (row[0]);
+            System.out.println( "d" +date);
+            System.out.println(evmonth);
+
+
+
+            ZonedDateTime time = ZonedDateTime.of(year, evmonth, date, 00, 0, 0, 0, dateFocus.getZone());
+            calendarActivities.add(new CalendarActivity(time, EventName + EventID, EventID));
+
+        }
+            return createCalendarMap(calendarActivities);
+        }
+
 
     public void addEvent(ActionEvent actionEvent) throws IOException {
         try {

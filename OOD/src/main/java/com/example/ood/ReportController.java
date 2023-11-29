@@ -2,10 +2,18 @@ package com.example.ood;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import static com.example.ood.DBQuery.getConnection;
@@ -18,17 +26,6 @@ public class ReportController {
     @FXML
     private TextArea events;
 
-    @FXML
-    private Label reportAdvisor;
-
-    @FXML
-    private Label reportClubID;
-
-    @FXML
-    private Label reportClubName;
-
-    @FXML
-    private Label reportevent;
 
     @FXML
     private TextArea studentList;
@@ -143,9 +140,33 @@ public class ReportController {
 
     @FXML
     void DownloadClick(ActionEvent event) {
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss");
+        String formattedDateTime = now.format(formatter);
+
+        // Create a file with the current date and time in the file name
+        File file = new File("report_" + formattedDateTime + ".txt");
+
+        // Write the text to the file
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+            writer.write("Event Names:\n");
+            writer.write(events.getText() + "\n");
+
+            writer.write("\nStudent Counts:\n");
+            writer.write(studentList.getText() + "\n");
+
+            writer.write("\nAttendance Data:\n");
+            writer.write(attendance.getText() + "\n");
+
+            System.out.println("Report saved to: " + file.getAbsolutePath());
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Error writing report to the file.");
+        }
 
     }
 
     public void setReportDetails(String clubID, String name, String s) {
     }
+
 }

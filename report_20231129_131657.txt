@@ -1,0 +1,17 @@
+Event Names:
+1
+code sprint
+doo
+ccd
+
+
+Student Counts:
+Club : Cricket=> Students 0
+Club : egerg=> Students 0
+Club : English Literature=> Students 1
+Club : Ieee=> Students 1
+Club : Sinhala Literature=> Students 0
+
+
+Attendance Data:
+No events found.
