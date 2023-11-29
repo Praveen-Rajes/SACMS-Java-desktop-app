@@ -1,0 +1,41 @@
+#reportClubID, #reportClubName, #reportAdvisor, #reportevent, #attendance, #reportstudentlist, #reportattendance {
+    -fx-font-family: "System Bold";
+    -fx-font-size: 18px;
+    -fx-text-fill: #0a4969;
+    -fx-font-weight: bold; /* Ensure bold text for labels */
+}
+
+#events, #studentList, #attendance {
+    -fx-font-family: "System";
+    -fx-font-size: 14px;
+    -fx-text-fill: #333333; /* Dark gray text */
+    -fx-control-inner-background: #f4f4f4; /* Light gray background */
+    -fx-border-color: #2d7ca1; /* Border color */
+    -fx-border-width: 2px; /* Border width */
+    -fx-border-radius: 5px; /* Rounded corners */
+    -fx-padding: 5px; /* Add some padding */
+    -fx-font-weight: bold;
+
+}
+
+.button:hover {
+    -fx-background-color: #2d7ca1;
+}
+
+.rectangle {
+    -fx-stroke: #2d7ca1;
+    -fx-stroke-width: 2px;
+}
+
+#eventsPane, #studentListPane, #attendancePane {
+    -fx-background-color: #f4f4f4;
+    -fx-border-color: #2d7ca1;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px; /* Add rounded corners to panes */
+    -fx-font-weight: bold;
+}
+
+/* Add a subtle box shadow on hover for better visual feedback */
+#events:hover, #studentList:hover, #attendance:hover {
+    -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0, 0, 5);
+}
