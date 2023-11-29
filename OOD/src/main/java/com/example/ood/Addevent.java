@@ -125,15 +125,9 @@ public class Addevent {
 
         // Table View
         // Set cell value for the table columns
-        //eventid.setCellValueFactory(data -> data.getValue().eventIDProperty());
-       // eventname.setCellValueFactory(data -> data.getValue().eventNameProperty());
-       // clubid.setCellValueFactory(data -> data.getValue().clubProperty());
 
-       // loadDataFromDatabase();
-       // viewTable.setItems(eventDetails);
-       // viewTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
 
-      //  });
+
 
     }
 
@@ -156,6 +150,14 @@ public class Addevent {
                 System.out.println(i);
             }
         }
+        eventid.setCellValueFactory(data -> data.getValue().eventIDProperty());
+        eventname.setCellValueFactory(data -> data.getValue().eventNameProperty());
+        clubid.setCellValueFactory(data -> data.getValue().clubProperty());
+        loadDataFromDatabase();
+        viewTable.setItems(eventDetails);
+        viewTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+
+        });
 
 
 

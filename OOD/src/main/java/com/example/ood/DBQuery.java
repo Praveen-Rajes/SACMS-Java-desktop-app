@@ -674,4 +674,11 @@ public class DBQuery {
         return null;
     }
 
+    public String getAttendanceDataForEvent(String eventName) {
+        return eventName;
+    }
+
+    public ArrayList<String> getEventList() {
+        return null;
+    }
 }
