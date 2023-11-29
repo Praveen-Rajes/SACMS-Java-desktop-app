@@ -199,6 +199,7 @@ public class EventSchedule implements Initializable {
 //        }
         String EventID = "1100";
 
+
         ZonedDateTime time = ZonedDateTime.of(year, month, 27, 00, 0, 0, 0, dateFocus.getZone());
         calendarActivities.add(new CalendarActivity(time, "Hans" , EventID));
 

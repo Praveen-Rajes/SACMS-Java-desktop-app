@@ -133,4 +133,11 @@ public class Attendance{
     public ObservableValue<String> studentFNameProperty() {
         return new SimpleStringProperty(studentFName);
     }
+
+    public ObservableValue<String> attendanceStatusProperty() {
+        return null;
+    }
+
+    public void setAttendanceStatus(String selectedStatus) {
+    }
 }
