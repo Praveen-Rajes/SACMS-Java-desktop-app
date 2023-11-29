@@ -66,6 +66,11 @@ public class AttendanceController {
 
         if (attendanceList != null) {
             clubDetails.clear();
+
+            // Add a placeholder item
+            Attendance placeholderClub = new Attendance("Select a club");
+            clubDetails.add(placeholderClub);
+
             clubDetails.addAll(attendanceList);
 
             clubChoiceBox.setItems(clubDetails);
@@ -99,7 +104,11 @@ public class AttendanceController {
 
     @FXML
     public void OnActionSubmitClick() {
-        if (selectedClub != null) {
+        Attendance selectedAttendance = clubChoiceBox.getValue();
+
+        if (selectedAttendance != null && !selectedAttendance.getClubName().equals("Select a club")) {
+            // Proceed with the selected club
+            selectedClub = selectedAttendance.getClubName();
             DBQuery dbQuery = new DBQuery();
             ArrayList<Attendance> eventList = dbQuery.getEventListForAttendance(selectedClub);
 
@@ -118,12 +127,15 @@ public class AttendanceController {
                     studentTableView.setDisable(true);
                 }
             } else {
+                showAlert("No Events Found", "No events found for the selected club.");
                 System.out.println("No events found for the selected club.");
             }
         } else {
+            showAlert("No Club Selected", "Please select a club.");
             System.out.println("No club selected.");
         }
     }
+
 
     private boolean checkIfStudentsExist(String club) {
         DBQuery dbQuery = new DBQuery();
@@ -147,5 +159,13 @@ public class AttendanceController {
         } else {
             System.out.println("No students found for the selected club.");
         }
+    }
+
+    private void showAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 }
