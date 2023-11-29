@@ -6,7 +6,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.util.StringConverter;
 import java.util.ArrayList;
-import java.util.Optional;
 
 public class AttendanceController {
     @FXML
@@ -29,7 +28,11 @@ public class AttendanceController {
     private TableColumn<Attendance, String> studentNameColumn;
     @FXML
     private Button submitButton;
+    @FXML
+    private Button savebutton;
     private String selectedClub;
+    private String selectedEventName;
+    private String selectedAttendanceStatus;
     private final ObservableList<Attendance> clubDetails = FXCollections.observableArrayList();
 
     @FXML
@@ -50,10 +53,10 @@ public class AttendanceController {
                     } else {
                         choiceBox.setValue(item);
                         choiceBox.setOnAction(event -> {
-                            String selectedStatus = choiceBox.getValue();
+                            selectedAttendanceStatus = choiceBox.getValue();
                             Attendance attendance = getTableView().getItems().get(getIndex());
-                            attendance.setAttendanceStatus(selectedStatus);
-                            System.out.println("Selected Status: " + selectedStatus);
+                            attendance.setAttendanceStatus(selectedAttendanceStatus);
+                            System.out.println("Selected Status: " + selectedAttendanceStatus);
                         });
                         setGraphic(choiceBox);
                     }
@@ -100,6 +103,16 @@ public class AttendanceController {
                     System.out.println("Null");
                 }
             });
+            eventTableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+                if (newValue != null) {
+                    String eventName = newValue.getEventName();
+                    selectedEventName = eventName;
+                    System.out.println("Selected Event: " + selectedEventName);
+
+                    // Now you can use selectedEventName in your database operations or pass it to other methods
+                }
+            });
+
         }
     }
 
@@ -161,6 +174,41 @@ public class AttendanceController {
             System.out.println("No students found for the selected club.");
         }
     }
+    @FXML
+    public void OnActionSaveClick() {
+        saveAttendance();
+    }
+    public void saveAttendance() {
+        Attendance selectedAttendance = clubChoiceBox.getValue();
+        ObservableList<Attendance> students = studentTableView.getItems();
+
+        if (selectedAttendance != null && !selectedAttendance.getClubName().equals("Select a club")) {
+            if (students != null && !students.isEmpty()) {
+                DBQuery dbQuery = new DBQuery();
+                String attendance = selectedAttendanceStatus; // Use the selected attendance status
+
+                for (Attendance student : students) {
+                    // Create a new Attendance object with student details and attendance status
+                    Attendance studentAttendance = new Attendance(
+                            student.getStudentId(),
+                            student.getStudentName(),
+                            selectedClub,
+                            selectedEventName,
+                            attendance
+                    );
+
+                    // Save the attendance for each student
+                    dbQuery.addAttendance(studentAttendance);
+                }
+            } else {
+                System.out.println("No students found for the selected club.");
+            }
+        } else {
+            showAlert("No Club Selected", "Please select a club.");
+            System.out.println("No club selected.");
+        }
+    }
+
 
     private void showAlert(String title, String content) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -180,4 +228,5 @@ public class AttendanceController {
             }
         });
     }
+
 }

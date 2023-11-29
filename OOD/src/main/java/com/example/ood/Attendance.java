@@ -10,16 +10,19 @@ public class Attendance{
     private String endTime;
     private String studentId;
     private String studentFName;
+    private String attendance;
     private Event event;
     private Student student;
 
-    public Attendance(String clubName, String eventName, String startTime, String endTime, String studentId, String studentName, Event event, Student student) {
+
+    public Attendance(String clubName, String eventName, String startTime, String endTime, String studentId, String studentFName, String attendance, Event event, Student student) {
         this.clubName = clubName;
         this.eventName = eventName;
         this.startTime = startTime;
         this.endTime = endTime;
         this.studentId = studentId;
-        this.studentFName = studentName;
+        this.studentFName = studentFName;
+        this.attendance = attendance;
         this.event = event;
         this.student = student;
     }
@@ -45,6 +48,14 @@ public class Attendance{
         this.clubName = clubName;
         this.studentId = studentID;
         this.studentFName = studentFName;
+    }
+
+    public Attendance(String studentId, String studentName, String clubName, String eventName, String attendance) {
+        this.studentId = studentId;
+        this.studentFName = studentName;
+        this.clubName = clubName;
+        this.eventName = eventName;
+        this.attendance = attendance;
     }
 
     public Event getEvent() {
@@ -114,6 +125,15 @@ public class Attendance{
     public void setStudentName(String studentName) {
         this.studentFName = studentName;
     }
+
+    public String getAttendance() {
+        return attendance;
+    }
+
+    public void setAttendance(String attendance) {
+        this.attendance = attendance;
+    }
+
     public ObservableValue<String> eventNameProperty() {
         return new SimpleStringProperty(eventName);
     }
