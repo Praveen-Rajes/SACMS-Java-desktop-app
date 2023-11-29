@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="700.0" prefWidth="1051.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ood.AttendanceController">
    <children>
       <Label layoutX="415.0" layoutY="60.0" text="Attendance Tracker">
@@ -30,7 +29,8 @@
             <TableColumn fx:id="attendanceColumn" prefWidth="263.20001220703125" text="Attendance" />
          </columns>
       </TableView>
-      <ChoiceBox fx:id="clubChoiceBox" layoutX="663.0" layoutY="117.0" prefHeight="35.0" prefWidth="210.0" />
-      <Button fx:id="submitButton"  onAction="#OnActionSubmitClick" layoutX="899.0" layoutY="117.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="70.0" text="Button" />
+      <ChoiceBox fx:id="clubChoiceBox" layoutX="546.0" layoutY="117.0" prefHeight="35.0" prefWidth="210.0" />
+      <Button fx:id="submitButton" layoutX="785.0" layoutY="117.0" mnemonicParsing="false" onAction="#OnActionSubmitClick" prefHeight="35.0" prefWidth="70.0" text="Button" />
+      <Button fx:id="savebutton" layoutX="886.0" layoutY="117.0" mnemonicParsing="false" onAction="#OnActionSaveClick" prefHeight="35.0" prefWidth="70.0" text="Save" />
    </children>
 </AnchorPane>
