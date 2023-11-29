@@ -121,6 +121,7 @@ public class ReportController {
             }
         } else {
             attendance.setText("No events found.");
+
         }
     }
 

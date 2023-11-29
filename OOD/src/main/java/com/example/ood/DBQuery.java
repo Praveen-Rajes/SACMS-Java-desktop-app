@@ -667,6 +667,7 @@ public class DBQuery {
             // Now eventDataArray contains the retrieved data
             return eventDataArray;
 
+
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Error retrieving event data from the database.");

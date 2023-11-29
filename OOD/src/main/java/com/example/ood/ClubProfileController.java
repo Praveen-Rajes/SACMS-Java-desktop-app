@@ -101,6 +101,7 @@ public class ClubProfileController {
             stage.close();
         }
 
+
     }
     @FXML
     private void onCloseButtonClick() {
