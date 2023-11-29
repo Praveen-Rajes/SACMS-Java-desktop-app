@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
-<?import org.kordamp.ikonli.javafx.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ood.ClubDashboardController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ood.ClubDashboardController">
    <children>
       <BorderPane prefHeight="750.0" prefWidth="1200.0">
          <top>
@@ -15,12 +19,22 @@
                <children>
                   <Pane layoutX="-8.0" layoutY="-3.0" prefHeight="54.0" prefWidth="1211.0" style="-fx-background-color: #032d4d;" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="-8.0" AnchorPane.rightAnchor="-3.0" AnchorPane.topAnchor="-3.0">
                      <children>
-                        <Label fx:id="advisorNameLabel" layoutX="65.0" layoutY="14.0" text="Advisor Name" textFill="WHITE">
+                        <Label fx:id="advisorNameLabel" layoutX="77.0" layoutY="15.0" text="Advisor Name" textFill="WHITE">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <Circle fx:id="advisorImageView" fill="DODGERBLUE" layoutX="36.0" layoutY="27.0" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Circle fx:id="advisorImageView" fill="DODGERBLUE" layoutX="43.0" layoutY="29.0" radius="23.0" stroke="WHITE" strokeType="INSIDE" />
+                        <Label layoutX="544.0" layoutY="6.0" text="CLUB MASTER " textFill="WHITE">
+                           <font>
+                              <Font name="Bernard MT Condensed" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="486.0" layoutY="31.0" text="School Activity Club Management System" textFill="WHITE">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
                      </children></Pane>
                </children>
             </AnchorPane>
@@ -46,7 +60,7 @@
                               <Font name="System Bold" size="15.0" />
                            </font>
                            <VBox.margin>
-                              <Insets bottom="50.0" left="10.0" top="25.0" />
+                              <Insets bottom="50.0" left="10.0" top="45.0" />
                            </VBox.margin>
                            <graphic>
                               <FontIcon iconColor="WHITE" iconLiteral="fas-calendar-alt" iconSize="15" />
@@ -57,21 +71,10 @@
                               <Font name="System Bold" size="15.0" />
                            </font>
                            <VBox.margin>
-                              <Insets bottom="50.0" left="10.0" top="25.0" />
+                              <Insets bottom="50.0" left="10.0" top="45.0" />
                            </VBox.margin>
                            <graphic>
                               <FontIcon iconColor="WHITE" iconLiteral="fas-clipboard-list" iconSize="15" />
-                           </graphic>
-                        </Button>
-                        <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="176.0" style="-fx-background-color: transparent;" styleClass="sidebarItem" stylesheets="@dashboard.css" text="Reports" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="15.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets bottom="50.0" left="10.0" top="25.0" />
-                           </VBox.margin>
-                           <graphic>
-                              <FontIcon iconColor="WHITE" iconLiteral="far-chart-bar" iconSize="15" />
                            </graphic>
                         </Button>
                         <Button fx:id="logout" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: transparent;" styleClass="sidebarItem" stylesheets="@dashboard.css" text="Log Out" textFill="WHITE">
@@ -82,7 +85,7 @@
                               <Insets bottom="50.0" left="10.0" top="100.0" />
                            </VBox.margin>
                            <graphic>
-                              <FontIcon iconColor="WHITE" iconLiteral="fas-sign-out-alt" iconSize="15" />
+                              <FontIcon iconColor="WHITE" iconLiteral="fas-power-off" iconSize="15" />
                            </graphic>
                         </Button>
                      </children>

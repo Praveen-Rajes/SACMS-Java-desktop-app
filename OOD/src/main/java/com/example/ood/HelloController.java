@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
@@ -21,7 +22,7 @@ public class HelloController {
     private TextField advisorLoginIdField;
 
     @FXML
-    private TextField advisorPasswordField;
+    private PasswordField advisorPasswordField;
     public int loggedInAdvisorId;
     public String loggedInAdvisorFName;
     public String loggedInAdvisorLName;

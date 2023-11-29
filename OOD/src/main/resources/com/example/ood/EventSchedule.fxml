@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Text?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1051.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ood.EventSchedule">
+<AnchorPane prefHeight="700.0" prefWidth="1051.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ood.EventSchedule">
    <children>
       <Button layoutX="885.0" layoutY="221.0" mnemonicParsing="false" onAction="#addEvent" prefHeight="54.0" prefWidth="138.0" style="-fx-background-color: #0A4969; -fx-border-radius: 11; -fx-background-radius: 11;" text="ADD EVENT" textFill="WHITE">
          <graphic>
@@ -21,37 +21,64 @@
       </Button>
       <AnchorPane layoutX="15.0" layoutY="11.0" prefHeight="663.0" prefWidth="841.0">
          <children>
-            <HBox alignment="CENTER" prefHeight="44.0" prefWidth="841.0" spacing="5.0" style="-fx-border-color: black;">
+            <HBox alignment="CENTER" layoutX="14.0" prefHeight="44.0" prefWidth="841.0" spacing="5.0" style="-fx-border-color: #0A4969;">
                <children>
-                  <Button disable="true" mnemonicParsing="false" onAction="#backOneMonth" text="&lt;" />
-                  <Text fx:id="year" strokeType="OUTSIDE" strokeWidth="0.0" text="####">
+                  <Button disable="true" mnemonicParsing="false" onAction="#backOneMonth" style="-fx-background-color: #0A4969;" text="&lt;" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font></Button>
+                  <Text fx:id="year" fill="#0a4969" strokeType="OUTSIDE" strokeWidth="0.0" text="####">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Text>
-                  <Text fx:id="month" strokeType="OUTSIDE" strokeWidth="0.0" text="####">
+                  <Text fx:id="month" fill="#0a4969" strokeType="OUTSIDE" strokeWidth="0.0" text="####">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Text>
-                  <Button disable="true" mnemonicParsing="false" onAction="#forwardOneMonth" text="&gt;" />
+                  <Button disable="true" mnemonicParsing="false" onAction="#forwardOneMonth" style="-fx-background-color: #0A4969;" text="&gt;" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font></Button>
                </children>
             </HBox>
-            <HBox alignment="CENTER" layoutY="44.0" prefHeight="44.0" prefWidth="841.0" spacing="88.75" style="-fx-border-color: black;">
+            <HBox alignment="CENTER" layoutX="14.0" layoutY="44.0" prefHeight="44.0" prefWidth="841.0" spacing="88.75" style="-fx-border-color: #0A4969; -fx-background-color: #0A4969;">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Su" textAlignment="CENTER" />
-                  <Text layoutX="213.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mo" textAlignment="CENTER" />
-                  <Text layoutX="222.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tu" textAlignment="CENTER" />
-                  <Text layoutX="232.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="We" textAlignment="CENTER" />
-                  <Text layoutX="241.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Th" textAlignment="CENTER" />
-                  <Text layoutX="251.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fr" textAlignment="CENTER" />
-                  <Text layoutX="266.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sa" textAlignment="CENTER" />
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Su" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Text>
+                  <Text fill="WHITE" layoutX="213.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mo" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Text>
+                  <Text fill="WHITE" layoutX="222.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tu" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Text>
+                  <Text fill="WHITE" layoutX="232.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="We" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Text>
+                  <Text fill="WHITE" layoutX="241.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Th" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Text>
+                  <Text fill="WHITE" layoutX="251.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fr" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Text>
+                  <Text fill="WHITE" layoutX="266.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sa" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Text>
                </children>
                <padding>
                   <Insets right="9.0" />
                </padding>
             </HBox>
-            <FlowPane fx:id="calendar" hgap="10.0" layoutY="88.0" prefHeight="581.0" prefWidth="841.0" style="-fx-border-color: black;" vgap="5.0" />
+            <FlowPane fx:id="calendar" hgap="10.0" layoutX="14.0" layoutY="88.0" prefHeight="581.0" prefWidth="841.0" style="-fx-border-color: #0A4969;" vgap="5.0" />
          </children>
       </AnchorPane>
    </children>

@@ -60,48 +60,73 @@
             <center>
                 <AnchorPane fx:id="contentArea" prefHeight="700.0" prefWidth="1051.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
                     <children>
-                        <Pane layoutX="73.0" layoutY="197.0" prefHeight="306.0" prefWidth="311.0" style="-fx-border-color: #032d4d; -fx-border-radius: 16;">
+                        <Pane layoutX="73.0" layoutY="113.0" prefHeight="306.0" prefWidth="311.0" style="-fx-border-color: #0A4969; -fx-border-radius: 16;">
                             <children>
                                 <ImageView fx:id="advisorImageField" fitHeight="278.0" fitWidth="284.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-                                <FontIcon iconLiteral="fltfmz-person-add-24" iconSize="200" layoutX="56.0" layoutY="253.0" opacity="0.5" />
+                                <FontIcon iconColor="#0a4969" iconLiteral="fltfmz-person-add-24" iconSize="200" layoutX="56.0" layoutY="253.0" opacity="0.5" />
+                              <Button fx:id="selectimagebutton2" layoutY="279.0" mnemonicParsing="false" onAction="#onSelectImageButton2Click" prefHeight="27.0" prefWidth="311.0" style="-fx-background-color: #0A4969;" text="Select Image " textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Button>
                             </children>
                         </Pane>
-                        <Pane layoutX="521.0" layoutY="75.0" prefHeight="550.0" prefWidth="452.0" style="-fx-border-color: #032d4d; -fx-border-radius: 16;">
+                        <Pane layoutX="521.0" layoutY="75.0" prefHeight="550.0" prefWidth="452.0" style="-fx-border-color: #0A4969; -fx-border-radius: 16;">
                             <children>
-                                <Label layoutX="14.0" layoutY="-13.0" style="-fx-background-color: white;" text="Personal Details" textFill="#032d4d">
+                                <Label layoutX="14.0" layoutY="-13.0" style="-fx-background-color: white;" text="Personal Details" textFill="#0a4969">
                                     <font>
                                         <Font size="18.0" />
                                     </font>
                                 </Label>
-                                <TextField fx:id="advisorIdField" layoutX="72.0" layoutY="32.0" prefHeight="26.0" prefWidth="307.0" />
-                                <TextField fx:id="advisorFNameField" layoutX="72.0" layoutY="104.0" prefHeight="26.0" prefWidth="307.0" />
-                                <TextField fx:id="advisorLNameField" layoutX="72.0" layoutY="173.0" prefHeight="26.0" prefWidth="307.0" />
-                                <TextField fx:id="advisorDOBField" layoutX="72.0" layoutY="243.0" prefHeight="26.0" prefWidth="307.0" />
-                                <TextField fx:id="advisorGenderField" layoutX="72.0" layoutY="312.0" prefHeight="26.0" prefWidth="307.0" />
-                                <TextField fx:id="advisorAddressField" layoutX="72.0" layoutY="380.0" prefHeight="26.0" prefWidth="307.0" />
-                                <TextField fx:id="advisorPhoneField" layoutX="72.0" layoutY="458.0" prefHeight="26.0" prefWidth="307.0" />
-                                <Label layoutX="84.0" layoutY="24.0" style="-fx-background-color: white;" text="Enter Advisor ID" />
-                                <Label layoutX="84.0" layoutY="96.0" style="-fx-background-color: white;" text="Enter First Name" />
-                                <Label layoutX="83.0" layoutY="165.0" style="-fx-background-color: white;" text="Enter Last Name" />
-                                <Label layoutX="84.0" layoutY="235.0" style="-fx-background-color: white;" text="Enter Date of Birth" />
-                                <Label layoutX="84.0" layoutY="303.0" style="-fx-background-color: white;" text="Enter Gender" />
-                                <Label layoutX="84.0" layoutY="372.0" style="-fx-background-color: white;" text="Enter Home Address" />
-                                <Label layoutX="86.0" layoutY="449.0" style="-fx-background-color: white;" text="Enter Phone Number" />
+                                <TextField fx:id="advisorIdField" layoutX="72.0" layoutY="32.0" prefHeight="26.0" prefWidth="307.0" style="-fx-background-color: white; -fx-border-color: #0A4969; -fx-border-width: 2px 2px 2px 2px;" />
+                                <TextField fx:id="advisorFNameField" layoutX="72.0" layoutY="104.0" prefHeight="26.0" prefWidth="307.0" style="-fx-background-color: white; -fx-border-color: #0A4969; -fx-border-width: 2px 2px 2px 2px;" />
+                                <TextField fx:id="advisorLNameField" layoutX="72.0" layoutY="173.0" prefHeight="26.0" prefWidth="307.0" style="-fx-background-color: white; -fx-border-color: #0A4969; -fx-border-width: 2px 2px 2px 2px;" />
+                                <TextField fx:id="advisorDOBField" layoutX="72.0" layoutY="243.0" prefHeight="26.0" prefWidth="307.0" style="-fx-background-color: white; -fx-border-color: #0A4969; -fx-border-width: 2px 2px 2px 2px;" />
+                                <TextField fx:id="advisorGenderField" layoutX="72.0" layoutY="312.0" prefHeight="26.0" prefWidth="307.0" style="-fx-background-color: white; -fx-border-color: #0A4969; -fx-border-width: 2px 2px 2px 2px;" />
+                                <TextField fx:id="advisorAddressField" layoutX="72.0" layoutY="380.0" prefHeight="26.0" prefWidth="307.0" style="-fx-background-color: white; -fx-border-color: #0A4969; -fx-border-width: 2px 2px 2px 2px;" />
+                                <TextField fx:id="advisorPhoneField" layoutX="72.0" layoutY="458.0" prefHeight="26.0" prefWidth="307.0" style="-fx-background-color: white; -fx-border-color: #0A4969; -fx-border-width: 2px 2px 2px 2px;" />
+                                <Label layoutX="84.0" layoutY="24.0" style="-fx-background-color: white;" text="Enter Advisor ID" textFill="#0a4969">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                                <Label layoutX="84.0" layoutY="96.0" style="-fx-background-color: white;" text="Enter First Name" textFill="#0a4969">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                                <Label layoutX="83.0" layoutY="165.0" style="-fx-background-color: white;" text="Enter Last Name" textFill="#0a4969">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                                <Label layoutX="84.0" layoutY="235.0" style="-fx-background-color: white;" text="Enter Date of Birth" textFill="#0a4969">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                                <Label layoutX="84.0" layoutY="303.0" style="-fx-background-color: white;" text="Enter Gender" textFill="#0a4969">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                                <Label layoutX="84.0" layoutY="372.0" style="-fx-background-color: white;" text="Enter Home Address" textFill="#0a4969">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                                <Label layoutX="86.0" layoutY="449.0" style="-fx-background-color: white;" text="Enter Phone Number" textFill="#0a4969">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
                             </children>
                         </Pane>
-                        <Label alignment="TOP_CENTER" layoutX="294.0" layoutY="14.0" prefHeight="18.0" prefWidth="363.0" text="Club Advisor Registration Form" textAlignment="CENTER" textFill="#032d4d">
+                        <Label alignment="TOP_CENTER" layoutX="294.0" layoutY="14.0" prefHeight="18.0" prefWidth="363.0" text="Club Advisor Registration Form" textAlignment="CENTER" textFill="#0a4969">
                             <font>
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </Label>
-                        <Button fx:id="selectimagebutton2" layoutX="388.0" layoutY="477.0" mnemonicParsing="false" onAction="#onSelectImageButton2Click" text="Select Image " />
-                        <Button fx:id="submitButton2" layoutX="186.0" layoutY="605.0" mnemonicParsing="false" onAction="#onSubmitButton2Click" style="-fx-background-color: #032d4d;" text="Submit" textFill="#e3e5e7">
+                        <Button fx:id="submitButton2" layoutX="303.0" layoutY="574.0" mnemonicParsing="false" onAction="#onSubmitButton2Click" style="-fx-background-color: #0A4969;" text="Submit" textFill="#e3e5e7">
                             <font>
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </Button>
                         <Label fx:id="errormsg" layoutX="75.0" layoutY="85.0" prefHeight="68.0" prefWidth="306.0" textFill="RED" />
-                        <Button fx:id="validateButton2" layoutX="128.0" layoutY="523.0" mnemonicParsing="false" onAction="#onValidateButton2Click" style="-fx-background-color: #ADDFFF;" text="Validate Information" textFill="#010b15">
+                        <Button fx:id="validateButton2" layoutX="75.0" layoutY="574.0" mnemonicParsing="false" onAction="#onValidateButton2Click" style="-fx-background-color: #ADDFFF;" text="Validate Information" textFill="#0a4969">
                             <font>
                                 <Font name="System Bold" size="18.0" />
                             </font>

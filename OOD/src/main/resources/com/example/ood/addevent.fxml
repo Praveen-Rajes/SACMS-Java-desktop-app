@@ -15,19 +15,22 @@
 <?import javafx.scene.text.Text?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ood.Addevent">
+<AnchorPane prefHeight="750.0" prefWidth="1200.0" style="-fx-background-color: #0A4969;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ood.Addevent">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="106.0" layoutX="11.0" layoutY="137.0" stroke="BLACK" strokeType="INSIDE" width="1177.0" />
-      <DatePicker fx:id="datePicker" layoutX="211.0" layoutY="200.0" prefHeight="25.0" prefWidth="200.0" />
+      <DatePicker fx:id="datePicker" layoutX="211.0" layoutY="200.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: white;" />
       <TableView fx:id="viewTable" layoutX="11.0" layoutY="252.0" prefHeight="412.0" prefWidth="868.0">
          <columns>
             <TableColumn fx:id="eventid" prefWidth="261.0" text="EVENT_ID" />
             <TableColumn fx:id="eventname" prefWidth="306.0" text="EVENT_NAME" />
             <TableColumn fx:id="clubid" minWidth="0.0" prefWidth="300.0" text="CLUB_ID" />
          </columns></TableView>
-      <Button layoutX="787.0" layoutY="200.0" mnemonicParsing="false" onAction="#viewDate" text="VIEW DATE" />
+      <Button layoutX="787.0" layoutY="200.0" mnemonicParsing="false" onAction="#viewDate" style="-fx-background-color: white;" text="VIEW DATE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="412.0" layoutX="889.0" layoutY="252.0" stroke="BLACK" strokeType="INSIDE" width="294.0" />
-      <ChoiceBox fx:id="clubChoiceBox" layoutX="443.0" layoutY="200.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="clubChoiceBox" layoutX="443.0" layoutY="200.0" prefWidth="150.0" style="-fx-background-color: white;" />
       <TextArea fx:id="eventDesc" layoutX="910.0" layoutY="346.0" prefHeight="85.0" prefWidth="258.0" promptText="Event Description ...." />
       <HBox layoutX="907.0" layoutY="472.0" prefHeight="31.0" prefWidth="258.0">
          <children>
@@ -44,31 +47,40 @@
       <TextField fx:id="eventID" layoutX="910.0" layoutY="306.0" prefHeight="25.0" prefWidth="121.0" promptText="EVENT ID" />
       <TextField fx:id="eventName" layoutX="1039.0" layoutY="306.0" prefHeight="25.0" prefWidth="129.0" promptText="EVENT NAME" />
       <TextField fx:id="eventLoc" layoutX="910.0" layoutY="572.0" prefHeight="25.0" prefWidth="258.0" promptText="EVENT LOCATION" />
-      <Button layoutX="910.0" layoutY="612.0" mnemonicParsing="false" onAction="#addEventSave" prefHeight="25.0" prefWidth="121.0" text="SAVE" />
-      <Button layoutX="1043.0" layoutY="612.0" mnemonicParsing="false" onAction="#clearData" prefHeight="25.0" prefWidth="121.0" text="CLEAR" />
-      <Text layoutX="979.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADD EVENT DETAILS">
+      <Button layoutX="910.0" layoutY="612.0" mnemonicParsing="false" onAction="#addEventSave" prefHeight="25.0" prefWidth="121.0" style="-fx-background-color: white;" text="SAVE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Button layoutX="1043.0" layoutY="612.0" mnemonicParsing="false" onAction="#clearData" prefHeight="25.0" prefWidth="121.0" style="-fx-background-color: white;" text="CLEAR">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Text fill="WHITE" layoutX="979.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADD EVENT DETAILS">
          <font>
             <Font name="Calibri Light" size="14.0" />
          </font>
       </Text>
-      <Text layoutX="443.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SELECT CLUB" />
-      <Text layoutX="211.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SELECT DATE" />
-      <Text layoutX="910.0" layoutY="470.0" strokeType="OUTSIDE" strokeWidth="0.0" text="START TIME Hrs" />
-      <Text layoutX="907.0" layoutY="527.0" strokeType="OUTSIDE" strokeWidth="0.0" text="END TIME Hrs" />
-      <Text layoutX="1036.0" layoutY="528.0" strokeType="OUTSIDE" strokeWidth="0.0" text="END TIME Mins" />
-      <Text layoutX="1039.0" layoutY="469.0" strokeType="OUTSIDE" strokeWidth="0.0" text="START TIME Mins" />
-      <Button fx:id="backToMenu" layoutX="919.0" layoutY="169.0" mnemonicParsing="false" onAction="#backToAddMenu" prefHeight="45.0" prefWidth="248.0" text="  BACK TO THE MENU">
+      <Text fill="WHITE" layoutX="443.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SELECT CLUB" />
+      <Text fill="WHITE" layoutX="211.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SELECT DATE" />
+      <Text fill="WHITE" layoutX="910.0" layoutY="470.0" strokeType="OUTSIDE" strokeWidth="0.0" text="START TIME Hrs" />
+      <Text fill="WHITE" layoutX="907.0" layoutY="527.0" strokeType="OUTSIDE" strokeWidth="0.0" text="END TIME Hrs" />
+      <Text fill="WHITE" layoutX="1036.0" layoutY="528.0" strokeType="OUTSIDE" strokeWidth="0.0" text="END TIME Mins" />
+      <Text fill="WHITE" layoutX="1039.0" layoutY="469.0" strokeType="OUTSIDE" strokeWidth="0.0" text="START TIME Mins" />
+      <Button fx:id="backToMenu" layoutX="919.0" layoutY="169.0" mnemonicParsing="false" onAction="#backToAddMenu" prefHeight="45.0" prefWidth="248.0" style="-fx-background-color: white;" text="  BACK TO THE MENU">
          <graphic>
             <FontIcon iconLiteral="fltrmz-text-change-previous-24" iconSize="30" wrappingWidth="22.0" />
          </graphic>
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
       </Button>
-      <Text layoutX="183.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SELCET DATE AND CLUB TO VIEW THE AVAILABLE EVENT SLOTS ON THE TABLE">
+      <Text fill="WHITE" layoutX="183.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SELCET DATE AND CLUB TO VIEW THE AVAILABLE EVENT SLOTS ON THE TABLE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Text>
-      <ChoiceBox fx:id="ClubID" layoutX="609.0" layoutY="200.0" prefWidth="150.0" />
-      <Text layoutX="609.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SELECT CLUB ID" />
+      <ChoiceBox fx:id="ClubID" layoutX="609.0" layoutY="200.0" prefWidth="150.0" style="-fx-background-color: white;" />
+      <Text fill="WHITE" layoutX="609.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SELECT CLUB ID" />
       
       
    </children>

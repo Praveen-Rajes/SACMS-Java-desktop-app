@@ -7,20 +7,20 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
-
-<AnchorPane prefHeight="700.0" prefWidth="1051.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ood.AttendanceController">
+<AnchorPane prefHeight="700.0" prefWidth="1051.0" style="-fx-background-color: #0A4969;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ood.AttendanceController">
    <children>
-      <Label layoutX="415.0" layoutY="60.0" text="Attendance Tracker">
+      <Label layoutX="300.0" layoutY="20.0" text="Attendance Tracker" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="24.0" />
+            <Font name="System Bold" size="48.0" />
          </font>
       </Label>
       <TableView fx:id="eventTableView" layoutX="59.0" layoutY="160.0" prefHeight="190.0" prefWidth="924.0">
          <columns>
             <TableColumn fx:id="eventNameColumn" prefWidth="593.6000213623047" text="Event Name " />
             <TableColumn fx:id="startTimeColumn" prefWidth="167.199951171875" text="Start Time " />
-            <TableColumn fx:id="endTimeColumn" prefWidth="156.00006103515625" text="End Time" />
+            <TableColumn fx:id="endTimeColumn" prefWidth="161.5999755859375" text="End Time" />
          </columns>
       </TableView>
       <TableView fx:id="studentTableView" layoutX="59.0" layoutY="390.0" prefHeight="282.0" prefWidth="924.0">
@@ -30,7 +30,20 @@
             <TableColumn fx:id="attendanceColumn" prefWidth="263.20001220703125" text="Attendance" />
          </columns>
       </TableView>
-      <ChoiceBox fx:id="clubChoiceBox" layoutX="663.0" layoutY="117.0" prefHeight="35.0" prefWidth="210.0" />
-      <Button fx:id="submitButton"  onAction="#OnActionSubmitClick" layoutX="899.0" layoutY="117.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="70.0" text="Button" />
+      <ChoiceBox fx:id="clubChoiceBox" layoutX="546.0" layoutY="117.0" prefHeight="35.0" prefWidth="210.0" style="-fx-background-color: white;" />
+      <Button fx:id="submitButton" layoutX="768.0" layoutY="121.0" mnemonicParsing="false" onAction="#OnActionSubmitClick" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: white; -fx-border-radius: 3;" text="Search">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <graphic>
+            <FontIcon iconLiteral="fas-search" iconSize="14" />
+         </graphic></Button>
+      <Button fx:id="savebutton" layoutX="868.0" layoutY="121.0" mnemonicParsing="false" onAction="#OnActionSaveClick" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: white; -fx-border-radius: 3;" text="Save">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <graphic>
+            <FontIcon iconLiteral="fas-save" iconSize="14" />
+         </graphic></Button>
    </children>
 </AnchorPane>
