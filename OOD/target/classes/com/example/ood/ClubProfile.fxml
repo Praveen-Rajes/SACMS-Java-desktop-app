@@ -26,7 +26,7 @@
       <TextField fx:id="clubNameField" layoutX="319.0" layoutY="147.0" prefHeight="29.0" prefWidth="399.0" promptText="Club Name" style="-fx-background-color: transparent;" />
       <TextField fx:id="categoryField" layoutX="319.0" layoutY="205.0" prefHeight="29.0" prefWidth="399.0" promptText="Category" style="-fx-background-color: transparent;" />
       <TextArea fx:id="descriptionArea" layoutX="319.0" layoutY="277.0" prefHeight="200.0" prefWidth="399.0" promptText="Description" style="-fx-background-color: transparent;" />
-      <TextField fx:id="clubIDField" layoutX="319.0" layoutY="89.0" prefHeight="26.0" prefWidth="399.0" promptText="ClubID" style="-fx-background-color: transparent;" />
+      <TextField fx:id="clubIDField" editable="false" layoutX="319.0" layoutY="89.0" prefHeight="26.0" prefWidth="399.0" promptText="ClubID" style="-fx-background-color: transparent;" />
       <Button fx:id="removeClubButton" layoutX="86.0" layoutY="341.0" mnemonicParsing="false" onAction="#OnRemoveButtonClick" prefHeight="35.0" prefWidth="106.0" style="-fx-background-color: #0A4969;" text="Remove Club" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />

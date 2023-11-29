@@ -51,9 +51,12 @@ public class ClubHomeController {
         // Bind the table view to the observable list
         loadDataFromDatabase();
         tableView.setItems(clubDetails);
-        tableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null) {
-                openClubProfile(newValue);
+        tableView.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 2) { // Double-click
+                Club selectedClub = tableView.getSelectionModel().getSelectedItem();
+                if (selectedClub != null) {
+                    openClubProfile(selectedClub);
+                }
             }
         });
     }
@@ -69,16 +72,27 @@ public class ClubHomeController {
             Stage stage = new Stage();
             stage.setTitle("Club Profile");
             stage.setScene(new Scene(root));
+
+            // Set up a listener to handle ClubProfile close event
+            stage.setOnHidden(e -> {
+                // Remove selection when ClubProfile closes
+                tableView.getSelectionModel().clearSelection();
+                // Update the table to reflect any changes made in ClubProfile
+                updateTable();
+            });
+
             stage.show();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
     public void removeClub(Club club) {
         clubDetails.remove(club);
 
+    }
+    public void updateTable() {
+        tableView.refresh();
     }
 
 
