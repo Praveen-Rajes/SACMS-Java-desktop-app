@@ -122,8 +122,8 @@ public class ClubProfileController {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation");
         alert.setHeaderText(null);
-        alert.setContentText("Do you wish to continue?");
-        alert.showAndWait();
+        alert.setContentText("Do you wish to update club?");
+
         Optional<ButtonType> result = alert.showAndWait();
 
         if (result.isPresent() && result.get() == ButtonType.OK) {

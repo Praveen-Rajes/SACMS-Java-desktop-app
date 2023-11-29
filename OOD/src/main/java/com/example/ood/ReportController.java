@@ -42,7 +42,7 @@ public class ReportController {
         // JDBC URL, username, and password of your MySQL server
         String url = "jdbc:mysql://localhost:3306/clubmaster";
         String user = "root";
-        String password = "Praveen@2003";
+        String password = "";
 
         // SQL query to retrieve event names
         String query = "SELECT eventName FROM events";

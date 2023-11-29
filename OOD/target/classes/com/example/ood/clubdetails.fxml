@@ -1,33 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<?import org.kordamp.ikonli.javafx.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ood.ClubdetailsController">
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ood.ClubdetailsController">
    <right>
       <AnchorPane prefHeight="700.0" prefWidth="662.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="clubNameTextField" layoutX="386.0" layoutY="224.0" prefHeight="28.0" prefWidth="300.0" promptText="Club Name" style="-fx-background-color: transparent; -fx-border-color: #0A4969; -fx-border-width: 0px 0px 2px 0px;" />
-            <Button fx:id="continueButton" layoutX="498.0" layoutY="632.0" mnemonicParsing="false" onAction="#onOkButtonClick" prefHeight="37.0" prefWidth="74.0" style="-fx-background-color: #0A4969;" text="Continue" textFill="WHITE" />
-            <Text fill="#0a4969" layoutX="456.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Club Details">
+            <TextField fx:id="clubNameTextField" layoutX="348.0" layoutY="224.0" prefHeight="28.0" prefWidth="300.0" promptText="Club Name" style="-fx-background-color: transparent; -fx-border-color: #0A4969; -fx-border-width: 0px 0px 2px 0px;" />
+            <Button fx:id="continueButton" layoutX="460.0" layoutY="632.0" mnemonicParsing="false" onAction="#onOkButtonClick" prefHeight="37.0" prefWidth="92.0" style="-fx-background-color: #0A4969;" text="Continue" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <Text fill="#0a4969" layoutX="418.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Club Details">
                <font>
                   <Font size="30.0" />
                </font>
             </Text>
-            <FontIcon iconColor="#0a4969" iconLiteral="fas-house-user" iconSize="60" layoutX="501.0" layoutY="113.0" />
-            <ChoiceBox fx:id="categoryChoiceBox" layoutX="386.0" layoutY="277.0" prefHeight="28.0" prefWidth="300.0" style="-fx-background-color: transparent; -fx-border-color: #0A4969; -fx-border-width: 0px 0px 2px 0px;" value="Select a Category" />
-            <TextArea fx:id="descriptionTextArea" layoutX="386.0" layoutY="348.0" prefHeight="100.0" prefWidth="300.0" promptText="Club Depscription" style="-fx-background-color: transparent; -fx-border-color: #0A4969; -fx-border-width: 0px 0px 2px 0px;" />
-            <TextField fx:id="clubIDField" editable="false" layoutX="386.0" layoutY="552.0" prefHeight="28.0" prefWidth="300.0" promptText="Club ID" style="-fx-background-color: transparent; -fx-border-color: #0A4969; -fx-border-width: 0px 0px 2px 0px;" />
-            <ColorPicker fx:id="ThemeField" layoutX="386.0" layoutY="492.0" prefHeight="26.0" prefWidth="300.0" promptText="Select Club Theme" style="-fx-background-color: transparent; -fx-border-color: #0A4969; -fx-border-width: 0px 0px 2px 0px;" />
-            <Text fill="#b1a4a4" layoutX="393.0" layoutY="489.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Club Theme" />
+            <FontIcon iconColor="#0a4969" iconLiteral="fas-house-user" iconSize="60" layoutX="463.0" layoutY="113.0" />
+            <ChoiceBox fx:id="categoryChoiceBox" layoutX="348.0" layoutY="277.0" prefHeight="28.0" prefWidth="300.0" style="-fx-background-color: transparent; -fx-border-color: #0A4969; -fx-border-width: 0px 0px 2px 0px;" value="Select a Category" />
+            <TextArea fx:id="descriptionTextArea" layoutX="348.0" layoutY="348.0" prefHeight="100.0" prefWidth="300.0" promptText="Club Depscription" style="-fx-background-color: transparent; -fx-border-color: #0A4969; -fx-border-width: 0px 0px 2px 0px;" />
+            <TextField fx:id="clubIDField" editable="false" layoutX="348.0" layoutY="552.0" prefHeight="28.0" prefWidth="300.0" promptText="Club ID" style="-fx-background-color: transparent; -fx-border-color: #0A4969; -fx-border-width: 0px 0px 2px 0px;" />
+            <ColorPicker fx:id="ThemeField" layoutX="348.0" layoutY="492.0" prefHeight="26.0" prefWidth="300.0" promptText="Select Club Theme" style="-fx-background-color: transparent; -fx-border-color: #0A4969; -fx-border-width: 0px 0px 2px 0px;" />
+            <Text fill="#b1a4a4" layoutX="355.0" layoutY="489.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Club Theme" />
             <AnchorPane layoutX="-367.0" prefHeight="750.0" prefWidth="487.0" style="-fx-background-color: #0A4969;">
                <children>
                   <Pane layoutX="109.0" layoutY="147.0" prefHeight="277.0" prefWidth="284.0" style="-fx-background-color: transparent; -fx-border-color: #ffffff; -fx-border-style: dotted; -fx-border-width: 2px 2px 2px 2px;">
                      <children>
-                        <ImageView fx:id="logoImageView" fitHeight="261.0" fitWidth="268.0" layoutX="7.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 3px;" />
+                        <ImageView fx:id="logoImageView" fitHeight="261.0" fitWidth="271.0" layoutX="7.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 3px;" />
                         <Button fx:id="uploadButton" layoutX="86.0" layoutY="203.0" mnemonicParsing="false" onAction="#onUploadButtonClick" prefHeight="31.0" prefWidth="110.0" style="-fx-background-color: transparent;" text="Browse Here" textFill="WHITE">
                            <font>
                               <Font size="15.0" />
