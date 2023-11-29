@@ -2,7 +2,6 @@ package com.example.ood;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
-import javafx.scene.control.CheckBox;
 
 public class Attendance{
     private String clubName;

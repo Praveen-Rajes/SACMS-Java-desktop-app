@@ -3,17 +3,11 @@ package com.example.ood;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.util.StringConverter;
-
 import java.util.ArrayList;
 
 public class AttendanceController {
-
     @FXML
     private ChoiceBox<Attendance> clubChoiceBox;
     @FXML
@@ -34,7 +28,6 @@ public class AttendanceController {
     private TableColumn<Attendance, String> studentNameColumn;
     @FXML
     private Button submitButton;
-
     private String selectedClub;
     private final ObservableList<Attendance> clubDetails = FXCollections.observableArrayList();
 
@@ -73,7 +66,13 @@ public class AttendanceController {
 
         if (attendanceList != null) {
             clubDetails.clear();
+
+            // Add a placeholder item
+            Attendance placeholderClub = new Attendance("Select a club");
+            clubDetails.add(placeholderClub);
+
             clubDetails.addAll(attendanceList);
+
             clubChoiceBox.setItems(clubDetails);
 
             clubChoiceBox.setConverter(new StringConverter<Attendance>() {
@@ -105,7 +104,11 @@ public class AttendanceController {
 
     @FXML
     public void OnActionSubmitClick() {
-        if (selectedClub != null) {
+        Attendance selectedAttendance = clubChoiceBox.getValue();
+
+        if (selectedAttendance != null && !selectedAttendance.getClubName().equals("Select a club")) {
+            // Proceed with the selected club
+            selectedClub = selectedAttendance.getClubName();
             DBQuery dbQuery = new DBQuery();
             ArrayList<Attendance> eventList = dbQuery.getEventListForAttendance(selectedClub);
 
@@ -113,15 +116,34 @@ public class AttendanceController {
 
             if (eventList != null && !eventList.isEmpty()) {
                 eventTableView.getItems().addAll(eventList);
+
+                // Check if there are students before loading them
+                boolean hasStudents = checkIfStudentsExist(selectedClub);
+
+                if (hasStudents) {
+                    loadStudentName();
+                } else {
+                    // Disable studentTableView if no students
+                    studentTableView.setDisable(true);
+                }
             } else {
+                showAlert("No Events Found", "No events found for the selected club.");
                 System.out.println("No events found for the selected club.");
             }
         } else {
+            showAlert("No Club Selected", "Please select a club.");
             System.out.println("No club selected.");
         }
-
-        loadStudentName();
     }
+
+
+    private boolean checkIfStudentsExist(String club) {
+        DBQuery dbQuery = new DBQuery();
+        ArrayList<Attendance> studentList = dbQuery.getStudentListForAttendance(club);
+
+        return studentList != null && !studentList.isEmpty();
+    }
+
 
     public void loadStudentName() {
         studentIDColumn.setCellValueFactory(data -> data.getValue().studentIDProperty());
@@ -134,6 +156,16 @@ public class AttendanceController {
 
         if (studentList != null) {
             studentTableView.getItems().addAll(studentList);
+        } else {
+            System.out.println("No students found for the selected club.");
         }
+    }
+
+    private void showAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 }
